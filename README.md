@@ -6,9 +6,9 @@ _(titre provisoire)_
 Godot, Github
 
 ## Milestones
-### Le projet est lancé
-- [ ] :art: Tous les assets sont temporaires
-- [ ] :space_invader: Une scène avec un asset sur le quel on peut cliquer, il disparait
+### :white_check_mark: Le projet est lancé
+- [x] :art: Tous les assets sont temporaires
+- [x] :space_invader: Une scène avec un asset sur le quel on peut cliquer, il disparait
 
 ### Le projet est fonctionnel
 - [ ] :art: Asset grossier pour le pistolet, un personnages et la maison
