@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6ew27yuxjku"]
+
+[ext_resource type="Script" path="res://scripts/water_gun.gd" id="1_nn348"]
+[ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="2_jbrpk"]
+
+[node name="WaterGun" type="Node2D"]
+position = Vector2(1063, 540)
+script = ExtResource("1_nn348")
+
+[node name="WaterGunSprite" type="Sprite2D" parent="."]
+position = Vector2(-8, -45)
+scale = Vector2(0.439962, 0.439962)
+texture = ExtResource("2_jbrpk")
+
+[node name="MarkerFront" type="Marker2D" parent="."]
+position = Vector2(-204, -128)
+
+[node name="MarkerBack" type="Marker2D" parent="."]
+position = Vector2(72, -151)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+position = Vector2(71, -150)
+points = PackedVector2Array(0, 0, -862, 72)
