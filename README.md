@@ -12,7 +12,7 @@ Godot, Github
 
 ### Le projet est fonctionnel
 - [ ] :art: Asset grossier pour le pistolet, un personnages et la maison
-- [ ] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur tirer dessus et ils disparaissent
+- [ ] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur cliquer dessus et ils disparaissent. Un pistolet en bas de l'écran pointe dans la direction où on clique
 
 ### C'est un jeu
 - [ ] :art: Animation du pistolet et du jet d'eau
@@ -20,7 +20,7 @@ Godot, Github
 
 ### Logiciel complet
 - [ ] :art: Tous les assets du jeu sont finaux
-- [ ] :space_invader: Un score est comptabilisé
+- [ ] :space_invader: Un score est comptabilisé, la méchanique de tir est paufinée
 - [ ] :window: Menus avec des assets grossiers
   - [ ] Menu principal permet de lancer la partie et quitter, un texte explique comment jouer
   - [ ] Menu game over affiche le score obtenue, permet de rejouer, retourner au menu principale et quitter
