@@ -8,6 +8,7 @@ position = Vector2(1063, 540)
 script = ExtResource("1_nn348")
 
 [node name="WaterGunSprite" type="Sprite2D" parent="."]
+z_index = 2
 position = Vector2(-8, -45)
 scale = Vector2(0.439962, 0.439962)
 texture = ExtResource("2_jbrpk")

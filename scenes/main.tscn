@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlt5h2t4wj8py"]
+[gd_scene load_steps=5 format=3 uid="uid://dlt5h2t4wj8py"]
 
-[ext_resource type="Texture2D" uid="uid://cxdj0ulslfoou" path="res://assets/bluebackground.png" id="1_ydbry"]
+[ext_resource type="Texture2D" uid="uid://bmebcxfwx0jkc" path="res://assets/house_background.png" id="1_lhcc4"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
-[ext_resource type="PackedScene" uid="uid://f6ew27yuxjku" path="res://scenes/water_gun.tscn" id="3_to6jk"]
+[ext_resource type="PackedScene" uid="uid://f6ew27yuxjku" path="res://scenes/water_gun.tscn" id="3_6mrec"]
+[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="3_vis8j"]
 
 [node name="Main" type="Node"]
 
@@ -13,10 +14,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ydbry")
+texture = ExtResource("1_lhcc4")
 stretch_mode = 1
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(532, 240)
+position = Vector2(1137, 212)
+texture = ExtResource("3_vis8j")
 
-[node name="WaterGun" parent="." instance=ExtResource("3_to6jk")]
+[node name="WaterGun" parent="." instance=ExtResource("3_6mrec")]
+position = Vector2(1751, 969)
+
+[node name="Sprite2D2" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(1628, 210)
+texture = ExtResource("3_vis8j")
+
+[node name="Sprite2D3" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(217, 208)
+texture = ExtResource("3_vis8j")
+
+[node name="Sprite2D4" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(1142, 596)
+texture = ExtResource("3_vis8j")
