@@ -11,8 +11,8 @@ Godot, Github
 - [x] :space_invader: Une scène avec un asset sur le quel on peut cliquer, il disparait
 
 ### Le projet est fonctionnel
-- [ ] :art: Asset grossier pour le pistolet, un personnages et la maison
-- [ ] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur cliquer dessus et ils disparaissent. Un pistolet en bas de l'écran pointe dans la direction où on clique
+- [x] :art: Asset grossier pour le pistolet, un personnages et la maison
+- [x] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur cliquer dessus et ils disparaissent. Un pistolet en bas de l'écran pointe dans la direction où on clique
 
 ### C'est un jeu
 - [ ] :art: Animation du pistolet et du jet d'eau
