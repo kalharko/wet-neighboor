@@ -10,7 +10,7 @@ Godot, Github
 - [x] :art: Tous les assets sont temporaires
 - [x] :space_invader: Une scène avec un asset sur le quel on peut cliquer, il disparait
 
-### Le projet est fonctionnel
+### :white_check_mark: Le projet est fonctionnel
 - [x] :art: Asset grossier pour le pistolet, un personnages et la maison
 - [x] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur cliquer dessus et ils disparaissent. Un pistolet en bas de l'écran pointe dans la direction où on clique
 
