@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlt5h2t4wj8py"]
+[gd_scene load_steps=5 format=3 uid="uid://dlt5h2t4wj8py"]
 
 [ext_resource type="Texture2D" uid="uid://bmebcxfwx0jkc" path="res://assets/house_background.png" id="1_aghc0"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_pe718"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
 [ext_resource type="PackedScene" uid="uid://devtw752veicu" path="res://scenes/water_gun_system.tscn" id="3_f5bw4"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_pe718")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1

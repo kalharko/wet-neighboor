@@ -12,6 +12,7 @@ texture = ExtResource("1_bgtqf")
 script = ExtResource("2_btsdg")
 window_open = ExtResource("1_bgtqf")
 window_closed = ExtResource("3_mm60l")
+open_time = null
 
 [node name="Area2D" type="Area2D" parent="."]
 

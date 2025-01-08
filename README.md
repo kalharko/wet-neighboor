@@ -16,7 +16,7 @@ Godot, Github
 
 ### C'est un jeu
 - [ ] :art: Animation du pistolet et du jet d'eau
-- [ ] :space_invader: Les voisins apparaissent progressivement et de plus en plus rapidement, si tous les voisin sont sortis, le jeu s'arrête
+- [x] :space_invader: Les voisins apparaissent progressivement et de plus en plus rapidement. Ils peuvent disparaitre d'eux même si trop de temps s'est écoulé.
 
 ### Logiciel complet
 - [ ] :art: Tous les assets du jeu sont finaux
