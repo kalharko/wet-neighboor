@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlt5h2t4wj8py"]
+[gd_scene load_steps=4 format=3 uid="uid://dlt5h2t4wj8py"]
 
-[ext_resource type="Texture2D" uid="uid://bmebcxfwx0jkc" path="res://assets/house_background.png" id="1_lhcc4"]
+[ext_resource type="Texture2D" uid="uid://bmebcxfwx0jkc" path="res://assets/house_background.png" id="1_aghc0"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
-[ext_resource type="PackedScene" uid="uid://f6ew27yuxjku" path="res://scenes/water_gun.tscn" id="3_6mrec"]
-[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="3_vis8j"]
+[ext_resource type="PackedScene" uid="uid://f6ew27yuxjku" path="res://scenes/water_gun.tscn" id="3_to6jk"]
 
 [node name="Main" type="Node"]
 
@@ -12,26 +11,22 @@ texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 1024.0
+offset_bottom = 480.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lhcc4")
+scale = Vector2(0.498007, 0.571128)
+texture = ExtResource("1_aghc0")
 stretch_mode = 1
 
 [node name="Sprite2D" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(1137, 212)
-texture = ExtResource("3_vis8j")
+position = Vector2(532, 240)
+scale = Vector2(0.427469, 0.427469)
 
-[node name="WaterGun" parent="." instance=ExtResource("3_6mrec")]
-position = Vector2(1751, 969)
+[node name="WaterGun" parent="." instance=ExtResource("3_to6jk")]
+position = Vector2(852, 565)
+scale = Vector2(0.594789, 0.594789)
 
-[node name="Sprite2D2" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(1628, 210)
-texture = ExtResource("3_vis8j")
-
-[node name="Sprite2D3" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(217, 208)
-texture = ExtResource("3_vis8j")
-
-[node name="Sprite2D4" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(1142, 596)
-texture = ExtResource("3_vis8j")
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(453, 300)
