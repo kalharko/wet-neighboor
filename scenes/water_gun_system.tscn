@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://devtw752veicu"]
+
+[ext_resource type="Script" path="res://scripts/water_gun_system.gd" id="1_6rpt1"]
+[ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="3_isbhm"]
+[ext_resource type="Script" path="res://scripts/distance_area.gd" id="3_wpwb0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxbwa"]
+radius = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5v6a"]
+size = Vector2(250.5, 568.5)
+
+[node name="WaterGunSystem" type="Node2D"]
+script = ExtResource("1_6rpt1")
+precision = 20.0
+
+[node name="MouseArea" type="Area2D" parent="."]
+monitoring = false
+monitorable = false
+script = ExtResource("3_wpwb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
+shape = SubResource("CircleShape2D_kxbwa")
+
+[node name="WaterGun" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(812, 495)
+scale = Vector2(0.439962, 0.439962)
+texture = ExtResource("3_isbhm")
+
+[node name="MarkerFront" type="Marker2D" parent="WaterGun"]
+position = Vector2(-445.493, -188.653)
+scale = Vector2(2.27292, 2.27292)
+
+[node name="MarkerBack" type="Marker2D" parent="WaterGun"]
+position = Vector2(181.834, -240.93)
+scale = Vector2(2.27292, 2.27292)
+
+[node name="Water" type="Node" parent="."]
+
+[node name="Distances" type="Node" parent="."]
+
+[node name="Area" type="Area2D" parent="Distances"]
+monitoring = false
+monitorable = false
+script = ExtResource("3_wpwb0")
+distance = 15.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Distances/Area"]
+position = Vector2(126.75, 284.75)
+shape = SubResource("RectangleShape2D_x5v6a")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bmebcxfwx0jkc" path="res://assets/house_background.png" id="1_aghc0"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
-[ext_resource type="PackedScene" uid="uid://f6ew27yuxjku" path="res://scenes/water_gun.tscn" id="3_to6jk"]
+[ext_resource type="PackedScene" uid="uid://devtw752veicu" path="res://scenes/water_gun_system.tscn" id="3_f5bw4"]
 
 [node name="Main" type="Node"]
 
@@ -23,10 +23,6 @@ stretch_mode = 1
 [node name="window" parent="." instance=ExtResource("2_7hjn5")]
 position = Vector2(555, 95)
 scale = Vector2(0.427469, 0.427469)
-
-[node name="WaterGun" parent="." instance=ExtResource("3_to6jk")]
-position = Vector2(852, 565)
-scale = Vector2(0.594789, 0.594789)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(453, 300)
@@ -62,3 +58,5 @@ scale = Vector2(0.410375, 0.370232)
 [node name="window8" parent="." instance=ExtResource("2_7hjn5")]
 position = Vector2(126, 344)
 scale = Vector2(0.407593, 0.361467)
+
+[node name="WaterGunSystem" parent="." instance=ExtResource("3_f5bw4")]
