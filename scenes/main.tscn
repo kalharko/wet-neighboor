@@ -20,8 +20,8 @@ scale = Vector2(0.498007, 0.571128)
 texture = ExtResource("1_aghc0")
 stretch_mode = 1
 
-[node name="Sprite2D" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(532, 240)
+[node name="window" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(555, 95)
 scale = Vector2(0.427469, 0.427469)
 
 [node name="WaterGun" parent="." instance=ExtResource("3_to6jk")]
@@ -30,3 +30,35 @@ scale = Vector2(0.594789, 0.594789)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(453, 300)
+
+[node name="window 2" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(771, 95)
+scale = Vector2(0.46346, 0.441365)
+
+[node name="window2" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(557.471, 263.398)
+scale = Vector2(0.424571, 0.417349)
+
+[node name="window3" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(775, 260)
+scale = Vector2(0.421693, 0.407469)
+
+[node name="window4" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(98.9999, 91)
+scale = Vector2(0.418835, 0.397822)
+
+[node name="window5" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(321, 344)
+scale = Vector2(0.415995, 0.388404)
+
+[node name="window6" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(560, 432)
+scale = Vector2(0.413176, 0.379209)
+
+[node name="window7" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(325, 498)
+scale = Vector2(0.410375, 0.370232)
+
+[node name="window8" parent="." instance=ExtResource("2_7hjn5")]
+position = Vector2(126, 344)
+scale = Vector2(0.407593, 0.361467)

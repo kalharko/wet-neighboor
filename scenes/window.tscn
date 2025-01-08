@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ptnnbqy8dvf6"]
+[gd_scene load_steps=5 format=3 uid="uid://ptnnbqy8dvf6"]
 
 [ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_bgtqf"]
 [ext_resource type="Script" path="res://scripts/windowDisappear.gd" id="2_btsdg"]
+[ext_resource type="Texture2D" uid="uid://cdvelerm0omxj" path="res://assets/window_close.png" id="3_mm60l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjwbk"]
 size = Vector2(385, 303)
@@ -9,6 +10,8 @@ size = Vector2(385, 303)
 [node name="Sprite2D" type="Sprite2D"]
 texture = ExtResource("1_bgtqf")
 script = ExtResource("2_btsdg")
+initial_texture = ExtResource("1_bgtqf")
+clicked_texture = ExtResource("3_mm60l")
 
 [node name="Area2D" type="Area2D" parent="."]
 
