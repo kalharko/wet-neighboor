@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var tank_size: int = 100
+@onready var tank_value: int = tank_size
+@export var shot_cost: int = 1
 @export var precision: float = 1
 var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
@@ -8,6 +11,11 @@ var areas: Array[DistanceArea] = []
 var mouse_area: Area2D
 var free_droplets: Array[Sprite2D] = []
 
+@onready var water_tank = get_node("WaterGun/WaterTank")
+var water_tank_atlas_texture: AtlasTexture
+@export var atlas_top_y: int = 90
+@export var atlas_bottom_y: int = 480
+var texture_size: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,6 +28,17 @@ func _ready() -> void:
 		if child is DistanceArea:
 			areas.append(child)
 
+	# setup atlas
+	water_tank_atlas_texture = AtlasTexture.new()
+	water_tank_atlas_texture.atlas = water_tank.texture
+	texture_size = water_tank.texture.get_size()
+	water_tank_atlas_texture.region = Rect2(
+		0,
+		atlas_top_y,
+		texture_size.x,
+		texture_size.y - atlas_top_y)
+	water_tank.texture = water_tank_atlas_texture
+	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -67,6 +86,27 @@ func _physics_process(delta: float) -> void:
 	# quit if mouse is not down
 	if not Input.is_action_pressed("fire"):
 		return
+
+	# update water tank
+	self.tank_value -= shot_cost
+	# check if tank is empty
+	if self.tank_value <= 0:
+		get_tree().quit()
+
+	# update water tank visual
+	var region = Rect2(
+		0,
+		atlas_top_y + (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size)),
+		texture_size.x,
+		texture_size.y - atlas_top_y - (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size))
+	)
+	water_tank_atlas_texture.region = Rect2(region)
+	water_tank.texture = water_tank_atlas_texture
+	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
+	print()
+	print(tank_value, '/', tank_size)
+	print(region)
+
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:

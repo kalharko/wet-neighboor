@@ -4,6 +4,6 @@
 [ext_resource type="Script" path="res://scripts/droplet.gd" id="2_qqmlg"]
 
 [node name="Droplet" type="Sprite2D"]
-scale = Vector2(0.484375, 0.125)
+scale = Vector2(0.203125, 0.203125)
 texture = ExtResource("1_vn40v")
 script = ExtResource("2_qqmlg")

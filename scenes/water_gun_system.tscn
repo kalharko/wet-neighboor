@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://devtw752veicu"]
+[gd_scene load_steps=7 format=3 uid="uid://devtw752veicu"]
 
 [ext_resource type="Script" path="res://scripts/water_gun_system.gd" id="1_6rpt1"]
 [ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="3_isbhm"]
 [ext_resource type="Script" path="res://scripts/distance_area.gd" id="3_wpwb0"]
+[ext_resource type="Texture2D" uid="uid://b4pleianjepfj" path="res://assets/water_tank_0.png" id="4_5bt8g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxbwa"]
 radius = 1.0
@@ -35,6 +36,9 @@ scale = Vector2(2.27292, 2.27292)
 [node name="MarkerBack" type="Marker2D" parent="WaterGun"]
 position = Vector2(181.834, -240.93)
 scale = Vector2(2.27292, 2.27292)
+
+[node name="WaterTank" type="Sprite2D" parent="WaterGun"]
+texture = ExtResource("4_5bt8g")
 
 [node name="Water" type="Node" parent="."]
 
