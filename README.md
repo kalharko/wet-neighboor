@@ -14,10 +14,10 @@ Godot, Github
 - [x] :art: Asset grossier pour le pistolet, un personnages et la maison
 - [x] :space_invader: Au lancement, il y a un voisin dans chaque fenêtre de la maison, on peut leur cliquer dessus et ils disparaissent. Un pistolet en bas de l'écran pointe dans la direction où on clique
 
-### C'est un jouable
-- [ ] :art: Animation du pistolet et du jet d'eau
+### ✅ C'est un jouable
+- [x] :art: Animation du pistolet et du jet d'eau
 - [x] :space_invader: Les voisins apparaissent progressivement et de plus en plus rapidement. Ils peuvent disparaitre d'eux même si trop de temps s'est écoulé.
-- [ ] 👾 Un indicateur de niveau d'eau grossier, quand on a plus d'eau la partie se termine.
+- [x] 👾 Un indicateur de niveau d'eau grossier, quand on a plus d'eau la partie se termine.
 
 ### C'est un jeu
 - [ ] :art: Asset de la ville grossier pour valider le gameplay
