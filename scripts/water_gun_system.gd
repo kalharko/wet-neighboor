@@ -66,6 +66,7 @@ func _physics_process(delta: float) -> void:
 	for area in areas:
 		if area.overlaps_area(mouse_area):
 			# if so add the DistanceArea's value to angle
+			print(area.distance)
 			angle += area.distance
 			break
 	
