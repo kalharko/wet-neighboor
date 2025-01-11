@@ -9,9 +9,10 @@
 radius = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5v6a"]
-size = Vector2(250.5, 568.5)
+size = Vector2(240.5, 604.5)
 
 [node name="WaterGunSystem" type="Node2D"]
+scale = Vector2(1, 0.991654)
 script = ExtResource("1_6rpt1")
 precision = 20.0
 
@@ -42,7 +43,7 @@ texture = ExtResource("4_5bt8g")
 
 [node name="Water" type="Node" parent="."]
 
-[node name="Distances" type="Node" parent="."]
+[node name="Distances" type="Node2D" parent="."]
 
 [node name="Area" type="Area2D" parent="Distances"]
 monitoring = false
@@ -51,5 +52,5 @@ script = ExtResource("3_wpwb0")
 distance = 15.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Distances/Area"]
-position = Vector2(126.75, 284.75)
+position = Vector2(121.75, 302.75)
 shape = SubResource("RectangleShape2D_x5v6a")
