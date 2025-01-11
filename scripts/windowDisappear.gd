@@ -8,6 +8,8 @@ var rng = RandomNumberGenerator.new()
 var is_window_open = false
 var timer: Timer
 
+var window_area: Area2D
+
 signal window_closed_signal
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +24,12 @@ func _ready() -> void:
 	open_time = rng.randf_range(3.0, 10.0)  # un délai d'ouverture aléatoire
 	timer.wait_time = current_open_time
 	timer.start()
+
+	# subscribe to watergun system signal
+	get_node('../../WaterGunSystem').water_gun_shot_signal.connect(_on_water_gun_shot)
+
+	# set reference to own Area2D
+	window_area = get_node("Area2D")
 
 @export var open_time = rng.randf_range(3.0, 10.0)
 @export var close_time = rng.randf_range(1.0, 10.0)
@@ -52,9 +60,13 @@ func close_window() -> void:
 	timer.wait_time = current_open_time
 	timer.start()
 
-	window_closed_signal.emit()
+
+func _on_water_gun_shot(droplet: Droplet) -> void:
+	if not is_window_open:
+		return
 	
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if is_window_open:
-			close_window()
+	if not window_area.overlaps_area(droplet.droplet_area):
+		return
+
+	close_window()
+	window_closed_signal.emit()

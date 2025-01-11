@@ -8,9 +8,15 @@ var curve_start: Vector2
 var curve_middle: Vector2
 var curve_end: Vector2
 
+# References
+var water_gun_system: WaterGunSystem
+var droplet_area: Area2D
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# References
+	water_gun_system = get_node('../../WaterGunSystem')
+	droplet_area = get_node('Area2D')
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	current_step += 1
 	if current_step >= nb_step:
 		self.visible = false
-		get_node('../../WaterGunSystem').free_droplets.append(self)
+		water_gun_system.free_droplet(self)
 		return
 	
 	# set position along bezier curve

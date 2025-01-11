@@ -17,6 +17,7 @@ script = ExtResource("1_6rpt1")
 precision = 20.0
 
 [node name="MouseArea" type="Area2D" parent="."]
+monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea"]
 shape = SubResource("CircleShape2D_kxbwa")
@@ -43,6 +44,7 @@ texture = ExtResource("4_5bt8g")
 [node name="Distances" type="Node2D" parent="."]
 
 [node name="Area" type="Area2D" parent="Distances"]
+monitorable = false
 script = ExtResource("5_juy7s")
 distance = 0.393
 

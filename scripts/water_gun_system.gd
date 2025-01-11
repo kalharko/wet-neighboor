@@ -1,5 +1,9 @@
 extends Node2D
 
+class_name WaterGunSystem
+
+signal water_gun_shot_signal(droplet: Droplet)
+
 @export var tank_size: int = 100
 @onready var tank_value: int = tank_size
 @export var shot_cost: int = 1
@@ -9,7 +13,7 @@ var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
 var areas: Array[DistanceArea] = []
 var mouse_area: Area2D
-var free_droplets: Array[Sprite2D] = []
+var free_droplets: Array[Droplet] = []
 
 @onready var water_tank = get_node("WaterGun/WaterTank")
 var water_tank_atlas_texture: AtlasTexture
@@ -66,7 +70,6 @@ func _physics_process(delta: float) -> void:
 	for area in areas:
 		if area.overlaps_area(mouse_area):
 			# if so add the DistanceArea's value to angle
-			print(area.distance)
 			angle += area.distance
 			break
 	
@@ -112,6 +115,11 @@ func _physics_process(delta: float) -> void:
 		free_droplets.append(droplet)
 
 	# find a free droplet
-	var droplet: Sprite2D = free_droplets.pop_front()
+	var droplet: Droplet = free_droplets.pop_front()
 	var bezier_middle_point = marker_front + direction.normalized() * mouse_direction.length()
 	droplet.set_course(marker_front, bezier_middle_point, mouse_position, int(mouse_direction.length() / precision))
+
+
+func free_droplet(droplet: Droplet) -> void:
+	free_droplets.append(droplet)
+	water_gun_shot_signal.emit(droplet)
