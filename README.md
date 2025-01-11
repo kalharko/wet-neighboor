@@ -19,10 +19,10 @@ Godot, Github
 - [x] :space_invader: Les voisins apparaissent progressivement et de plus en plus rapidement. Ils peuvent disparaitre d'eux même si trop de temps s'est écoulé.
 - [x] 👾 Un indicateur de niveau d'eau grossier, quand on a plus d'eau la partie se termine.
 
-### C'est un jeu
-- [ ] :art: Asset de la ville grossier pour valider le gameplay
-- [ ] 👾 Les fenêtres sont fermés par le jet d'eau et plus la souris
-- [ ] 👾 Un score est comptabilisé
+### ✅ C'est un jeu
+- [x] :art: Asset de la ville grossier pour valider le gameplay
+- [x] 👾 Les fenêtres sont fermés par le jet d'eau et plus la souris
+- [x] 👾 Un score est comptabilisé
 
 ### Logiciel complet
 - [ ] :art: Tous les assets du jeu sont finaux
