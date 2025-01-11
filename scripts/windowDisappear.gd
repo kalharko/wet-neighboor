@@ -8,6 +8,8 @@ var rng = RandomNumberGenerator.new()
 var is_window_open = false
 var timer: Timer
 
+signal window_closed_signal
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	texture = window_closed  #au départ, toutes les fenêtres sont fermées
@@ -49,8 +51,10 @@ func close_window() -> void:
 	current_open_time = max(1, current_open_time * 0.9)  
 	timer.wait_time = current_open_time
 	timer.start()
+
+	window_closed_signal.emit()
 	
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if is_window_open:
-			close_window() 
+			close_window()

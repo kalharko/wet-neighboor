@@ -103,10 +103,6 @@ func _physics_process(delta: float) -> void:
 	water_tank_atlas_texture.region = Rect2(region)
 	water_tank.texture = water_tank_atlas_texture
 	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
-	print()
-	print(tank_value, '/', tank_size)
-	print(region)
-
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:

@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlt5h2t4wj8py"]
+[gd_scene load_steps=6 format=3 uid="uid://dlt5h2t4wj8py"]
 
-[ext_resource type="Script" path="res://scenes/main.gd" id="1_pe718"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_pe718"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
 [ext_resource type="Texture2D" uid="uid://cujdrdymjsy6f" path="res://assets/2Dbackground.png" id="2_cnhra"]
 [ext_resource type="PackedScene" uid="uid://devtw752veicu" path="res://scenes/water_gun_system.tscn" id="3_f5bw4"]
 
-[node name="Main" type="Node"]
+[sub_resource type="LabelSettings" id="LabelSettings_p4wl0"]
+font_size = 36
+
+[node name="Main" type="Node" node_paths=PackedStringArray("score_label")]
 script = ExtResource("1_pe718")
+score_label = NodePath("UI/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1
@@ -21,63 +25,80 @@ scale = Vector2(0.498007, 0.571128)
 texture = ExtResource("2_cnhra")
 expand_mode = 1
 
-[node name="window" parent="." instance=ExtResource("2_7hjn5")]
-position = Vector2(445, 127)
-scale = Vector2(0.184846, 0.237068)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(453, 300)
 
-[node name="window 2" parent="." instance=ExtResource("2_7hjn5")]
+[node name="WaterGunSystem" parent="." instance=ExtResource("3_f5bw4")]
+
+[node name="Windows" type="Node" parent="."]
+
+[node name="window" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(445, 127)
+scale = Vector2(0.184846, 0.237068)
+
+[node name="window 2" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(591, 69)
 scale = Vector2(0.169508, 0.277349)
 
-[node name="window2" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window2" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(578, 201)
 scale = Vector2(0.198952, 0.248675)
 
-[node name="window3" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window3" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(586.06, 334.06)
 scale = Vector2(0.155291, 0.267068)
 
-[node name="window4" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window4" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(98.9999, 91)
 scale = Vector2(0.418835, 0.397822)
 
-[node name="window5" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window5" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(305, 353)
 scale = Vector2(0.161331, 0.190869)
 
-[node name="window6" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window6" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(736, 221)
 scale = Vector2(0.155477, 0.232938)
 
-[node name="window6" parent="window6" instance=ExtResource("2_7hjn5")]
-position = Vector2(12.8636, 437.885)
-scale = Vector2(0.827131, 0.781586)
-
-[node name="window6" parent="window6/window6" instance=ExtResource("2_7hjn5")]
-position = Vector2(704.027, 517.13)
-scale = Vector2(1.43295, 0.847673)
-
-[node name="window7" parent="window6" instance=ExtResource("2_7hjn5")]
-position = Vector2(-2064.61, 34.3439)
-scale = Vector2(1.41314, 0.752966)
-
-[node name="window6" parent="window6/window7" instance=ExtResource("2_7hjn5")]
-position = Vector2(12.8636, 437.885)
-scale = Vector2(0.827131, 0.781586)
-
-[node name="window6" parent="window6/window7/window6" instance=ExtResource("2_7hjn5")]
-position = Vector2(-638.984, -1446.56)
-scale = Vector2(1.23006, 0.948313)
-
-[node name="window7" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window7" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(306, 431)
 scale = Vector2(0.122594, 0.195891)
 
-[node name="window8" parent="." instance=ExtResource("2_7hjn5")]
+[node name="window8" parent="Windows" instance=ExtResource("2_7hjn5")]
 position = Vector2(70.6458, 363.61)
 scale = Vector2(0.161574, 0.230733)
 
-[node name="WaterGunSystem" parent="." instance=ExtResource("3_f5bw4")]
+[node name="window9" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(738, 323)
+scale = Vector2(0.1286, 0.182061)
+
+[node name="window10" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(828.538, 417.149)
+scale = Vector2(0.184277, 0.154328)
+
+[node name="window11" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(415.001, 229)
+scale = Vector2(0.219711, 0.175394)
+
+[node name="window12" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(417.827, 305.803)
+scale = Vector2(0.18173, 0.137086)
+
+[node name="window13" parent="Windows" instance=ExtResource("2_7hjn5")]
+position = Vector2(301.705, 107.5)
+scale = Vector2(0.223538, 0.13)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 516.0
+offset_right = 182.0
+offset_bottom = 566.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_p4wl0")
