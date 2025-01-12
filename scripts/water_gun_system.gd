@@ -1,10 +1,9 @@
 extends Node2D
-
 class_name WaterGunSystem
 
-# Signals
-signal water_gun_shot_signal(droplet: Droplet)
 
+# Signals
+signal droplet_landed(droplet: Droplet)
 
 # References
 @onready var areas: Array[Node] = []
@@ -35,12 +34,12 @@ var water_tank_atlas_texture: AtlasTexture = AtlasTexture.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# setup areas array
+	# Get references
 	for child in get_node("Distances").get_children():
 		if child is DistanceArea:
 			areas.append(child)
 
-	# setup atlas
+	# Initial state
 	water_tank_atlas_texture.atlas = water_tank.texture
 	water_tank_atlas_texture.region = Rect2(
 		0,
@@ -51,11 +50,11 @@ func _ready() -> void:
 	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var direction: Vector2 = marker_front.global_position - marker_back.global_position
@@ -104,9 +103,9 @@ func _physics_process(delta: float) -> void:
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:
-		var droplet = droplet_scene.instantiate()
-		add_child(droplet)
-		free_droplets.append(droplet)
+		var new_droplet = droplet_scene.instantiate()
+		add_child(new_droplet)
+		free_droplets.append(new_droplet)
 
 	# find a free droplet
 	var droplet: Droplet = free_droplets.pop_front()
@@ -116,4 +115,4 @@ func _physics_process(delta: float) -> void:
 
 func free_droplet(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
-	water_gun_shot_signal.emit(droplet)
+	droplet_landed.emit(droplet)

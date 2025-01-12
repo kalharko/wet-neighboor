@@ -1,30 +1,28 @@
 extends Sprite2D
-
 class_name Droplet
 
+
+# References
+@onready var water_gun_system: WaterGunSystem = get_node('../../WaterGunSystem')
+@onready var droplet_area: Area2D = get_node('Area2D')
+
+# Operating variables
 var nb_step: int = 0
 var current_step: int = 0
 var curve_start: Vector2
 var curve_middle: Vector2
 var curve_end: Vector2
 
-# References
-var water_gun_system: WaterGunSystem
-var droplet_area: Area2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# References
-	water_gun_system = get_node('../../WaterGunSystem')
-	droplet_area = get_node('Area2D')
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	pass
+
+
+func _physics_process(_delta: float) -> void:
 	if current_step >= nb_step:
 		return
 
@@ -45,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	self.position = new_pos
 
 	# set rotation to normal to bezier curve
-	var normal: Vector2 = _normal_to_quadratic_bezier(
+	var normal: Vector2 = _quadratic_bezier_normal(
 		self.curve_start,
 		self.curve_middle,
 		self.curve_end,
@@ -53,10 +51,11 @@ func _physics_process(delta: float) -> void:
 	)
 	self.rotation = normal.angle() + PI
 
-func set_course(start: Vector2, middle: Vector2, end: Vector2, nb_step: int) -> void:
+
+func set_course(start: Vector2, middle: Vector2, end: Vector2, new_nb_step: int) -> void:
 	self.visible = true
 	self.position = start
-	self.nb_step = nb_step
+	self.nb_step = new_nb_step
 	self.current_step = 0
 
 	self.curve_start = start
@@ -71,5 +70,6 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	var r = q0.lerp(q1, t)
 	return r
 
-func _normal_to_quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
+
+func _quadratic_bezier_normal(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	return p0 * (2 * t - 2) + (2 * p2 - 4 * p1) * t + 2 * p1
