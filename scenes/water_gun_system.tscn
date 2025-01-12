@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/water_gun_system.gd" id="1_6rpt1"]
 [ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="3_isbhm"]
 [ext_resource type="Texture2D" uid="uid://b4pleianjepfj" path="res://assets/water_tank_0.png" id="4_5bt8g"]
-[ext_resource type="Script" path="res://scenes/distance_area.gd" id="5_juy7s"]
+[ext_resource type="Script" path="res://scripts/distance_area.gd" id="4_ougtf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxbwa"]
 radius = 7.69
@@ -11,7 +11,8 @@ radius = 7.69
 [node name="WaterGunSystem" type="Node2D"]
 scale = Vector2(1, 0.991654)
 script = ExtResource("1_6rpt1")
-precision = 20.0
+tank_size = 1000
+watergun_rotation_speed = 0.9
 
 [node name="MouseArea" type="Area2D" parent="."]
 monitoring = false
@@ -42,40 +43,38 @@ texture = ExtResource("4_5bt8g")
 
 [node name="Area2" type="Area2D" parent="Distances"]
 monitorable = false
-script = ExtResource("5_juy7s")
-distance = 0.196
+script = ExtResource("4_ougtf")
+additional_height = 5.025
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Distances/Area2"]
 polygon = PackedVector2Array(0, 414.459, 210, 404.375, 212, 484.04, 344, 454.796, 364, 462.863, 364, 300.508, 334, 284.373, 332, 235.969, 367, 76.6396, 451, 1.00842, 549, 1.00842, 547, 346.895, 547, 455.804, 689, 476.981, 698, 162.355, 745, 161.347, 744, 31.2609, 779, 14.1178, 782, -1.00842, 898, 1.00842, 897, 156.305, 898, 602.025, 0, 605.05)
 
 [node name="Area3" type="Area2D" parent="Distances"]
 monitorable = false
-script = ExtResource("5_juy7s")
-distance = 0.524
+script = ExtResource("4_ougtf")
+additional_height = 15.48
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Distances/Area3"]
 polygon = PackedVector2Array(254, -4.03367, 204, 29.2441, 209, 276.306, 333, 285.382, 328, 226.894, 364, 73.6144, 450, -1.00842)
 
 [node name="Area4" type="Area2D" parent="Distances"]
 monitorable = false
-script = ExtResource("5_juy7s")
-distance = 0.449
+script = ExtResource("4_ougtf")
+additional_height = 9.1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Distances/Area4"]
 polygon = PackedVector2Array(208, 275.298, 334, 284.373, 363, 299.5, 363, 460.846, 346, 452.779, 211, 485.048)
 
 [node name="Area5" type="Area2D" parent="Distances"]
 monitorable = false
-script = ExtResource("5_juy7s")
-distance = 0.628
+script = ExtResource("4_ougtf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Distances/Area5"]
 polygon = PackedVector2Array(248, 0, 203, 28.2357, 210, 402.358, 1, 415.467, 0, -2.01683)
 
 [node name="Area6" type="Area2D" parent="Distances"]
 monitorable = false
-script = ExtResource("5_juy7s")
-distance = 0.393
+script = ExtResource("4_ougtf")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Distances/Area6"]
 polygon = PackedVector2Array(547, 454.796, 551, 0, 780, 1.00842, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
