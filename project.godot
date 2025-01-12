@@ -15,12 +15,20 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+DebugDraw2D="*res://addons/debugdraw2d/DebugDraw2D.gd"
+
 [display]
 
 window/size/viewport_width=900
 window/size/viewport_height=600
 window/size/initial_position_type=2
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/debugdraw2d/plugin.cfg")
 
 [input]
 
