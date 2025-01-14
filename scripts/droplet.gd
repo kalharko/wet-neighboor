@@ -1,30 +1,32 @@
 extends Sprite2D
-
 class_name Droplet
 
+
+# References
+@onready var water_gun_system: WaterGunSystem = get_node('../../WaterGunSystem')
+@onready var droplet_area: Area2D = get_node('Area2D')
+
+# Game design parameters
+@export var travel_time: float = 1
+@export var bezier_length_computation_precision: float = 0.01
+
+# Operating variables
 var nb_step: int = 0
 var current_step: int = 0
 var curve_start: Vector2
 var curve_middle: Vector2
 var curve_end: Vector2
 
-# References
-var water_gun_system: WaterGunSystem
-var droplet_area: Area2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# References
-	water_gun_system = get_node('../../WaterGunSystem')
-	droplet_area = get_node('Area2D')
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	pass
 
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
+	pass
+
+
+func _physics_process(_delta: float) -> void:
 	if current_step >= nb_step:
 		return
 
@@ -45,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	self.position = new_pos
 
 	# set rotation to normal to bezier curve
-	var normal: Vector2 = _normal_to_quadratic_bezier(
+	var normal: Vector2 = _quadratic_bezier_normal(
 		self.curve_start,
 		self.curve_middle,
 		self.curve_end,
@@ -53,15 +55,16 @@ func _physics_process(delta: float) -> void:
 	)
 	self.rotation = normal.angle() + PI
 
-func set_course(start: Vector2, middle: Vector2, end: Vector2, nb_step: int) -> void:
-	self.visible = true
-	self.position = start
-	self.nb_step = nb_step
-	self.current_step = 0
 
-	self.curve_start = start
-	self.curve_middle = middle
-	self.curve_end = end
+func set_course(start: Vector2, middle: Vector2, end: Vector2) -> void:
+	visible = true
+	position = start
+	current_step = 0
+	nb_step = int(self._quadratic_bezier_length(start, middle, end) * travel_time)
+
+	curve_start = start
+	curve_middle = middle
+	curve_end = end
 	
 
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
@@ -71,5 +74,20 @@ func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	var r = q0.lerp(q1, t)
 	return r
 
-func _normal_to_quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
+
+func _quadratic_bezier_normal(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
 	return p0 * (2 * t - 2) + (2 * p2 - 4 * p1) * t + 2 * p1
+
+
+func _quadratic_bezier_length(p0: Vector2, p1: Vector2, p2: Vector2):
+	var precision: float = bezier_length_computation_precision
+	var length: float = 0
+	var current_point: Vector2
+	var previous_point: Vector2 = _quadratic_bezier(p0, p1, p2, 0)
+	var step: float = precision
+	while step <= 1:
+		current_point = _quadratic_bezier(p0, p1, p2, step)
+		length += previous_point.distance_to(current_point)
+		previous_point = current_point
+		step += precision
+	return length

@@ -1,10 +1,9 @@
 extends Node2D
-
 class_name WaterGunSystem
 
-# Signals
-signal water_gun_shot_signal(droplet: Droplet)
 
+# Signals
+signal droplet_landed(droplet: Droplet)
 
 # References
 @onready var areas: Array[Node] = []
@@ -12,6 +11,7 @@ signal water_gun_shot_signal(droplet: Droplet)
 @onready var marker_front: Marker2D = get_node("WaterGun/MarkerFront")
 @onready var marker_back: Marker2D = get_node("WaterGun/MarkerBack")
 @onready var water_tank = get_node("WaterGun/WaterTank")
+@onready var water_gun = get_node("WaterGun")
 
 # Game design parameters
 @export_group("Water Tank")
@@ -19,7 +19,8 @@ signal water_gun_shot_signal(droplet: Droplet)
 @export var shot_cost: int = 1
 
 @export_group("Water Stream")
-@export var precision: float = 1
+@export var watergun_rotation_speed: float = 1
+@export var water_stream_speed: float = 1
 var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
 @export_group("Water Tank Atlas")
@@ -35,12 +36,12 @@ var water_tank_atlas_texture: AtlasTexture = AtlasTexture.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# setup areas array
+	# Get references
 	for child in get_node("Distances").get_children():
 		if child is DistanceArea:
 			areas.append(child)
 
-	# setup atlas
+	# Initial state
 	water_tank_atlas_texture.atlas = water_tank.texture
 	water_tank_atlas_texture.region = Rect2(
 		0,
@@ -51,38 +52,66 @@ func _ready() -> void:
 	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
 func _physics_process(delta: float) -> void:
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
-	var direction: Vector2 = marker_front.global_position - marker_back.global_position
+	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
 	var mouse_direction: Vector2 = mouse_position - marker_back.global_position
-
-	# get angle between gun direction and mouse direction
-	var angle: float = direction.angle_to(mouse_direction)
 
 	# identify if the mouse is in a DistanceArea
 	mouse_area.position = mouse_position
+	var containing_area: DistanceArea = null
 	for area in areas:
 		if area.overlaps_area(mouse_area):
-			# if so add the DistanceArea's value to angle
-			angle += area.distance
+			containing_area = area
 			break
+
+	# update gun target depending on the containing area
+	var target: Vector2 = marker_back.global_position + mouse_direction / 2
+	var gun_target_angle: float = gun_direction.angle_to(mouse_direction)
+	if containing_area != null:
+		target = marker_back.global_position
+		target += mouse_direction.normalized() * gun_direction.length()
+		target += (mouse_position - target) * containing_area.water_stream_high_point_ratio
+		target += mouse_direction.rotated(PI / 2).normalized() * containing_area.additional_height * 10
+		var target_direction: Vector2 = target - marker_back.global_position
+		gun_target_angle = gun_direction.angle_to(target_direction)
 	
-	# rotate gun
-	var water_gun = get_node("WaterGun")
-	water_gun.rotation += angle
+	# update gun rotation
+	gun_target_angle = clampf(
+		gun_target_angle,
+		-watergun_rotation_speed * delta * watergun_rotation_speed,
+		watergun_rotation_speed * delta * watergun_rotation_speed)
+	water_gun.rotation += gun_target_angle
+
+	DebugDraw2D.line(
+		marker_back.global_position,
+		marker_front.global_position,)
+	DebugDraw2D.line(
+		marker_back.global_position,
+		mouse_position,)
+	DebugDraw2D.line(
+		marker_front.global_position,
+		target)
+	DebugDraw2D.circle(
+		target,
+		10)
+	if containing_area != null:
+		DebugDraw2D.line(
+			target,
+			target - mouse_direction.rotated(- PI / 2).normalized() * containing_area.additional_height * 10)
+	
 
 	# quit if mouse is not down
 	if not Input.is_action_pressed("fire"):
 		return
 	
-	# update MarkerFront and MarkerBack
-	direction = marker_front.global_position - marker_back.global_position
-	# get mouse direction
+	# update directions
+	gun_direction = marker_front.global_position - marker_back.global_position
 	mouse_direction = mouse_position - marker_back.global_position
 
 	# update water tank
@@ -104,16 +133,19 @@ func _physics_process(delta: float) -> void:
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:
-		var droplet = droplet_scene.instantiate()
-		add_child(droplet)
-		free_droplets.append(droplet)
+		var new_droplet = droplet_scene.instantiate()
+		add_child(new_droplet)
+		free_droplets.append(new_droplet)
 
 	# find a free droplet
 	var droplet: Droplet = free_droplets.pop_front()
-	var bezier_middle_point = marker_front.global_position + direction.normalized() * mouse_direction.length() * 0.75
-	droplet.set_course(marker_front.global_position, bezier_middle_point, mouse_position, int(mouse_direction.length() / precision))
+	droplet.set_course(
+		marker_front.global_position,
+		target,
+		mouse_position
+	)
 
 
 func free_droplet(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
-	water_gun_shot_signal.emit(droplet)
+	droplet_landed.emit(droplet)
