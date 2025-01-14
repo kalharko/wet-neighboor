@@ -14,37 +14,18 @@ class_name X
 
 
 func _ready() -> void:
-	# Get references that could not be loaded before
+    # Get references that could not be loaded before
 
     # Subscribe to signals
 
     # Setup
 
-	# Initial state
+    # Initial state
     pass
 
 func _process(_delta: float) -> void:
-	pass
+    pass
 ```
-
-
-# aa
-- Extend
-- Class name
-- Signals
-- References
-- Game design parameters
-- Operating variables
-- `_ready()`
-    - References
-    - Subscribe to signals
-    - Setup operating variables
-    - Set initial state
-- Process functions (`_process` and/or `_physics_process`)
-- Public functions called by other objects
-- Private functions used by the object (name preceded by `_`)
-- Private functions attached to signals or events (name preceded by `_on_`)
-
 
 ## Class definition
 ### Extend
@@ -112,9 +93,21 @@ func _ready() -> void:
 
 ### Setup operating variables
 Setup operating variables.
+```py
+func _ready() -> void:
+    # Setup
+    timer.one_shot = true
+    timer.connect("timeout",Callable(self, "_on_timer_timeout"))
+    add_child(timer)
+```
 
 ### Set initial state
 Set the initial satete of the class.
+```py
+func _ready() -> void:
+    # Initial state
+    texture = window_closed  #au départ, toutes les fenêtres sont fermées
+```
 
 ## Class functions definitions
 ### Process functions (`_process` and/or `_physics_process`)
