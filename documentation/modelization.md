@@ -4,11 +4,11 @@
 ## Node hierarchy
 _emoji_ 📰 _denotes a node that needs a custom class_
 
-- Main 📰
+- Main <- Node 📰
     - Camera2D
     - TextureRect
 
-    - WaterGun: Node2D 📰
+    - WaterGun <- Node2D 📰
         - AnimatedSprite2D
         - MouseArea: Area2D
             - CollisionShape2D
@@ -18,11 +18,11 @@ _emoji_ 📰 _denotes a node that needs a custom class_
             - CollisionPolygon2D
         - ...
 
-    - DropletContainer <- Node
+    - DropletContainer: Node
         - Droplet <- Sprite2D 📰
         - ...
 
-    - WindowContainer <- Node2D
+    - WindowContainer: Node2D
         - Window <- SpriteAnimation2D 📰
             - AnimatedSprite2D
 
