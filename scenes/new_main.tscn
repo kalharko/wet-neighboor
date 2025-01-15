@@ -30,45 +30,53 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+water_stream_height_at_apex = 3.0
+water_stream_apex_pos_ratio = 0.9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea"]
-polygon = PackedVector2Array(0, 414.459, 210, 404.375, 212, 484.04, 344, 454.796, 364, 462.863, 364, 300.508, 334, 284.373, 332, 235.969, 365.5, 132, 367, 76.6396, 451, 1.00842, 549, 1.00842, 547, 346.895, 547, 455.804, 689, 476.981, 695.5, 158, 745, 161.347, 744, 31.2609, 779, 14.1178, 782, -1.00842, 898, 1.00842, 897, 156.305, 898, 602.025, 0, 605.05)
+polygon = PackedVector2Array(-4.49941, 414, 210, 404.375, 212, 484.04, 346.5, 452, 364, 462.863, 364, 300.508, 334, 284.373, 332, 235.969, 364.5, 131, 362.5, 72, 450.5, -2, 550.5, -4, 547, 346.895, 548.5, 454, 687.499, 476, 695.5, 158, 743.499, 157, 744, 31.2609, 777.499, 12, 778.499, -2, 903.499, -5, 904.499, 157, 903.499, 605, -3.49941, 605)
 
 [node name="DepthArea2" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+water_stream_height_at_apex = 5.0
+water_stream_apex_pos_ratio = 0.7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
-polygon = PackedVector2Array(254, -4.03367, 204, 29.2441, 209, 276.306, 333, 285.382, 331.5, 227, 364.5, 132, 364, 73.6144, 450, -1.00842)
+polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 333, 285.382, 331.5, 227, 364.5, 132, 364, 73.6144, 452.5, -2)
 
 [node name="DepthArea3" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+water_stream_height_at_apex = 7.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
-polygon = PackedVector2Array(208, 275.298, 334, 284.373, 363, 299.5, 363, 460.846, 346, 452.779, 211, 485.048)
+polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 364.5, 464, 346, 452.779, 211, 485.048)
 
 [node name="DepthArea4" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+water_stream_height_at_apex = 9.0
+water_stream_apex_pos_ratio = 0.8
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea4"]
-polygon = PackedVector2Array(248, 0, 203, 28.2357, 210, 402.358, 1, 415.467, 0, -2.01683)
+polygon = PackedVector2Array(254.5, -3, 205.5, 28, 211.5, 405, -4.49941, 416, -4.49941, -3)
 
 [node name="DepthArea5" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+water_stream_height_at_apex = 5.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea5"]
-polygon = PackedVector2Array(547, 454.796, 551, 0, 780, 1.00842, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
+polygon = PackedVector2Array(547, 454.796, 550.5, -4, 782.499, -2, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
 
 [node name="WindowContainer" type="Node2D" parent="Background"]
 position = Vector2(-1806.02, -1200)

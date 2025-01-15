@@ -80,7 +80,10 @@ func _physics_process(delta: float) -> void:
 		target = marker_back.global_position
 		target += mouse_direction.normalized() * gun_direction.length()
 		target += (mouse_position - target) * containing_area.water_stream_apex_pos_ratio
-		target += mouse_direction.rotated(PI / 2).normalized() * containing_area.water_stream_height_at_apex * 10
+		if angle > 0:
+			target += mouse_direction.rotated(PI / 2).normalized() * containing_area.water_stream_height_at_apex * -5
+		else:
+			target += mouse_direction.rotated(PI / 2).normalized() * containing_area.water_stream_height_at_apex * 5
 		var target_direction: Vector2 = target - marker_back.global_position
 		gun_target_angle = gun_direction.angle_to(target_direction)
 	
