@@ -24,11 +24,13 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 @export_group("Water Stream")
 @export var watergun_rotation_speed: float = 1
 @export var water_stream_speed: float = 1
-var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
 @export_group("Water Tank Atlas")
 @export var atlas_top_y: int = 90
 @export var atlas_bottom_y: int = 480
+
+@export var neighbour_droplet_chance: float = 0.3
+@export var droplet_fill_tank = 1
 
 # Operating variables
 var free_droplets: Array[Droplet] = []
@@ -44,6 +46,8 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_collect_mode:
+		return 
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
@@ -135,7 +139,7 @@ func _physics_process(delta: float) -> void:
 		target,
 		mouse_position
 	)
-
+	
 
 func _on_droplet_landed(droplet: Droplet) -> void:
 	free_droplets.append(droplet)

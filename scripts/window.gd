@@ -10,6 +10,8 @@ signal window_hit_signal
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var window_area: Area2D = get_node("Area2D")
 
+var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_droplet.tscn")
+
 # Game design parameters
 @export var open_time: float = rng.randf_range(3.0, 10.0)
 @export var close_time: float = rng.randf_range(1.0, 10.0)
@@ -50,11 +52,18 @@ func open_window() -> void:
 
 func close_window() -> void:
 	is_window_open = false
+	
+	#test aléatoire
+	#si on lance - anim 
+	#asynchrone - a la fin appelle la fonction spawn goutte en haut
 	texture = window_closed
 
 	current_open_time = max(1, current_open_time * 0.9)  
 	timer.wait_time = current_open_time
 	timer.start()
+	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
+	new_droplet.set_course(position)
+	add_child(new_droplet) #goutte dans la hierarchy enfant de fenetre
 
 
 func _on_timer_timeout() -> void:

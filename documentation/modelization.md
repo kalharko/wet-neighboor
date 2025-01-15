@@ -4,7 +4,7 @@
 ## Node hierarchy
 _emoji_ 📰 _denotes a node that needs a custom class_
 
-- Main 📰
+- Main <- Node 📰
     - Camera2D
 
     - Background: Sprite2D 📰
