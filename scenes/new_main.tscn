@@ -132,7 +132,14 @@ scale = Vector2(0.223538, 0.13)
 
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("5_kmkv8")
+tank_size = null
+shot_cost = null
 watergun_rotation_speed = 34.365
+water_stream_speed = null
+atlas_top_y = null
+atlas_bottom_y = null
+neighbour_droplet_chance = null
+droplet_fill_tank = null
 
 [node name="Animation" type="AnimatedSprite2D" parent="WaterGun"]
 position = Vector2(779, 589)
@@ -154,8 +161,7 @@ curve = SubResource("Curve2D_sa7ub")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="WaterGun/Path2D"]
 position = Vector2(580.931, 364.218)
-rotation = -0.032399
-scale = Vector2(1, 1)
+rotation = -0.0323989
 progress = 663.631
 
 [node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]

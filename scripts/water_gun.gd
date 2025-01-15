@@ -15,6 +15,7 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 @onready var path_center: Vector2 = get_node("Path2D/PathCenter").global_position
 @onready var animation: AnimatedSprite2D = get_node("Animation")
 @onready var droplet_container: Node = get_node("../DropletContainer")
+@onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 
 # Game design parameters
 @export_group("Water Tank")
@@ -46,8 +47,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if is_collect_mode:
-		return 
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
@@ -108,7 +107,6 @@ func _physics_process(delta: float) -> void:
 		DebugDraw2D.line(
 			target,
 			target - mouse_direction.rotated(- PI / 2).normalized() * containing_area.water_stream_height_at_apex * 10)
-	
 
 	# quit if mouse is not down
 	if not Input.is_action_pressed("fire"):
@@ -139,7 +137,7 @@ func _physics_process(delta: float) -> void:
 		target,
 		mouse_position
 	)
-	
+
 
 func _on_droplet_landed(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
