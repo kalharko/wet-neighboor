@@ -2,7 +2,7 @@ extends Sprite2D
 
 
 # Signals
-signal window_closed_signal
+signal window_hit_signal
 
 # References
 @export var window_open: Texture2D
@@ -24,7 +24,7 @@ var current_close_time: float = close_time
 
 func _ready() -> void:
 	# Subscribes to signals
-	get_node('../../WaterGunSystem').droplet_landed.connect(_on_water_gun_shot)
+	get_node('/root/NewMain/WaterGun').new_droplet_spawned_signal.connect(_on_new_droplet_spawned)
 
 	# Setup
 	timer.one_shot = true
@@ -57,14 +57,17 @@ func close_window() -> void:
 	timer.start()
 
 
-func _on_timer_timeout():
+func _on_timer_timeout() -> void:
 	if is_window_open:
 		close_window()
 	else:
 		open_window()
 
 
-func _on_water_gun_shot(droplet: Droplet) -> void:
+func _on_new_droplet_spawned(droplet: Droplet) -> void:
+	droplet.droplet_landed_signal.connect(_on_droplet_landed)
+
+func _on_droplet_landed(droplet: Droplet) -> void:
 	if not is_window_open:
 		return
 	
@@ -72,4 +75,4 @@ func _on_water_gun_shot(droplet: Droplet) -> void:
 		return
 
 	close_window()
-	window_closed_signal.emit()
+	window_hit_signal.emit()

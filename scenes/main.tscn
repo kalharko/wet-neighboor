@@ -3,14 +3,13 @@
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_pe718"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="2_7hjn5"]
 [ext_resource type="Texture2D" uid="uid://cujdrdymjsy6f" path="res://assets/2Dbackground.png" id="2_cnhra"]
-[ext_resource type="PackedScene" uid="uid://devtw752veicu" path="res://scenes/water_gun_system.tscn" id="3_f5bw4"]
+[ext_resource type="PackedScene" uid="uid://devtw752veicu" path="res://scenes/water_gun.tscn" id="3_f5bw4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p4wl0"]
 font_size = 36
 
-[node name="Main" type="Node" node_paths=PackedStringArray("score_label")]
+[node name="Main" type="Node"]
 script = ExtResource("1_pe718")
-score_label = NodePath("UI/Label")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 texture_filter = 1

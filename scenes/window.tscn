@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ptnnbqy8dvf6"]
 
 [ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_bgtqf"]
-[ext_resource type="Script" path="res://scripts/windowDisappear.gd" id="2_btsdg"]
+[ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
 [ext_resource type="Texture2D" uid="uid://cdvelerm0omxj" path="res://assets/window_close.png" id="3_mm60l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjwbk"]

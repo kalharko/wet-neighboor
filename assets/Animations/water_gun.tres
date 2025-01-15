@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bd0hy1l5j3760"]
+
+[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_34r7w"]
+[ext_resource type="Texture2D" uid="uid://cdvelerm0omxj" path="res://assets/window_close.png" id="2_epaj0"]
+[ext_resource type="Texture2D" uid="uid://b4pleianjepfj" path="res://assets/water_tank_0.png" id="3_2vkgp"]
+[ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="4_7bdv3"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_34r7w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_epaj0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2vkgp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7bdv3")
+}],
+"loop": false,
+"name": &"gun_movement_animation",
+"speed": 1.0
+}]

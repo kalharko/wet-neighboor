@@ -1,0 +1,172 @@
+[gd_scene load_steps=9 format=3 uid="uid://dr54xyscfrfet"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_7b57j"]
+[ext_resource type="Texture2D" uid="uid://cujdrdymjsy6f" path="res://assets/2Dbackground.png" id="2_fpevb"]
+[ext_resource type="Script" path="res://scripts/background.gd" id="3_4ofcy"]
+[ext_resource type="Script" path="res://scripts/depth_area.gd" id="3_i3iy3"]
+[ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="4_r13ih"]
+[ext_resource type="Script" path="res://scripts/water_gun.gd" id="5_kmkv8"]
+[ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="6_mnvw1"]
+
+[sub_resource type="Curve2D" id="Curve2D_sa7ub"]
+_data = {
+"points": PackedVector2Array(-4.95679, -73.3526, 4.95679, 73.3526, -13.5312, 206.549, -453.594, -0.272045, 453.594, 0.272045, 475.673, 365.776, 1.83792, 86.2901, -1.83792, -86.2901, 964.877, 200.425)
+}
+point_count = 3
+
+[node name="NewMain" type="Node2D"]
+script = ExtResource("1_7b57j")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(450, 300)
+scale = Vector2(0.249167, 0.25)
+texture = ExtResource("2_fpevb")
+script = ExtResource("3_4ofcy")
+
+[node name="DepthAreaContainer" type="Node2D" parent="Background"]
+
+[node name="DepthArea" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("3_i3iy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea"]
+polygon = PackedVector2Array(0, 414.459, 210, 404.375, 212, 484.04, 344, 454.796, 364, 462.863, 364, 300.508, 334, 284.373, 332, 235.969, 365.5, 132, 367, 76.6396, 451, 1.00842, 549, 1.00842, 547, 346.895, 547, 455.804, 689, 476.981, 695.5, 158, 745, 161.347, 744, 31.2609, 779, 14.1178, 782, -1.00842, 898, 1.00842, 897, 156.305, 898, 602.025, 0, 605.05)
+
+[node name="DepthArea2" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("3_i3iy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
+polygon = PackedVector2Array(254, -4.03367, 204, 29.2441, 209, 276.306, 333, 285.382, 331.5, 227, 364.5, 132, 364, 73.6144, 450, -1.00842)
+
+[node name="DepthArea3" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("3_i3iy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
+polygon = PackedVector2Array(208, 275.298, 334, 284.373, 363, 299.5, 363, 460.846, 346, 452.779, 211, 485.048)
+
+[node name="DepthArea4" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("3_i3iy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea4"]
+polygon = PackedVector2Array(248, 0, 203, 28.2357, 210, 402.358, 1, 415.467, 0, -2.01683)
+
+[node name="DepthArea5" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("3_i3iy3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea5"]
+polygon = PackedVector2Array(547, 454.796, 551, 0, 780, 1.00842, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
+
+[node name="WindowContainer" type="Node2D" parent="Background"]
+position = Vector2(-1806.02, -1200)
+scale = Vector2(4.01337, 4)
+
+[node name="window" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(445, 127)
+scale = Vector2(0.184846, 0.237068)
+
+[node name="window 2" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(591, 69)
+scale = Vector2(0.169508, 0.277349)
+
+[node name="window2" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(578, 201)
+scale = Vector2(0.198952, 0.248675)
+
+[node name="window3" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(586.06, 334.06)
+scale = Vector2(0.155291, 0.267068)
+
+[node name="window4" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(98.9999, 91)
+scale = Vector2(0.418835, 0.397822)
+
+[node name="window5" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(305, 353)
+scale = Vector2(0.161331, 0.190869)
+
+[node name="window6" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(736, 221)
+scale = Vector2(0.155477, 0.232938)
+
+[node name="window7" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(306, 431)
+scale = Vector2(0.122594, 0.195891)
+
+[node name="window8" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(70.6458, 363.61)
+scale = Vector2(0.161574, 0.230733)
+
+[node name="window9" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(738, 323)
+scale = Vector2(0.1286, 0.182061)
+
+[node name="window10" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(828.538, 417.149)
+scale = Vector2(0.184277, 0.154328)
+
+[node name="window11" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(415.001, 229)
+scale = Vector2(0.219711, 0.175394)
+
+[node name="window12" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(417.827, 305.803)
+scale = Vector2(0.18173, 0.137086)
+
+[node name="window13" parent="Background/WindowContainer" instance=ExtResource("4_r13ih")]
+position = Vector2(301.705, 107.5)
+scale = Vector2(0.223538, 0.13)
+
+[node name="WaterGun" type="Node2D" parent="."]
+script = ExtResource("5_kmkv8")
+watergun_rotation_speed = 34.365
+
+[node name="Animation" type="AnimatedSprite2D" parent="WaterGun"]
+position = Vector2(779, 589)
+scale = Vector2(0.313321, 0.313321)
+sprite_frames = ExtResource("6_mnvw1")
+animation = &"gun_movement_animation"
+frame = 3
+frame_progress = 0.3315
+
+[node name="MarkerFront" type="Marker2D" parent="WaterGun/Animation"]
+position = Vector2(-450.018, -188.306)
+
+[node name="MarkerBack" type="Marker2D" parent="WaterGun/Animation"]
+position = Vector2(-98.9401, -207.455)
+
+[node name="Path2D" type="Path2D" parent="WaterGun"]
+scale = Vector2(0.960744, 1.79618)
+curve = SubResource("Curve2D_sa7ub")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="WaterGun/Path2D"]
+position = Vector2(580.931, 364.218)
+rotation = -0.032399
+scale = Vector2(1, 1)
+progress = 663.631
+
+[node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]
+position = Vector2(449.652, 282.822)
+
+[node name="DropletContainer" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 13.0
+offset_top = 547.0
+offset_right = 74.0
+offset_bottom = 570.0
+scale = Vector2(2.12, 2.12)
+text = "Score: 0"

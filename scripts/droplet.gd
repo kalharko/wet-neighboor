@@ -2,8 +2,10 @@ extends Sprite2D
 class_name Droplet
 
 
+# Signals
+signal droplet_landed_signal(droplet: Droplet)
+
 # References
-@onready var water_gun_system: WaterGunSystem = get_node('../../WaterGunSystem')
 @onready var droplet_area: Area2D = get_node('Area2D')
 
 # Game design parameters
@@ -19,11 +21,7 @@ var curve_end: Vector2
 
 
 func _ready() -> void:
-	pass
-
-
-func _process(_delta: float) -> void:
-	pass
+	visible = false
 
 
 func _physics_process(_delta: float) -> void:
@@ -33,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	current_step += 1
 	if current_step >= nb_step:
 		self.visible = false
-		water_gun_system.free_droplet(self)
+		droplet_landed_signal.emit(self)
 		return
 	
 	# set position along bezier curve

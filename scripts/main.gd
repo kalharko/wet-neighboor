@@ -1,8 +1,16 @@
 extends Node
+class_name Main
 
+
+# Signals
+signal game_speed_up_signal()
 
 # References
-@export var score_label: Label
+@onready var debug_score_label: Label = get_node('Label')
+
+# Game design parameters
+@export var initial_game_speed: float = 1
+@export var game_speed_up_intervals: float = 5
 
 # Operating variables
 var score: int = 0
@@ -10,14 +18,16 @@ var score: int = 0
 
 func _ready() -> void:
 	# Subscribes to signals
-	for window in get_node('Windows').get_children():
-		window.window_closed_signal.connect(_on_window_closed_signal)
+	for window in get_node('Background/WindowContainer').get_children():
+		window.window_hit_signal.connect(_on_window_hit)
+
+	get_node('WaterGun').water_tank_empty_signal.connect(_on_water_tank_empty)
 
 
-func _process(_delta: float) -> void:
-	pass
-
-
-func _on_window_closed_signal() -> void:
+func _on_window_hit() -> void:
 	score += 1
-	score_label.text = 'Score: ' + str(score)
+	debug_score_label.text = 'Score: ' + str(score)
+	
+
+func _on_water_tank_empty() -> void:
+	pass
