@@ -12,6 +12,8 @@ signal droplet_landed(droplet: Droplet)
 @onready var marker_back: Marker2D = get_node("WaterGun/MarkerBack")
 @onready var water_tank = get_node("WaterGun/WaterTank")
 @onready var water_gun = get_node("WaterGun")
+@onready var water_gun_opened = get_node("WaterGun/WaterGunOpened")
+@onready var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
 # Game design parameters
 @export_group("Water Tank")
@@ -21,15 +23,21 @@ signal droplet_landed(droplet: Droplet)
 @export_group("Water Stream")
 @export var watergun_rotation_speed: float = 1
 @export var water_stream_speed: float = 1
-var droplet_scene: PackedScene = preload("res://scenes/droplet.tscn")
 
 @export_group("Water Tank Atlas")
 @export var atlas_top_y: int = 90
 @export var atlas_bottom_y: int = 480
 
+@export var neighbour_droplet_chance: float = 0.3
+@export var droplet_fill_tank = 1
+
 # Operating variables
 var free_droplets: Array[Droplet] = []
+var neighbour_droplets: Array[NeighbourDroplet] = []
 var water_tank_atlas_texture: AtlasTexture = AtlasTexture.new()
+
+var is_collect_mode: bool = false
+
 @onready var texture_size: Vector2 = water_tank.texture.get_size()
 @onready var tank_value: int = tank_size
 
@@ -41,6 +49,9 @@ func _ready() -> void:
 		if child is DistanceArea:
 			areas.append(child)
 
+	get_node('WaterGun/WaterGunOpened/Area2D').area_entered.connect(_on_water_tank_collision)
+	water_gun_opened.visible = false
+	
 	# Initial state
 	water_tank_atlas_texture.atlas = water_tank.texture
 	water_tank_atlas_texture.region = Rect2(
@@ -57,6 +68,8 @@ func _process(_delta: float) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if is_collect_mode:
+		return 
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
@@ -119,17 +132,8 @@ func _physics_process(delta: float) -> void:
 	# check if tank is empty
 	if self.tank_value <= 0:
 		get_tree().quit()
-
-	# update water tank visual
-	var region = Rect2(
-		0,
-		atlas_top_y + (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size)),
-		texture_size.x,
-		texture_size.y - atlas_top_y - (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size))
-	)
-	water_tank_atlas_texture.region = Rect2(region)
-	water_tank.texture = water_tank_atlas_texture
-	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
+	
+	_update_water_tank_visual()
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:
@@ -144,8 +148,52 @@ func _physics_process(delta: float) -> void:
 		target,
 		mouse_position
 	)
-
+	
 
 func free_droplet(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
 	droplet_landed.emit(droplet)
+
+#toggling water gun mode
+func _input(event: InputEvent)->void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
+		toggle_mode()
+
+func toggle_mode() -> void:
+	is_collect_mode = !is_collect_mode
+	if is_collect_mode:
+		print("collect mode")
+		water_gun.self_modulate = Color(1, 1, 1, 0) # Zero opacity
+		water_gun_opened.visible = true
+	else:
+		print("shoot mode")
+		water_gun.self_modulate = Color(1, 1, 1, 0) # Zero opacity
+		water_gun_opened.visible = false
+
+func _on_water_tank_collision(area: Area2D)->void: 
+	if is_collect_mode == false: 
+		return
+	if area.get_parent().name == "Droplet":
+		print(area.get_parent().name)
+		tank_value += droplet_fill_tank
+		print(tank_value)
+		if tank_value> tank_size:
+			tank_value = tank_size
+	_update_water_tank_visual()
+
+func _update_water_tank_visual()->void: 
+	
+	#fill the tank
+	var region = Rect2(
+		0,
+		atlas_top_y + (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size)),
+		texture_size.x,
+		texture_size.y - atlas_top_y - (atlas_bottom_y - atlas_top_y) * (1 - float(tank_value) / float(tank_size))
+	)
+	water_tank_atlas_texture.region = Rect2(region)
+	water_tank.texture = water_tank_atlas_texture
+	water_tank.position.y = water_tank_atlas_texture.region.position.y / 2
+	
+
+
+	

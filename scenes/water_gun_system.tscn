@@ -13,6 +13,7 @@ scale = Vector2(1, 0.991654)
 script = ExtResource("1_6rpt1")
 tank_size = 1000
 watergun_rotation_speed = 0.9
+droplet_fill_tank = 200
 
 [node name="MouseArea" type="Area2D" parent="."]
 monitoring = false
@@ -36,6 +37,20 @@ scale = Vector2(2.27292, 2.27292)
 
 [node name="WaterTank" type="Sprite2D" parent="WaterGun"]
 texture = ExtResource("4_5bt8g")
+
+[node name="WaterGunOpened" type="Sprite2D" parent="WaterGun"]
+z_index = 2
+position = Vector2(-152.286, -15.7434)
+scale = Vector2(-1.36231, 1.01476)
+texture = ExtResource("3_isbhm")
+
+[node name="Area2D" type="Area2D" parent="WaterGun/WaterGunOpened"]
+position = Vector2(145.153, -4.76837e-06)
+rotation = 3.14159
+scale = Vector2(0.734046, -0.985455)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterGun/WaterGunOpened/Area2D"]
+polygon = PackedVector2Array(65.9148, -329.755, -309.118, -307.135, -270.478, -428.614, 363.668, -467.579, 472.768, -366.729)
 
 [node name="Water" type="Node" parent="."]
 
