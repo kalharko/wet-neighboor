@@ -130,16 +130,14 @@ scale = Vector2(0.18173, 0.137086)
 position = Vector2(301.705, 107.5)
 scale = Vector2(0.223538, 0.13)
 
+[node name="NeighboorDropletContainer" type="Node" parent="Background"]
+
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("5_kmkv8")
-tank_size = null
-shot_cost = null
+tank_size = 100000
 watergun_rotation_speed = 34.365
-water_stream_speed = null
-atlas_top_y = null
-atlas_bottom_y = null
-neighbour_droplet_chance = null
-droplet_fill_tank = null
+
+[node name="DropletContainer" type="Node" parent="WaterGun"]
 
 [node name="Animation" type="AnimatedSprite2D" parent="WaterGun"]
 position = Vector2(779, 589)
@@ -166,8 +164,6 @@ progress = 663.631
 
 [node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]
 position = Vector2(449.652, 282.822)
-
-[node name="DropletContainer" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="."]
 offset_left = 13.0

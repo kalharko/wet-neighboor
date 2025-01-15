@@ -7,12 +7,13 @@ signal window_hit_signal
 # References
 @export var window_open: Texture2D
 @export var window_closed: Texture2D
-var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var window_area: Area2D = get_node("Area2D")
+@onready var neighboor_droplet_container = get_node('../../NeighboorDropletContainer')
 
 var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_droplet.tscn")
 
 # Game design parameters
+var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @export var open_time: float = rng.randf_range(3.0, 10.0)
 @export var close_time: float = rng.randf_range(1.0, 10.0)
 
@@ -63,7 +64,7 @@ func close_window() -> void:
 	timer.start()
 	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
 	new_droplet.set_course(position)
-	add_child(new_droplet) #goutte dans la hierarchy enfant de fenetre
+	neighboor_droplet_container.add_child(new_droplet) #goutte dans la hierarchy enfant de fenetre
 
 
 func _on_timer_timeout() -> void:

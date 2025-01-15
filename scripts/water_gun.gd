@@ -14,7 +14,7 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 @onready var path_follow: PathFollow2D = get_node("Path2D/PathFollow2D")
 @onready var path_center: Vector2 = get_node("Path2D/PathCenter").global_position
 @onready var animation: AnimatedSprite2D = get_node("Animation")
-@onready var droplet_container: Node = get_node("../DropletContainer")
+@onready var droplet_container: Node = get_node("DropletContainer")
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 
 # Game design parameters
