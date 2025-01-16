@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bku3caen3tkf6"
-path="res://.godot/imported/0002.png-e7c7e49e41c7c634469e8ffa6f5aef7c.ctex"
+uid="uid://ctsrdqg4obuj2"
+path="res://.godot/imported/water_gun_04.png-099108b368ae8e3f2120f7cdcea9f332.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Animations/0002.png"
-dest_files=["res://.godot/imported/0002.png-e7c7e49e41c7c634469e8ffa6f5aef7c.ctex"]
+source_file="res://assets/Animations/water_gun_04.png"
+dest_files=["res://.godot/imported/water_gun_04.png-099108b368ae8e3f2120f7cdcea9f332.ctex"]
 
 [params]
 

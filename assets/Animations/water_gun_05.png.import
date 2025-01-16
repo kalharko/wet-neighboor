@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvhja0maechm0"
-path="res://.godot/imported/0005.png-ba1397674cf698e45c4deeb6d9ae66d1.ctex"
+path="res://.godot/imported/water_gun_05.png-0c3b98dfdb85674ab3801bedd39eddc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Animations/0005.png"
-dest_files=["res://.godot/imported/0005.png-ba1397674cf698e45c4deeb6d9ae66d1.ctex"]
+source_file="res://assets/Animations/water_gun_05.png"
+dest_files=["res://.godot/imported/water_gun_05.png-0c3b98dfdb85674ab3801bedd39eddc3.ctex"]
 
 [params]
 
