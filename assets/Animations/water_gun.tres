@@ -1,26 +1,30 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bd0hy1l5j3760"]
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://bd0hy1l5j3760"]
 
-[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_34r7w"]
-[ext_resource type="Texture2D" uid="uid://cdvelerm0omxj" path="res://assets/window_close.png" id="2_epaj0"]
-[ext_resource type="Texture2D" uid="uid://b4pleianjepfj" path="res://assets/water_tank_0.png" id="3_2vkgp"]
-[ext_resource type="Texture2D" uid="uid://dlq2vcecbnkeu" path="res://assets/water_gun.png" id="4_7bdv3"]
+[ext_resource type="Texture2D" uid="uid://bt546wl5ve4qe" path="res://assets/Animations/0001.png" id="1_qxvh5"]
+[ext_resource type="Texture2D" uid="uid://bku3caen3tkf6" path="res://assets/Animations/0002.png" id="2_pgb1v"]
+[ext_resource type="Texture2D" uid="uid://ewmkwuowiyif" path="res://assets/Animations/0003.png" id="3_fnh6l"]
+[ext_resource type="Texture2D" uid="uid://ctsrdqg4obuj2" path="res://assets/Animations/0004.png" id="4_yw7ww"]
+[ext_resource type="Texture2D" uid="uid://dvhja0maechm0" path="res://assets/Animations/0005.png" id="5_ijx8e"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_34r7w")
+"texture": ExtResource("1_qxvh5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_epaj0")
+"texture": ExtResource("2_pgb1v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_2vkgp")
+"texture": ExtResource("3_fnh6l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_7bdv3")
+"texture": ExtResource("4_yw7ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ijx8e")
 }],
 "loop": false,
 "name": &"gun_movement_animation",
-"speed": 1.0
+"speed": 9.0
 }]
