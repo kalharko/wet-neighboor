@@ -12,6 +12,7 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 @onready var droplet_container: Node = get_node("DropletContainer")
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 @onready var marker_front: Marker2D = get_node('WaterGunAnimation/MarkerFront')
+@onready var debug_label_tank: Label = get_node('/root/NewMain/DebugLabelTank')
 
 # Game design parameters
 @export_group("Water Tank")
@@ -61,9 +62,11 @@ func _physics_process(_delta: float) -> void:
 func shoot(target: Vector2) -> void:
 	# update water tank
 	self.tank_value -= shot_cost
+	debug_label_tank.text = 'Tank: ' + str(tank_value)
 	# check if tank is empty
 	if self.tank_value <= 0:
-		get_tree().quit()
+		water_tank_empty_signal.emit()
+		return
 
 	# if not enough droplets, instantiate one
 	if free_droplets.size() == 0:
@@ -97,3 +100,5 @@ func _on_area_entered(area: Area2D) -> void:
 	area.get_parent().free()
 	tank_value += droplet_fill_tank
 	tank_value = clamp(tank_value, 0, tank_size)
+
+	debug_label_tank.text = 'Tank: ' + str(tank_value)

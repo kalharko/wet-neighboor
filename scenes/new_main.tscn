@@ -147,7 +147,6 @@ scale = Vector2(0.223538, 0.13)
 
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("5_kmkv8")
-tank_size = 100000
 watergun_rotation_speed = 103.1
 
 [node name="DropletContainer" type="Node" parent="WaterGun"]
@@ -188,10 +187,18 @@ progress = 663.631
 [node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]
 position = Vector2(449.745, 270.556)
 
-[node name="Label" type="Label" parent="."]
+[node name="DebugLabelScore" type="Label" parent="."]
 offset_left = 13.0
 offset_top = 547.0
 offset_right = 74.0
 offset_bottom = 570.0
 scale = Vector2(2.12, 2.12)
 text = "Score: 0"
+
+[node name="DebugLabelTank" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 513.0
+offset_right = 86.0
+offset_bottom = 536.0
+scale = Vector2(2.12, 2.12)
+text = "Tank: 100"

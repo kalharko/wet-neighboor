@@ -6,7 +6,7 @@ class_name Main
 signal game_speed_up_signal()
 
 # References
-@onready var debug_score_label: Label = get_node('Label')
+@onready var debug_score_label: Label = get_node('DebugLabelScore')
 
 # Game design parameters
 @export var initial_game_speed: float = 1
@@ -30,4 +30,5 @@ func _on_window_hit() -> void:
 	
 
 func _on_water_tank_empty() -> void:
-	pass
+	# Game over
+	get_tree().quit()
