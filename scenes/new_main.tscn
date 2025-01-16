@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=10 format=3 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7b57j"]
 [ext_resource type="Texture2D" uid="uid://cujdrdymjsy6f" path="res://assets/2Dbackground.png" id="2_fpevb"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="4_r13ih"]
 [ext_resource type="Script" path="res://scripts/water_gun.gd" id="5_kmkv8"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="6_mnvw1"]
+[ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="8_l4015"]
 
 [sub_resource type="Curve2D" id="Curve2D_sa7ub"]
 _data = {
@@ -34,7 +35,7 @@ water_stream_height_at_apex = 3.0
 water_stream_apex_pos_ratio = 0.9
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea"]
-polygon = PackedVector2Array(-4.49941, 414, 210, 404.375, 212, 484.04, 346.5, 452, 364, 462.863, 364, 300.508, 334, 284.373, 332, 235.969, 364.5, 131, 362.5, 72, 450.5, -2, 550.5, -4, 547, 346.895, 548.5, 454, 687.499, 476, 695.5, 158, 743.499, 157, 744, 31.2609, 777.499, 12, 778.499, -2, 903.499, -5, 904.499, 157, 903.499, 605, -3.49941, 605)
+polygon = PackedVector2Array(-4.49941, 414, 210, 404.375, 212, 484.04, 346.5, 452, 363.5, 457, 362.5, 300, 333.5, 285, 331.5, 227, 364.5, 131, 362.5, 72, 450.5, -2, 550.5, -4, 548.5, 347, 548.5, 454, 687.499, 476, 695.5, 158, 743.499, 157, 744, 31.2609, 777.499, 12, 778.499, -2, 903.499, -5, 904.499, 157, 903.499, 605, -3.49941, 605)
 
 [node name="DepthArea2" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
@@ -45,7 +46,7 @@ water_stream_height_at_apex = 5.0
 water_stream_apex_pos_ratio = 0.7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
-polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 333, 285.382, 331.5, 227, 364.5, 132, 364, 73.6144, 452.5, -2)
+polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 334.5, 287, 332.5, 227, 365.5, 131, 364, 73.6144, 452.5, -2)
 
 [node name="DepthArea3" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
@@ -55,7 +56,7 @@ script = ExtResource("3_i3iy3")
 water_stream_height_at_apex = 7.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
-polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 364.5, 464, 346, 452.779, 211, 485.048)
+polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 366.5, 460, 346, 452.779, 211, 485.048)
 
 [node name="DepthArea4" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
@@ -143,26 +144,28 @@ scale = Vector2(0.223538, 0.13)
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("5_kmkv8")
 tank_size = 100000
-watergun_rotation_speed = 34.365
+watergun_rotation_speed = 103.1
 
 [node name="DropletContainer" type="Node" parent="WaterGun"]
 
-[node name="Animation" type="AnimatedSprite2D" parent="WaterGun"]
+[node name="WaterGunAnimation" type="AnimatedSprite2D" parent="WaterGun"]
 position = Vector2(779, 589)
-scale = Vector2(0.313321, 0.313321)
+scale = Vector2(0.663, 0.663)
 sprite_frames = ExtResource("6_mnvw1")
 animation = &"gun_movement_animation"
-frame = 3
-frame_progress = 0.3315
+frame_progress = 0.521307
+script = ExtResource("8_l4015")
+watergun_movement_speed = 0.05
 
-[node name="MarkerFront" type="Marker2D" parent="WaterGun/Animation"]
-position = Vector2(-450.018, -188.306)
+[node name="MarkerFront" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
+position = Vector2(70.2156, -159.581)
 
-[node name="MarkerBack" type="Marker2D" parent="WaterGun/Animation"]
-position = Vector2(-98.9401, -207.455)
+[node name="MarkerBack" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
+position = Vector2(70.2155, 31.9162)
 
 [node name="Path2D" type="Path2D" parent="WaterGun"]
-scale = Vector2(0.960744, 1.79618)
+position = Vector2(16, -16)
+scale = Vector2(0.909404, 1.7002)
 curve = SubResource("Curve2D_sa7ub")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="WaterGun/Path2D"]
@@ -171,7 +174,7 @@ rotation = -0.0323989
 progress = 663.631
 
 [node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]
-position = Vector2(449.652, 282.822)
+position = Vector2(449.745, 270.556)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 13.0
