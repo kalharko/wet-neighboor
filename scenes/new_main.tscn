@@ -152,8 +152,7 @@ watergun_rotation_speed = 103.1
 position = Vector2(779, 589)
 scale = Vector2(0.663, 0.663)
 sprite_frames = ExtResource("6_mnvw1")
-animation = &"gun_movement_animation"
-frame_progress = 0.521307
+animation = &"gun_shoot"
 script = ExtResource("8_l4015")
 watergun_movement_speed = 0.05
 

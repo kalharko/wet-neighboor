@@ -20,7 +20,7 @@ func _ready() -> void:
 	pause()
 
 
-func set_position_rotation(depth_area: DepthArea) -> Vector2:
+func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) -> Vector2:
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
@@ -34,18 +34,26 @@ func set_position_rotation(depth_area: DepthArea) -> Vector2:
 		scale.x = -base_scale_x
 		angle = clamp(angle, 0, PI / 2)
 		new_progress_ratio = 0.5 - angle / PI
+		if gun_in_gathering_state:
+			new_progress_ratio += 2 * angle / PI
 	elif angle < 0:
 		scale.x = base_scale_x
 		angle = clamp(angle, -PI / 2, 0)
 		new_progress_ratio = 0.5 - angle / PI
+		if gun_in_gathering_state:
+			new_progress_ratio += 2 * angle / PI
 	path_follow.progress_ratio = lerp(path_follow.progress_ratio, new_progress_ratio, 0.2)
 	global_position = path_follow.global_position
+	global_position -= (marker_back.global_position - global_position)
 
 	DebugDraw2D.line(path_center, mouse_position)
 	DebugDraw2D.line(path_center, path_follow.global_position)
 
 	# set watergun animation frame
 	frame = abs(int((path_follow.progress_ratio - 0.5) * 2 * 4))
+	animation = 'gun_shoot'
+	if gun_in_gathering_state:
+		animation = 'gun_gather'
 
 	# update gun target depending on the containing area
 	var target: Vector2 = marker_back.global_position + mouse_direction / 2

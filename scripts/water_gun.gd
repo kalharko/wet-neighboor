@@ -32,15 +32,25 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 # Operating variables
 var free_droplets: Array[Droplet] = []
 @onready var tank_value: int = tank_size
+enum GunState {SHOOT, GATHER}
+var state: GunState = GunState.SHOOT
 
 
 func _physics_process(_delta: float) -> void:
+	# check state
+	state = GunState.SHOOT
+	if Input.is_action_pressed("gather"):
+		state = GunState.GATHER
+
+	# Set the watergun's position and rotation and get target
 	var target: Vector2 = Vector2.ZERO
-	
-	# Set the watergun's position and rotation
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var depth_area: DepthArea = background.get_containing_area(mouse_position)
-	target = animation.set_position_rotation(depth_area)
+	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
+
+	# quit if mode is not SHOOT
+	if state != GunState.SHOOT:
+		return
 
 	# quit if mouse is not down
 	if not Input.is_action_pressed("fire"):
@@ -67,7 +77,6 @@ func _physics_process(_delta: float) -> void:
 		target,
 		mouse_position
 	)
-
 
 func _on_droplet_landed(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
