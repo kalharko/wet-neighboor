@@ -6,13 +6,16 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_34i5l"]
 radius = 46.9251
 
-[node name="Droplet" type="Sprite2D"]
+[node name="NeighboorDroplet" type="Sprite2D"]
 position = Vector2(2.596, 9.5)
 scale = Vector2(0.0874375, 0.273438)
 texture = ExtResource("1_owcq1")
 script = ExtResource("2_i21h1")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="NeighboorDropletArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitoring = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NeighboorDropletArea"]
 shape = SubResource("CircleShape2D_34i5l")

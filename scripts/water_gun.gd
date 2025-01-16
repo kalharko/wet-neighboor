@@ -36,6 +36,11 @@ enum GunState {SHOOT, GATHER}
 var state: GunState = GunState.SHOOT
 
 
+func _ready() -> void:
+	# Subscribes to signals
+	get_node('WaterGunAnimation/Area2D').area_entered.connect(_on_area_entered)
+
+
 func _physics_process(_delta: float) -> void:
 	# check state
 	state = GunState.SHOOT
@@ -48,14 +53,12 @@ func _physics_process(_delta: float) -> void:
 	var depth_area: DepthArea = background.get_containing_area(mouse_position)
 	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
 
-	# quit if mode is not SHOOT
-	if state != GunState.SHOOT:
-		return
+	# Shoot
+	if state == GunState.SHOOT and Input.is_action_pressed('fire'):
+		shoot(target)
 
-	# quit if mouse is not down
-	if not Input.is_action_pressed("fire"):
-		return
 
+func shoot(target: Vector2) -> void:
 	# update water tank
 	self.tank_value -= shot_cost
 	# check if tank is empty
@@ -72,11 +75,25 @@ func _physics_process(_delta: float) -> void:
 
 	# find a free droplet
 	var droplet: Droplet = free_droplets.pop_front()
+	var mouse_position: Vector2 = get_global_mouse_position()
 	droplet.set_course(
 		marker_front.global_position,
 		target,
 		mouse_position
-	)
+	)	
+
 
 func _on_droplet_landed(droplet: Droplet) -> void:
 	free_droplets.append(droplet)
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if state != GunState.GATHER:
+		return
+	
+	if area.name != 'NeighboorDropletArea':
+		return
+
+	area.get_parent().free()
+	tank_value += droplet_fill_tank
+	tank_value = clamp(tank_value, 0, tank_size)
