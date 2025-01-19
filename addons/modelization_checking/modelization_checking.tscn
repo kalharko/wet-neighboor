@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://4jbc3oys6bmd"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ERD_table.gd" id="2_s2nu0"]
+[ext_resource type="Script" path="res://addons/modelization_checking/modelization_checker.gd" id="2_xaxhw"]
+
+[node name="ModelizationChecking" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_xaxhw")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="UpdateButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 41.0
+text = "Update ERD"
+
+[node name="ScenePathLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 10.0
+offset_right = 761.0
+offset_bottom = 41.0
+text = "res://scenes/new_main.tscn"
+placeholder_text = "res://scene/path"
+
+[node name="ERDTable" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 54.0
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 5
+script = ExtResource("2_s2nu0")
+
+[node name="CenterContainer" type="CenterContainer" parent="ERDTable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ERDTable/CenterContainer"]
+layout_mode = 2
+text = "Entity"
+
+[node name="CenterContainer2" type="CenterContainer" parent="ERDTable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ERDTable/CenterContainer2"]
+layout_mode = 2
+text = "Responsability"
+
+[node name="CenterContainer3" type="CenterContainer" parent="ERDTable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ERDTable/CenterContainer3"]
+layout_mode = 2
+text = "Relationship"
+
+[node name="CenterContainer4" type="CenterContainer" parent="ERDTable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ERDTable/CenterContainer4"]
+layout_mode = 2
+text = "Game design parameters"
+
+[node name="CenterContainer5" type="CenterContainer" parent="ERDTable"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ERDTable/CenterContainer5"]
+layout_mode = 2
+text = "Public Functions"
+
+[connection signal="pressed" from="UpdateButton" to="." method="update_modelization"]

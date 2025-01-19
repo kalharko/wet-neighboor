@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8fbb20w5yjrd"]
+
+[ext_resource type="LabelSettings" uid="uid://b6uyc8t43h4xv" path="res://addons/modelization_checking/new_label_settings.tres" id="1_df2yc"]
+
+[node name="GridCellLabel" type="Label"]
+z_index = 1
+offset_right = 1.0
+offset_bottom = 23.0
+text = "GridCellLabel"
+label_settings = ExtResource("1_df2yc")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.00002
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.201527, 0.201527, 0.201527, 1)
