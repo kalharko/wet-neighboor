@@ -1,6 +1,7 @@
 extends Area2D
 class_name DepthArea
-
+# Responsabilites
+# @respo: define background depth
 
 # References
 @onready var polygon: CollisionPolygon2D = get_node("CollisionPolygon2D")

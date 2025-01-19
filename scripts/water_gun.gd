@@ -1,5 +1,10 @@
 extends Node2D
 class_name WaterGun
+# Responsabilities
+# @respo: shoot
+# @respo: switch mode
+# @respo: gather
+# @respo: record tank
 
 
 # Signals

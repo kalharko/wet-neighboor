@@ -1,4 +1,10 @@
 extends Sprite2D
+# Responsabilities
+# @respo: open/close
+# @respo: spawn NeighbourDroplet
+# @respo: get hit
+# @respo: increase score
+
 
 
 # Signals
