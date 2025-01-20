@@ -13,6 +13,8 @@ func _enter_tree():
 	EditorInterface.get_editor_main_screen().add_child(main_panel_instance)
 	# Hide the main panel. Very much required.
 	_make_visible(false)
+	
+	scene_changed.connect(main_panel_instance._on_scene_changed)
 
 
 func _exit_tree():
