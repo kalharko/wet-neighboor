@@ -9,6 +9,7 @@ class_name ModelizationChecker
 # References
 @onready var erd_table: ERDTable = get_node("ERDTable")
 @onready var scene_path_line_edit: LineEdit = get_node("ScenePathLineEdit")
+@onready var script_editor: ScriptEditor = EditorInterface.get_script_editor()
 
 # Operating variables
 var re_class_name = RegEx.new()
@@ -106,3 +107,7 @@ func get_script_paths_from_scene(scene_path: String) -> Array[String]:
 func _on_scene_changed(new_root: Node):
 	scene_path_line_edit.text = new_root.scene_file_path
 	update_modelization()
+
+
+func _on_test_button() -> void:
+	script_editor.goto_help("Node")

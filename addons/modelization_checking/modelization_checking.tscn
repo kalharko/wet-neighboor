@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://4jbc3oys6bmd"]
+[gd_scene load_steps=5 format=3 uid="uid://4jbc3oys6bmd"]
 
+[ext_resource type="Script" path="res://addons/modelization_checking/text_size_button.gd" id="2_dmtcd"]
 [ext_resource type="Script" path="res://addons/modelization_checking/ERD_table.gd" id="2_s2nu0"]
 [ext_resource type="Script" path="res://addons/modelization_checking/modelization_checker.gd" id="2_xaxhw"]
+[ext_resource type="LabelSettings" uid="uid://b6uyc8t43h4xv" path="res://addons/modelization_checking/h1_label_settings.tres" id="3_jhce3"]
 
 [node name="ModelizationChecking" type="Control"]
 layout_mode = 3
@@ -40,6 +42,46 @@ offset_bottom = 41.0
 text = "res://scenes/new_main.tscn"
 placeholder_text = "res://scene/path"
 
+[node name="TextSize+" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 10.0
+offset_right = -46.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = " + "
+script = ExtResource("2_dmtcd")
+
+[node name="TextSize+2" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_top = 10.0
+offset_right = -86.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = " + "
+script = ExtResource("2_dmtcd")
+
+[node name="TextSize-" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = " - "
+script = ExtResource("2_dmtcd")
+text_label_settings_size_delta = -1
+
 [node name="ERDTable" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -55,44 +97,52 @@ theme_override_constants/v_separation = 12
 columns = 5
 script = ExtResource("2_s2nu0")
 
-[node name="CenterContainer" type="CenterContainer" parent="ERDTable"]
+[node name="HeaderContainer" type="CenterContainer" parent="ERDTable"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ERDTable/CenterContainer"]
+[node name="Label" type="Label" parent="ERDTable/HeaderContainer"]
 layout_mode = 2
 text = "Entity"
+label_settings = ExtResource("3_jhce3")
 
-[node name="CenterContainer2" type="CenterContainer" parent="ERDTable"]
+[node name="HeaderContainer2" type="CenterContainer" parent="ERDTable"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ERDTable/CenterContainer2"]
+[node name="Label" type="Label" parent="ERDTable/HeaderContainer2"]
 layout_mode = 2
 text = "Responsability"
+label_settings = ExtResource("3_jhce3")
 
-[node name="CenterContainer3" type="CenterContainer" parent="ERDTable"]
+[node name="HeaderContainer3" type="CenterContainer" parent="ERDTable"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ERDTable/CenterContainer3"]
+[node name="Label" type="Label" parent="ERDTable/HeaderContainer3"]
 layout_mode = 2
 text = "Relationship"
+label_settings = ExtResource("3_jhce3")
 
-[node name="CenterContainer4" type="CenterContainer" parent="ERDTable"]
+[node name="HeaderContainer4" type="CenterContainer" parent="ERDTable"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ERDTable/CenterContainer4"]
+[node name="Label" type="Label" parent="ERDTable/HeaderContainer4"]
 layout_mode = 2
 text = "Game design parameters"
+label_settings = ExtResource("3_jhce3")
 
-[node name="CenterContainer5" type="CenterContainer" parent="ERDTable"]
+[node name="HeaderContainer5" type="CenterContainer" parent="ERDTable"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ERDTable/CenterContainer5"]
+[node name="Label" type="Label" parent="ERDTable/HeaderContainer5"]
 layout_mode = 2
 text = "Public Functions"
+label_settings = ExtResource("3_jhce3")
 
 [connection signal="pressed" from="UpdateButton" to="." method="update_modelization"]
+[connection signal="pressed" from="TextSize+" to="TextSize+" method="_on_pressed"]
+[connection signal="pressed" from="TextSize+2" to="." method="_on_test_button"]
+[connection signal="pressed" from="TextSize-" to="TextSize-" method="_on_pressed"]
