@@ -1,17 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://ptnnbqy8dvf6"]
+[gd_scene load_steps=8 format=3 uid="uid://ptnnbqy8dvf6"]
 
 [ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_bgtqf"]
 [ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
+[ext_resource type="Texture2D" uid="uid://dy1gxqlrndh4p" path="res://assets/window-opening.png" id="2_eshn3"]
+[ext_resource type="Texture2D" uid="uid://dv2h06yqr74v6" path="res://assets/window-closing.png" id="2_vvbf4"]
 [ext_resource type="Texture2D" uid="uid://cdvelerm0omxj" path="res://assets/window_close.png" id="3_mm60l"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bgtqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vvbf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mm60l")
+}],
+"loop": false,
+"name": &"window closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_mm60l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eshn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_bgtqf")
+}],
+"loop": false,
+"name": &"window opening",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjwbk"]
 size = Vector2(385, 303)
 
-[node name="Sprite2D" type="Sprite2D"]
-texture = ExtResource("1_bgtqf")
+[node name="AnimatedWindow" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_dbyxr")
+animation = &"window opening"
 script = ExtResource("2_btsdg")
-window_open = ExtResource("1_bgtqf")
-window_closed = ExtResource("3_mm60l")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -19,5 +51,3 @@ window_closed = ExtResource("3_mm60l")
 position = Vector2(-2.5, 0.5)
 shape = SubResource("RectangleShape2D_mjwbk")
 debug_color = Color(0.174049, 0.587366, 0.720336, 0.42)
-
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

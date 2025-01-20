@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 # Responsabilities
 # @respo: open/close
 # @respo: spawn NeighbourDroplet
@@ -11,8 +11,6 @@ extends Sprite2D
 signal window_hit_signal
 
 # References
-@export var window_open: Texture2D
-@export var window_closed: Texture2D
 @onready var window_area: Area2D = get_node("Area2D")
 @onready var neighboor_droplet_container = get_node('../../NeighboorDropletContainer')
 
@@ -41,7 +39,6 @@ func _ready() -> void:
 	add_child(timer)
 
 	# Initial state
-	texture = window_closed  #au départ, toutes les fenêtres sont fermées
 
 	open_time = rng.randf_range(3.0, 10.0)  # un délai d'ouverture aléatoire
 	timer.wait_time = current_open_time
@@ -50,7 +47,9 @@ func _ready() -> void:
 
 func open_window() -> void:
 	is_window_open = true
-	texture = window_open
+	self.play("window opening")
+
+	
 	
 	current_close_time =  max(1, current_close_time * 0.9)
 	timer.wait_time = current_close_time 
@@ -63,7 +62,7 @@ func close_window() -> void:
 	#test aléatoire
 	#si on lance - anim 
 	#asynchrone - a la fin appelle la fonction spawn goutte en haut
-	texture = window_closed
+	self.play("window closing")
 
 	current_open_time = max(1, current_open_time * 0.9)  
 	timer.wait_time = current_open_time
