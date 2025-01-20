@@ -8,7 +8,7 @@ extends AnimatedSprite2D
 
 
 # Signals
-signal window_hit_signal
+signal window_hit_signal()
 
 # References
 @onready var window_area: Area2D = get_node("Area2D")
@@ -20,9 +20,11 @@ var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_dropl
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @export var open_time: float = rng.randf_range(3.0, 10.0)
 @export var close_time: float = rng.randf_range(1.0, 10.0)
+@export var droplet_spawn_probability: float = 0.5
 
 # Operating variables
 var is_window_open: bool = false
+var is_window_hit = false
 var timer: Timer = Timer.new()
 # variables utilisées pour adapter le temps d'ouverture/fermerture : de plus en plus rapide
 var current_open_time: float = open_time  
@@ -41,17 +43,17 @@ func _ready() -> void:
 	# Initial state
 
 	open_time = rng.randf_range(3.0, 10.0)  # un délai d'ouverture aléatoire
+	close_time = rng.randf_range(3.0, 10.0)
 	timer.wait_time = current_open_time
 	timer.start()
 
-
+func _start_initial_timer()->void:
+	timer.wait_time = open_time
+	timer.start()
+	
 func open_window() -> void:
 	is_window_open = true
 	self.play("window opening")
-
-	
-	
-	current_close_time =  max(1, current_close_time * 0.9)
 	timer.wait_time = current_close_time 
 	timer.start()
 
@@ -64,12 +66,7 @@ func close_window() -> void:
 	#asynchrone - a la fin appelle la fonction spawn goutte en haut
 	self.play("window closing")
 
-	current_open_time = max(1, current_open_time * 0.9)  
-	timer.wait_time = current_open_time
-	timer.start()
-	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
-	new_droplet.set_course(position)
-	neighboor_droplet_container.add_child(new_droplet) #goutte dans la hierarchy enfant de fenetre
+	timer.wait_time = open_time
 
 
 func _on_timer_timeout() -> void:
@@ -78,6 +75,10 @@ func _on_timer_timeout() -> void:
 	else:
 		open_window()
 
+func _spawn_droplet()->void: 
+	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
+	new_droplet.set_course(position)
+	neighboor_droplet_container.add_child(new_droplet) #goutte dans la hierarchy enfant de fenetre
 
 func _on_new_droplet_spawned(droplet: Droplet) -> void:
 	droplet.droplet_landed_signal.connect(_on_droplet_landed)
@@ -91,3 +92,10 @@ func _on_droplet_landed(droplet: Droplet) -> void:
 
 	close_window()
 	window_hit_signal.emit()
+	
+	if rng.randf() <= droplet_spawn_probability:
+		_spawn_droplet()
+
+func _on_game_speed_up(multiplier: float)-> void:
+	open_time = max(1.0, open_time/multiplier)
+	close_time = max(1, close_time/multiplier)
