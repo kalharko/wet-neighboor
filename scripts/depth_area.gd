@@ -7,8 +7,10 @@ class_name DepthArea
 @onready var polygon: CollisionPolygon2D = get_node("CollisionPolygon2D")
 
 # Game design parameters
-@export var water_stream_height_at_apex: float = 0
-@export var water_stream_apex_pos_ratio: float = 0.5
+@export var additional_height_at_stream_apex: float = 0
+@export var stream_apex_position_ration: float = 0.5
+
+
 
 
 func contains(point: Vector2) -> bool:

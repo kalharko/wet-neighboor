@@ -1,9 +1,14 @@
 extends Node
 class_name Main
+# Responsabilities
+# @respo: start/end game
+# @respo: keep score
+# @respo: game rythm
 
 
 # Signals
-signal game_speed_up_signal()
+signal game_speed_up_signal() #towards window
+#signal start_game_signal()    #towards window
 
 
 # References

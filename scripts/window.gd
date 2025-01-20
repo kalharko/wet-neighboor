@@ -8,23 +8,25 @@ extends AnimatedSprite2D
 
 
 # Signals
-signal window_hit_signal()
+signal window_hit_signal() #towards main
 
 # References
 @onready var window_area: Area2D = get_node("Area2D")
 @onready var neighboor_droplet_container = get_node('../../NeighboorDropletContainer')
 
 var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_droplet.tscn")
-
-# Game design parameters
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+# Game design parameters
+@export var opening_animation_delay: float = 1
+@export var closing_animation_delay: float = 1
 @export var open_time: float = rng.randf_range(3.0, 10.0)
 @export var close_time: float = rng.randf_range(1.0, 10.0)
 @export var droplet_spawn_probability: float = 0.5
 
 # Operating variables
 var is_window_open: bool = false
-var is_window_hit = false
+
+
 var timer: Timer = Timer.new()
 # variables utilisées pour adapter le temps d'ouverture/fermerture : de plus en plus rapide
 var current_open_time: float = open_time  

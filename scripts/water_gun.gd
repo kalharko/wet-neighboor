@@ -5,11 +5,13 @@ class_name WaterGun
 # @respo: switch mode
 # @respo: gather
 # @respo: record tank
+# @respo: spawn droplets
+
 
 
 # Signals
-signal water_tank_empty_signal()
-signal new_droplet_spawned_signal(droplet: Droplet)
+signal water_tank_empty_signal() #towards main
+signal new_droplet_spawned_signal(droplet: Droplet) #towards droplets
 
 # References
 @onready var background: Background = get_node("../Background")
@@ -32,8 +34,7 @@ signal new_droplet_spawned_signal(droplet: Droplet)
 @export var atlas_top_y: int = 90
 @export var atlas_bottom_y: int = 480
 
-@export var neighbour_droplet_chance: float = 0.3
-@export var droplet_fill_tank = 1
+@export var droplet_fill_tank = 6
 
 # Operating variables
 var free_droplets: Array[Droplet] = []
@@ -56,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 	# Set the watergun's position and rotation and get target
 	var target: Vector2 = Vector2.ZERO
 	var mouse_position: Vector2 = get_global_mouse_position()
-	var depth_area: DepthArea = background.get_containing_area(mouse_position)
+	var depth_area: DepthArea = background.get_background_depth_area(mouse_position)
 	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
 
 	# Shoot

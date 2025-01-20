@@ -15,7 +15,7 @@ func _ready() -> void:
 		depth_areas.append(child)
 
 
-func get_containing_area(point: Vector2) -> DepthArea:
+func get_background_depth_area(point: Vector2) -> DepthArea:
 	for depth_area in depth_areas:
 		if depth_area.contains(point):
 			return depth_area

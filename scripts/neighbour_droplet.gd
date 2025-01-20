@@ -1,13 +1,16 @@
 extends Sprite2D
 class_name NeighbourDroplet
+# Responsabilities
+# @respo: moving
+# @respo: disappear
 
 
 # Signals
-#signal droplet_collected(neighbour_droplet: NeighbourDroplet)
+
 # References
 
 # Game design parameters
-@export var speed: float = 100.0
+@export var speed: float = 140.0
 
 
 # Operating variables

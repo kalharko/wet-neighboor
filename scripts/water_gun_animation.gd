@@ -1,5 +1,8 @@
 extends AnimatedSprite2D
 class_name WaterGunAnimation
+# Responsabilities
+# @respo: animate gun movement
+
 
 # References
 @onready var marker_front: Marker2D = get_node('MarkerFront')
@@ -61,11 +64,11 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	if depth_area != null:
 		target = marker_back.global_position
 		target += mouse_direction.normalized() * gun_direction.length()
-		target += (mouse_position - target) * depth_area.water_stream_apex_pos_ratio
+		target += (mouse_position - target) * depth_area.stream_apex_position_ration
 		if angle > 0:
-			target += mouse_direction.rotated(PI / 2).normalized() * depth_area.water_stream_height_at_apex * -5
+			target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * -5
 		else:
-			target += mouse_direction.rotated(PI / 2).normalized() * depth_area.water_stream_height_at_apex * 5
+			target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 5
 		var target_direction: Vector2 = target - marker_back.global_position
 		gun_target_angle = gun_direction.angle_to(target_direction)
 	
@@ -87,6 +90,6 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	if depth_area != null:
 		DebugDraw2D.line(
 			target,
-			target - mouse_direction.rotated(- PI / 2).normalized() * depth_area.water_stream_height_at_apex * 10)
+			target - mouse_direction.rotated(- PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 10)
 
 	return target

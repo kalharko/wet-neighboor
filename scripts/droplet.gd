@@ -1,9 +1,12 @@
 extends Sprite2D
 class_name Droplet
+# Responsabilites
+# @respo: moving
+# @respo: land
 
 
 # Signals
-signal droplet_landed_signal(droplet: Droplet)
+signal droplet_landed_signal(droplet: Droplet) #towards window
 
 # References
 @onready var droplet_area: Area2D = get_node('Area2D')
