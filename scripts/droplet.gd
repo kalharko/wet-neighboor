@@ -6,7 +6,7 @@ class_name Droplet
 
 
 # Signals
-signal droplet_landed_signal(droplet: Droplet) #towards window
+signal droplet_landed(droplet: Droplet) #towards window
 
 # References
 @onready var droplet_area: Area2D = get_node('Area2D')
@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 	current_step += 1
 	if current_step >= nb_step:
 		self.visible = false
-		droplet_landed_signal.emit(self)
+		droplet_landed.emit(self)
 		return
 	
 	# set position along bezier curve

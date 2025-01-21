@@ -5,18 +5,17 @@ class_name WaterGun
 # @respo: switch mode
 # @respo: gather
 # @respo: record tank
-# @respo: spawn droplets
+
 
 
 
 # Signals
-signal water_tank_empty_signal() #towards main
-signal new_droplet_spawned_signal(droplet: Droplet) #towards droplets
+signal water_tank_empty() #towards main
 
 # References
 @onready var background: Background = get_node("../Background")
 @onready var animation: AnimatedSprite2D = get_node("WaterGunAnimation")
-@onready var droplet_container: Node = get_node("DropletContainer")
+@onready var droplet_container: DropletContainer = get_node("DropletContainer")
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 @onready var marker_front: Marker2D = get_node('WaterGunAnimation/MarkerFront')
 @onready var debug_label_tank: Label = get_node('/root/NewMain/DebugLabelTank')
@@ -25,15 +24,7 @@ signal new_droplet_spawned_signal(droplet: Droplet) #towards droplets
 @export_group("Water Tank")
 @export var tank_size: int = 100
 @export var shot_cost: int = 1
-
-@export_group("Water Stream")
-@export var watergun_rotation_speed: float = 1
-@export var water_stream_speed: float = 1
-
-@export_group("Water Tank Atlas")
-@export var atlas_top_y: int = 90
-@export var atlas_bottom_y: int = 480
-
+@export var mode_switch_animation_time: float = 1
 @export var droplet_fill_tank = 6
 
 # Operating variables
@@ -71,30 +62,17 @@ func shoot(target: Vector2) -> void:
 	debug_label_tank.text = 'Tank: ' + str(tank_value)
 	# check if tank is empty
 	if self.tank_value <= 0:
-		water_tank_empty_signal.emit()
+		water_tank_empty.emit()
 		return
 
-	# if not enough droplets, instantiate one
-	if free_droplets.size() == 0:
-		var new_droplet = droplet_scene.instantiate()
-		new_droplet.droplet_landed_signal.connect(_on_droplet_landed)
-		new_droplet_spawned_signal.emit(new_droplet)
-		droplet_container.add_child(new_droplet)
-		free_droplets.append(new_droplet)
-
 	# find a free droplet
-	var droplet: Droplet = free_droplets.pop_front()
+	var droplet: Droplet = droplet_container.get_droplet()
 	var mouse_position: Vector2 = get_global_mouse_position()
 	droplet.set_course(
 		marker_front.global_position,
 		target,
 		mouse_position
 	)	
-
-
-func _on_droplet_landed(droplet: Droplet) -> void:
-	free_droplets.append(droplet)
-
 
 func _on_area_entered(area: Area2D) -> void:
 	if state != GunState.GATHER:

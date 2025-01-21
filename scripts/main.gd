@@ -7,8 +7,8 @@ class_name Main
 
 
 # Signals
-signal game_speed_up_signal() #towards window
-#signal start_game_signal()    #towards window
+signal game_speed_up(game_speed_multiplier: float) #towards window
+signal start_game()    #towards window
 
 
 # References
@@ -16,18 +16,29 @@ signal game_speed_up_signal() #towards window
 
 # Game design parameters
 @export var initial_game_speed: float = 1
-@export var game_speed_multiplier: float = 1.0
+@export var game_speed_multiplier: float = 1.1
+@export var game_speed_increase_interval: float = 10
+
 # Operating variables
 var score: int = 0
+var timer: Timer = Timer.new()
 
 
 func _ready() -> void:
 	# Subscribes to signals
 	for window in get_node('Background/WindowContainer').get_children():
-		window.window_hit_signal.connect(_on_window_hit)
-		self.game_speed_up_signal.connect(window._on_game_speed_up)
+		window.window_hit.connect(_on_window_hit)
+		
+	get_node('WaterGun').water_tank_empty.connect(_on_water_tank_empty)
+	
+	# Setup
+	timer.one_shot = true
+	timer.connect("timeout",Callable(self, "_on_speed_up_timer"))
+	add_child(timer)
 
-	get_node('WaterGun').water_tank_empty_signal.connect(_on_water_tank_empty)
+	# Initial state
+	timer.wait_time = game_speed_increase_interval
+	timer.start()
 
 
 func _on_window_hit() -> void:
@@ -35,8 +46,9 @@ func _on_window_hit() -> void:
 	debug_score_label.text = 'Score: ' + str(score)
 
 func _on_speed_up_timer()->void: 
-	game_speed_multiplier += 0.1
-	game_speed_up_signal.emit()
+	game_speed_up.emit(game_speed_multiplier)
+	timer.start()
+	print("ergerq")
 
 func _on_water_tank_empty() -> void:
 	# Game over

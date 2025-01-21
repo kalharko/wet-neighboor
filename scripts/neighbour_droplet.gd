@@ -28,10 +28,3 @@ func _process(_delta: float) -> void:
 func set_course(start: Vector2) -> void:
 	visible = true
 	position = start
-
-	
-	
-#func collect()->void:
-#	is_collected = true
-#	droplet_collected.emit()
-#	queue_free() # Remove the droplet from the scene if i has been collected by the player's gun
