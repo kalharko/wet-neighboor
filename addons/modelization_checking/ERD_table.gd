@@ -7,6 +7,7 @@ class_name ERDTable
 
 # References
 @onready var grid_cell_label: PackedScene = preload("res://addons/modelization_checking/grid_cell_label.tscn")
+@onready var grid_cell_label_movable: PackedScene = preload("res://addons/modelization_checking/grid_cell_label_movable.tscn")
 
 
 func clear_table() -> void:
@@ -24,6 +25,8 @@ func add_line(
 	var labels: Array[Label] = []
 	for i in range(5):
 		var label: Label = grid_cell_label.instantiate()
+		if i == 0:
+			label = grid_cell_label_movable.instantiate()
 		labels.append(label)
 		add_child(label)
 
@@ -49,3 +52,7 @@ func add_line(
 	labels[2].text = "\n".join(relations)
 	labels[3].text = "\n".join(gd_parameters)
 	labels[4].text = "\n".join(public_functions)
+
+
+func swap_line(line_id1: int, line_id2: int):
+	pass
