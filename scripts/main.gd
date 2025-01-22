@@ -48,7 +48,6 @@ func _on_window_hit() -> void:
 func _on_speed_up_timer()->void: 
 	game_speed_up.emit(game_speed_multiplier)
 	timer.start()
-	print("ergerq")
 
 func _on_water_tank_empty() -> void:
 	# Game over

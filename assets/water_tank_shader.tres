@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jkpmgmfejwlg"]
+
+[ext_resource type="Shader" path="res://assets/water_tank_shader.gdshader" id="1_8y50t"]
+
+[resource]
+shader = ExtResource("1_8y50t")
+shader_parameter/alpha = 0.67
+shader_parameter/percentage = 0.36
+shader_parameter/top = 0.0
+shader_parameter/bottom = 1.0

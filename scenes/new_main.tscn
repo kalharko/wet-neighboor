@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_scene load_steps=20 format=3 uid="uid://dr54xyscfrfet"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://dr54xyscfrfet"]
+>>>>>>> f95760c80ae1cae29e7317cb7f2ea6bf9d79b89e
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7b57j"]
 [ext_resource type="Texture2D" uid="uid://bkclbktxdpyei" path="res://assets/bg_test_2.png" id="2_4uies"]
@@ -10,6 +14,8 @@
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="6_mnvw1"]
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="7_hn28e"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="8_l4015"]
+[ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://assets/water_tank_shader.tres" id="10_6syqy"]
+[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/Animations/water_gun_tank.tres" id="10_o6c3g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pds48"]
 shader = ExtResource("6_h4tgl")
@@ -107,6 +113,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 9.94
+stream_apex_position_ration = 0.7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
 polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 334.5, 287, 332.5, 227, 365.5, 131, 364, 73.6144, 452.5, -2)
@@ -116,6 +124,7 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 0.18
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
 polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 366.5, 460, 346, 452.779, 211, 485.048)
@@ -125,6 +134,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 20.34
+stream_apex_position_ration = 0.87
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea4"]
 polygon = PackedVector2Array(254.5, -3, 205.5, 28, 211.5, 405, -4.49941, 416, -4.49941, -3)
@@ -134,6 +145,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 13.325
+stream_apex_position_ration = 0.76
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea5"]
 polygon = PackedVector2Array(547, 454.796, 550.5, -4, 782.499, -2, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
@@ -253,6 +266,8 @@ sprite_frames = ExtResource("6_mnvw1")
 animation = &"gun_gather"
 script = ExtResource("8_l4015")
 watergun_movement_speed = 0.05
+water_tank_tops = Array[float]([0.21, 0.22, 0.28, 0.32, 0.34])
+water_tank_bottoms = Array[float]([0.61, 0.69, 0.82, 0.93, 0.95])
 
 [node name="MarkerFront" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
 position = Vector2(70.2156, -159.581)
@@ -268,6 +283,11 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGun/WaterGunAnimation/Area2D"]
 position = Vector2(70.8899, -64.8567)
 shape = SubResource("CapsuleShape2D_u34kr")
+
+[node name="WaterTankAnimation" type="AnimatedSprite2D" parent="WaterGun/WaterGunAnimation"]
+material = ExtResource("10_6syqy")
+sprite_frames = ExtResource("10_o6c3g")
+animation = &"gun_gather"
 
 [node name="Path2D" type="Path2D" parent="WaterGun"]
 position = Vector2(16, -16)

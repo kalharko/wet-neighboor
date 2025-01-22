@@ -7,8 +7,6 @@ class_name WaterGun
 # @respo: record tank
 
 
-
-
 # Signals
 signal water_tank_empty() #towards main
 
@@ -50,13 +48,16 @@ func _physics_process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var depth_area: DepthArea = background.get_background_depth_area(mouse_position)
 	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
+	
+	# Set the watergun's tank level
+	animation.set_water_tank_display(float(tank_value) / tank_size)
 
 	# Shoot
 	if state == GunState.SHOOT and Input.is_action_pressed('fire'):
-		shoot(target)
+		shoot(target, depth_area.additional_height_at_stream_apex)
 
 
-func shoot(target: Vector2) -> void:
+func shoot(target: Vector2, additional_travel_time: float) -> void:
 	# update water tank
 	self.tank_value -= shot_cost
 	debug_label_tank.text = 'Tank: ' + str(tank_value)
@@ -71,7 +72,8 @@ func shoot(target: Vector2) -> void:
 	droplet.set_course(
 		marker_front.global_position,
 		target,
-		mouse_position
+		mouse_position,
+		additional_travel_time / 500
 	)	
 
 func _on_area_entered(area: Area2D) -> void:
