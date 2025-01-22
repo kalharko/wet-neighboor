@@ -38,6 +38,7 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 2.885
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea"]
 polygon = PackedVector2Array(-4.49941, 414, 210, 404.375, 212, 484.04, 346.5, 452, 363.5, 457, 362.5, 300, 333.5, 285, 331.5, 227, 364.5, 131, 362.5, 72, 450.5, -2, 550.5, -4, 548.5, 347, 548.5, 454, 687.499, 476, 695.5, 158, 743.499, 157, 744, 31.2609, 777.499, 12, 778.499, -2, 903.499, -5, 904.499, 157, 903.499, 605, -3.49941, 605)
