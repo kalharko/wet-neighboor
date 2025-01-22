@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=14 format=3 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_7b57j"]
 [ext_resource type="Texture2D" uid="uid://cujdrdymjsy6f" path="res://assets/2Dbackground.png" id="2_fpevb"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="4_r13ih"]
 [ext_resource type="Script" path="res://scripts/water_gun.gd" id="5_kmkv8"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="6_mnvw1"]
-[ext_resource type="Script" path="res://scenes/droplet_container.gd" id="7_hn28e"]
+[ext_resource type="Script" path="res://scripts/droplet_container.gd" id="7_hn28e"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="8_l4015"]
+[ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://assets/water_tank_shader.tres" id="10_6syqy"]
+[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/Animations/water_gun_tank.tres" id="10_o6c3g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u34kr"]
 radius = 34.6908
@@ -151,6 +153,8 @@ sprite_frames = ExtResource("6_mnvw1")
 animation = &"gun_gather"
 script = ExtResource("8_l4015")
 watergun_movement_speed = 0.05
+water_tank_tops = Array[float]([0.21, 0.22, 0.28, 0.32, 0.34])
+water_tank_bottoms = Array[float]([0.61, 0.69, 0.82, 0.93, 0.95])
 
 [node name="MarkerFront" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
 position = Vector2(70.2156, -159.581)
@@ -166,6 +170,11 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGun/WaterGunAnimation/Area2D"]
 position = Vector2(70.8899, -64.8567)
 shape = SubResource("CapsuleShape2D_u34kr")
+
+[node name="WaterTankAnimation" type="AnimatedSprite2D" parent="WaterGun/WaterGunAnimation"]
+material = ExtResource("10_6syqy")
+sprite_frames = ExtResource("10_o6c3g")
+animation = &"gun_shoot"
 
 [node name="Path2D" type="Path2D" parent="WaterGun"]
 position = Vector2(16, -16)

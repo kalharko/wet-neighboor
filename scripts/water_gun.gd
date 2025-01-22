@@ -50,6 +50,9 @@ func _physics_process(_delta: float) -> void:
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var depth_area: DepthArea = background.get_background_depth_area(mouse_position)
 	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
+	
+	# Set the watergun's tank level
+	animation.set_water_tank_display(float(tank_value) / tank_size)
 
 	# Shoot
 	if state == GunState.SHOOT and Input.is_action_pressed('fire'):

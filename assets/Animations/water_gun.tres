@@ -29,7 +29,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("10_26c1c")
 }],
-"loop": true,
+"loop": false,
 "name": &"gun_gather",
 "speed": 5.0
 }, {

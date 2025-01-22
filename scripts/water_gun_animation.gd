@@ -10,9 +10,13 @@ class_name WaterGunAnimation
 @onready var path: Path2D = get_node("../Path2D")
 @onready var path_follow: PathFollow2D = get_node("../Path2D/PathFollow2D")
 @onready var path_center: Vector2 = get_node("../Path2D/PathCenter").global_position
+@onready var water_tank_anim: AnimatedSprite2D = get_node("WaterTankAnimation")
 
 # Game design parameters
 @export_range(0, 1, 0.01) var watergun_movement_speed: float = 0.1
+@export var water_tank_tops: Array[float] = []
+@export var water_tank_bottoms: Array[float] = []
+
 
 # Operating variables
 @onready var base_scale_x = scale.x
@@ -55,8 +59,11 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	# set watergun animation frame
 	frame = abs(int((path_follow.progress_ratio - 0.5) * 2 * 4))
 	animation = 'gun_shoot'
+	water_tank_anim.animation = 'gun_shoot'
 	if gun_in_gathering_state:
 		animation = 'gun_gather'
+		water_tank_anim.animation = 'gun_gather'
+	water_tank_anim.frame = frame
 
 	# update gun target depending on the containing area
 	var target: Vector2 = marker_back.global_position + mouse_direction / 2
@@ -75,21 +82,12 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	# update gun rotation
 	rotation += gun_target_angle
 
-	DebugDraw2D.line(
-		marker_back.global_position,
-		marker_front.global_position,)
-	DebugDraw2D.line(
-		marker_back.global_position,
-		mouse_position,)
-	DebugDraw2D.line(
-		marker_front.global_position,
-		target)
-	DebugDraw2D.circle(
-		target,
-		10)
-	if depth_area != null:
-		DebugDraw2D.line(
-			target,
-			target - mouse_direction.rotated(- PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 10)
-
 	return target
+
+
+func set_water_tank_display(tank_percentage: float):
+	assert(tank_percentage >= 0 and tank_percentage <= 1)
+	water_tank_anim.material.set_shader_parameter('percentage', 1 - tank_percentage)
+	water_tank_anim.material.set_shader_parameter('top', water_tank_tops[water_tank_anim.frame])
+	water_tank_anim.material.set_shader_parameter('bottom', water_tank_bottoms[water_tank_anim.frame])
+	
