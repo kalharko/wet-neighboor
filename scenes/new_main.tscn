@@ -47,6 +47,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 9.94
+stream_apex_position_ration = 0.7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
 polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 334.5, 287, 332.5, 227, 365.5, 131, 364, 73.6144, 452.5, -2)
@@ -56,6 +58,7 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 0.18
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
 polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 366.5, 460, 346, 452.779, 211, 485.048)
@@ -65,6 +68,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 20.34
+stream_apex_position_ration = 0.87
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea4"]
 polygon = PackedVector2Array(254.5, -3, 205.5, 28, 211.5, 405, -4.49941, 416, -4.49941, -3)
@@ -74,6 +79,8 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("3_i3iy3")
+additional_height_at_stream_apex = 13.325
+stream_apex_position_ration = 0.76
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea5"]
 polygon = PackedVector2Array(547, 454.796, 550.5, -4, 782.499, -2, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
@@ -174,7 +181,7 @@ shape = SubResource("CapsuleShape2D_u34kr")
 [node name="WaterTankAnimation" type="AnimatedSprite2D" parent="WaterGun/WaterGunAnimation"]
 material = ExtResource("10_6syqy")
 sprite_frames = ExtResource("10_o6c3g")
-animation = &"gun_shoot"
+animation = &"gun_gather"
 
 [node name="Path2D" type="Path2D" parent="WaterGun"]
 position = Vector2(16, -16)

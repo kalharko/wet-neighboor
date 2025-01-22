@@ -53,9 +53,6 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	global_position = path_follow.global_position
 	global_position -= (marker_back.global_position - global_position)
 
-	DebugDraw2D.line(path_center, mouse_position)
-	DebugDraw2D.line(path_center, path_follow.global_position)
-
 	# set watergun animation frame
 	frame = abs(int((path_follow.progress_ratio - 0.5) * 2 * 4))
 	animation = 'gun_shoot'
@@ -88,6 +85,10 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 func set_water_tank_display(tank_percentage: float):
 	assert(tank_percentage >= 0 and tank_percentage <= 1)
 	water_tank_anim.material.set_shader_parameter('percentage', 1 - tank_percentage)
-	water_tank_anim.material.set_shader_parameter('top', water_tank_tops[water_tank_anim.frame])
-	water_tank_anim.material.set_shader_parameter('bottom', water_tank_bottoms[water_tank_anim.frame])
-	
+	if water_tank_anim.animation == "gun_shoot":
+		water_tank_anim.material.set_shader_parameter('top', water_tank_tops[water_tank_anim.frame])
+		water_tank_anim.material.set_shader_parameter('bottom', water_tank_bottoms[water_tank_anim.frame])
+	else:
+		water_tank_anim.material.set_shader_parameter('top', 0.02)
+		water_tank_anim.material.set_shader_parameter('bottom', 0.36)
+		

@@ -57,11 +57,11 @@ func _physics_process(_delta: float) -> void:
 	self.rotation = normal.angle() + PI
 
 
-func set_course(start: Vector2, middle: Vector2, end: Vector2) -> void:
+func set_course(start: Vector2, middle: Vector2, end: Vector2, additional_travel_time: float) -> void:
 	visible = true
 	position = start
 	current_step = 0
-	nb_step = int(self._quadratic_bezier_length(start, middle, end) * travel_time)
+	nb_step = int(self._quadratic_bezier_length(start, middle, end) * (travel_time + additional_travel_time))
 
 	curve_start = start
 	curve_middle = middle
