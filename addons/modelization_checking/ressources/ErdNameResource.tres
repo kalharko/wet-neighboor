@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="ErdNameResource" load_steps=2 format=3 uid="uid://l1wi5v4aqdyu"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ressources/erd_name_resource.gd" id="1_xbx2c"]
+
+[resource]
+script = ExtResource("1_xbx2c")

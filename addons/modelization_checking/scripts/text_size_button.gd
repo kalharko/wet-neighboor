@@ -7,9 +7,9 @@ class_name TextSizeButton
 
 # References
 @onready var label_settings: Array[LabelSettings] = [
-	preload("res://addons/modelization_checking/h1_label_settings.tres"),
-	preload("res://addons/modelization_checking/h2_label_settings.tres"),
-	preload("res://addons/modelization_checking/p_label_settings.tres")
+	preload("res://addons/modelization_checking/ressources/h1_label_settings.tres"),
+	preload("res://addons/modelization_checking/ressources/h2_label_settings.tres"),
+	preload("res://addons/modelization_checking/ressources/p_label_settings.tres")
 ]
 
 # Game design parameter

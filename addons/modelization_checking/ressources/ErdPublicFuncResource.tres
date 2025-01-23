@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://beuvc0nktfw7h"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ressources/erd_public_func_resource.gd" id="1_k78cy"]
+
+[resource]
+script = ExtResource("1_k78cy")

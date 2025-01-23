@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d18bafn6qbf2x"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ressources/erd_relation_resource.gd" id="1_jp50h"]
+
+[resource]
+script = ExtResource("1_jp50h")

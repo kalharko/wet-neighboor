@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cgauqwn4skhxq"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ressources/erd_responsability_resource.gd" id="1_nnn6u"]
+
+[resource]
+script = ExtResource("1_nnn6u")

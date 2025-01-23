@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d283remhxuve5"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/scripts/erd_cell_line.gd" id="1_0p2xa"]
+[ext_resource type="Theme" uid="uid://cr7b1bwuiskfc" path="res://addons/modelization_checking/ressources/erd_cell_line_theme.tres" id="1_f3gr1"]
+
+[node name="ErdCellLine" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tooltip_text = "default tool tip"
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_f3gr1")
+theme_override_constants/margin_left = 5
+script = ExtResource("1_0p2xa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 1
+text = " default cell line"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

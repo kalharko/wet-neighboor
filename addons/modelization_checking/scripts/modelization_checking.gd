@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 
-const MainPanel = preload("res://addons/modelization_checking/modelization_checking.tscn")
+const MainPanel = preload("res://addons/modelization_checking/scenes/modelization_checking.tscn")
 
 var main_panel_instance
 
@@ -15,6 +15,7 @@ func _enter_tree():
 	_make_visible(false)
 	
 	scene_changed.connect(main_panel_instance._on_scene_changed)
+	main_panel_instance.initial_scene_load()
 
 
 func _exit_tree():

@@ -1,0 +1,180 @@
+[gd_scene load_steps=6 format=3 uid="uid://4jbc3oys6bmd"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/scripts/modelization_checker.gd" id="1_2arls"]
+[ext_resource type="Script" path="res://addons/modelization_checking/scripts/text_size_button.gd" id="2_rrota"]
+[ext_resource type="Script" path="res://addons/modelization_checking/scripts/erd_table.gd" id="3_1cgga"]
+[ext_resource type="LabelSettings" uid="uid://b6uyc8t43h4xv" path="res://addons/modelization_checking/ressources/h1_label_settings.tres" id="4_kcxof"]
+[ext_resource type="Script" path="res://addons/modelization_checking/scripts/erd_collumn.gd" id="5_30swh"]
+
+[node name="ModelizationChecking" type="Control"]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_2arls")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129412, 0.14902, 0.180392, 1)
+
+[node name="UpdateButton" type="Button" parent="."]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 41.0
+text = "Update ERD"
+
+[node name="ScenePathLineEdit" type="LineEdit" parent="."]
+layout_mode = 0
+offset_left = 147.0
+offset_top = 10.0
+offset_right = 761.0
+offset_bottom = 41.0
+text = "res://scenes/new_main.tscn"
+placeholder_text = "res://scene/path"
+
+[node name="TextSize+" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 10.0
+offset_right = -46.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = " + "
+script = ExtResource("2_rrota")
+
+[node name="TextSize-" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = 41.0
+grow_horizontal = 0
+text = " - "
+script = ExtResource("2_rrota")
+text_label_settings_size_delta = -1
+
+[node name="ErdTable" type="HSplitContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.0883333
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_1cgga")
+metadata/_edit_use_anchors_ = true
+
+[node name="Column1" type="VBoxContainer" parent="ErdTable"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_30swh")
+
+[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/Column1"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ErdTable/Column1/HeaderContainer"]
+layout_mode = 2
+text = "Entity"
+label_settings = ExtResource("4_kcxof")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Column2" type="VBoxContainer" parent="ErdTable/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_30swh")
+
+[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/Column2"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ErdTable/HSplitContainer/Column2/HeaderContainer"]
+layout_mode = 2
+text = "Responsability"
+label_settings = ExtResource("4_kcxof")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Column3" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_30swh")
+
+[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/Column3"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/Column3/HeaderContainer"]
+layout_mode = 2
+text = "Relation"
+label_settings = ExtResource("4_kcxof")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable/HSplitContainer/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Column4" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_30swh")
+
+[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4/HeaderContainer"]
+layout_mode = 2
+text = "GD Parameters"
+label_settings = ExtResource("4_kcxof")
+
+[node name="Column5" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("5_30swh")
+
+[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5/HeaderContainer"]
+layout_mode = 2
+text = "Public Functions"
+label_settings = ExtResource("4_kcxof")
+
+[connection signal="pressed" from="UpdateButton" to="." method="update_modelization"]
+[connection signal="pressed" from="TextSize+" to="TextSize+" method="_on_pressed"]
+[connection signal="pressed" from="TextSize-" to="TextSize-" method="_on_pressed"]

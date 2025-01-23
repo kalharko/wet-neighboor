@@ -1,0 +1,6 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ck4h53wcvjovq"]
+
+[ext_resource type="Script" path="res://addons/modelization_checking/ressources/erd_resource.gd" id="1_kwajv"]
+
+[resource]
+script = ExtResource("1_kwajv")
