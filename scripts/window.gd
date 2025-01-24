@@ -18,11 +18,11 @@ var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_dropl
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Game design parameters
-@export var opening_animation_delay: float = 1
-@export var closing_animation_delay: float = 1
-@export var open_time: float = rng.randf_range(5.0, 10.0)
-@export var close_time: float = rng.randf_range(5.0, 10.0)
-@export var droplet_spawn_probability: float = 0.5
+@export var opening_animation_delay: float = 1.5
+@export var closing_animation_delay: float = 1.5
+@export var open_time: float = rng.randf_range(3.0, 20.0)
+@export var close_time: float = rng.randf_range(5.0, 20.0)
+@export var droplet_spawn_probability: float = 0.6
 
 # Operating variables
 var is_window_open: bool = false

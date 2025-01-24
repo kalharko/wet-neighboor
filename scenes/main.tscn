@@ -61,7 +61,7 @@ shader_parameter/inset = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lal78"]
 shader = ExtResource("6_ujjq2")
-shader_parameter/fov = 90.0
+shader_parameter/fov = 117.922
 shader_parameter/cull_back = true
 shader_parameter/y_rot = 0.0
 shader_parameter/x_rot = 16.003
@@ -72,7 +72,7 @@ shader_parameter/inset = 0.0
 shader = ExtResource("6_ujjq2")
 shader_parameter/fov = 90.0
 shader_parameter/cull_back = true
-shader_parameter/y_rot = -47.403
+shader_parameter/y_rot = -65.05
 shader_parameter/x_rot = 0.0
 shader_parameter/z_rot = 0.0
 shader_parameter/inset = 0.0
@@ -154,101 +154,117 @@ position = Vector2(-1806.02, -1200)
 scale = Vector2(4.01337, 4)
 
 [node name="window 2" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(644.001, 224)
-scale = Vector2(0.0869762, 0.162008)
+position = Vector2(632.001, 288)
+scale = Vector2(0.0790437, 0.086004)
 
 [node name="window 3" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(646.001, 309)
-scale = Vector2(0.121589, 0.214089)
+position = Vector2(632.001, 369.443)
+scale = Vector2(0.0626876, 0.0718556)
 
 [node name="window2" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(642.001, 153)
-scale = Vector2(0.107476, 0.134337)
+position = Vector2(630.001, 156)
+scale = Vector2(0.0630719, 0.0788352)
+
+[node name="window23" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
+position = Vector2(709.001, 137)
+scale = Vector2(0.0359078, 0.0754519)
+
+[node name="window24" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
+position = Vector2(759.001, 76)
+scale = Vector2(0.0461168, 0.0816667)
 
 [node name="window3" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(723.001, 166)
-scale = Vector2(0.124313, 0.180201)
+position = Vector2(705.924, 74.0075)
+scale = Vector2(0.0506069, 0.0833585)
 
 [node name="window16" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
-position = Vector2(28.1549, 129.784)
-scale = Vector2(0.27042, 0.243916)
+position = Vector2(205.001, 523)
+scale = Vector2(0.157965, 0.142483)
 
 [node name="window17" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
-position = Vector2(89.0006, 132)
-scale = Vector2(0.253373, 0.204254)
+position = Vector2(444.001, 475)
+scale = Vector2(0.0982392, 0.101063)
 
 [node name="window18" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
-position = Vector2(26.0203, 36.6381)
-scale = Vector2(0.223225, 0.224254)
+position = Vector2(66.0006, 52)
+scale = Vector2(0.0948287, 0.0952659)
 
 [node name="window4" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
-position = Vector2(84.0006, 44)
-scale = Vector2(0.209153, 0.187789)
+position = Vector2(87.0006, 116)
+scale = Vector2(0.102746, 0.0967368)
 
 [node name="window5" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_atgeo")
-position = Vector2(160.001, 270)
-scale = Vector2(0.211777, 0.242101)
+position = Vector2(149.001, 276)
+scale = Vector2(0.11874, 0.159013)
 
 [node name="window6" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(840.001, 267)
-scale = Vector2(0.155477, 0.232938)
+position = Vector2(840.001, 250)
+scale = Vector2(0.106761, 0.159951)
 
 [node name="window7" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_ob38q")
-position = Vector2(343.001, 456)
-scale = Vector2(0.122594, 0.195891)
+position = Vector2(298.001, 474)
+scale = Vector2(0.0890746, 0.119612)
 
 [node name="window8" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_w4avu")
-position = Vector2(83.9178, 266.305)
-scale = Vector2(0.197498, 0.282033)
+position = Vector2(85.0006, 277)
+scale = Vector2(0.123614, 0.176525)
 
 [node name="window9" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(765.001, 268)
-scale = Vector2(0.1286, 0.182061)
+position = Vector2(768.001, 252)
+scale = Vector2(0.108196, 0.153174)
 
 [node name="window10" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(817.001, 448)
-scale = Vector2(0.265472, 0.223831)
+position = Vector2(830.001, 440)
+scale = Vector2(0.158433, 0.133582)
 
 [node name="window19" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
-position = Vector2(488.001, 155)
-scale = Vector2(0.155593, 0.193641)
+position = Vector2(491.001, 119)
+scale = Vector2(0.0938667, 0.11682)
 
 [node name="window20" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
-position = Vector2(488.001, 343)
-scale = Vector2(0.184893, 0.184292)
+position = Vector2(583.001, 422)
+scale = Vector2(0.0407446, 0.07887)
 
 [node name="window11" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
-position = Vector2(484.001, 249)
-scale = Vector2(0.219711, 0.175394)
+position = Vector2(492.001, 271)
+scale = Vector2(0.116075, 0.127936)
 
 [node name="window12" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(353.001, 271)
-scale = Vector2(0.18173, 0.137086)
+position = Vector2(340.001, 278)
+scale = Vector2(0.138643, 0.116876)
 
 [node name="window15" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_lal78")
-position = Vector2(287.001, 363)
+position = Vector2(332.001, 360)
 rotation = -0.179769
-scale = Vector2(0.219071, 0.173231)
+scale = Vector2(0.099223, 0.0784609)
+
+[node name="window22" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
+position = Vector2(233.001, 155)
+scale = Vector2(0.0742021, 0.119458)
+
+[node name="window21" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
+position = Vector2(176.001, 155)
+scale = Vector2(0.0731834, 0.115)
 
 [node name="window13" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
-position = Vector2(244.001, 157)
-scale = Vector2(0.223538, 0.13)
+position = Vector2(190.001, 71)
+scale = Vector2(0.0797732, 0.1)
 
 [node name="window14" parent="Background/WindowContainer" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_05irn")
-position = Vector2(797.579, 144.358)
-scale = Vector2(0.0907646, 0.102384)
+position = Vector2(816.001, 141)
+scale = Vector2(0.0475, 0.0608334)
 
 [node name="NeighbourDropletContainer" type="Node" parent="Background"]
 

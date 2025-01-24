@@ -23,7 +23,7 @@ signal water_tank_empty() # towards main
 @export var tank_size: int = 100
 @export var shot_cost: int = 1
 @export var mode_switch_animation_time: float = 1
-@export var droplet_fill_tank = 6
+@export var droplet_fill_tank = 12
 
 # Operating variables
 var free_droplets: Array[Droplet] = []

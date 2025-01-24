@@ -15,9 +15,9 @@ signal start_game()  #towards window
 @onready var start_window: NeighbourWindow = get_node("Background/WindowContainer/window11")
 
 # Game design parameters
-@export var initial_game_speed: float = 1
+@export var initial_game_speed: float = 0.75
 @export var game_speed_multiplier: float = 1.1
-@export var game_speed_increase_interval: float = 10
+@export var game_speed_increase_interval: float = 15
 
 # Operating variables
 var score: int = 0
