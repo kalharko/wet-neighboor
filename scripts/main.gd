@@ -11,6 +11,8 @@ signal start_game()  #towards window
 # References
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
 @onready var game_over_scene: PackedScene = load("res://scenes/game_over.tscn")
+@onready var speech_bubble: Sprite2D = get_node("SpeechBubble")
+@onready var start_window: NeighbourWindow = get_node("Background/WindowContainer/window11")
 
 # Game design parameters
 @export var initial_game_speed: float = 1
@@ -20,6 +22,7 @@ signal start_game()  #towards window
 # Operating variables
 var score: int = 0
 var timer: Timer = Timer.new()
+var game_started: bool = false
 
 
 func _ready() -> void:
@@ -37,12 +40,18 @@ func _ready() -> void:
 	# Initial state
 	timer.wait_time = game_speed_increase_interval
 	timer.start()
+	start_window.is_window_open = true
+	start_window.play("window opening")
 
 
 func _on_window_hit() -> void:
 	# @respo: keep score
 	score += 1
 	debug_score_label.text = 'Score: ' + str(score)
+	if not game_started:
+		game_started = true
+		start_game.emit()
+		speech_bubble.visible = false
 
 
 func _on_speed_up_timer()->void: 

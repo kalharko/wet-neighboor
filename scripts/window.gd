@@ -1,10 +1,10 @@
 extends AnimatedSprite2D
+class_name NeighbourWindow
 # Responsabilities
 # @respo: open/close
 # @respo: spawn NeighbourDroplet
 # @respo: get hit
 # @respo: increase score
-
 
 
 # Signals
@@ -36,20 +36,14 @@ func _ready() -> void:
 	# Subscribes to signals
 	get_node('/root/Main/WaterGun/DropletContainer').new_droplet_spawned.connect(_on_new_droplet_spawned)
 	get_node('/root/Main').game_speed_up.connect(_on_game_speed_up)
+	get_node('/root/Main').start_game.connect(_on_start_game)
 
 	# Setup
 	timer.one_shot = true
 	timer.connect("timeout",Callable(self, "_on_timer_timeout"))
 	add_child(timer)
 
-	# Initial state
-	timer.wait_time = current_open_time
-	timer.start()
 
-#func _start_initial_timer()->void:
-	#timer.wait_time = open_time
-	#timer.start()
-	
 func open_window() -> void:
 	is_window_open = true
 	self.play("window opening")
@@ -89,7 +83,11 @@ func _on_droplet_landed(droplet: Droplet) -> void:
 	if rng.randf() <= droplet_spawn_probability:
 		_spawn_droplet()
 
-func _on_game_speed_up(multiplier: float)-> void:
+func _on_game_speed_up(multiplier: float) -> void:
 	current_open_time = max(1, current_open_time/multiplier)
 	current_close_time = max(1, current_close_time/multiplier)
-	
+
+
+func _on_start_game() -> void:
+	timer.wait_time = current_open_time
+	timer.start()
