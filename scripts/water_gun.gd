@@ -16,7 +16,7 @@ signal water_tank_empty() #towards main
 @onready var droplet_container: DropletContainer = get_node("DropletContainer")
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 @onready var marker_front: Marker2D = get_node('WaterGunAnimation/MarkerFront')
-@onready var debug_label_tank: Label = get_node('/root/NewMain/DebugLabelTank')
+@onready var debug_label_tank: Label = get_node('/root/Main/DebugLabelTank')
 
 # Game design parameters
 @export_group("Water Tank")

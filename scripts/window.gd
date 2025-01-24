@@ -34,8 +34,8 @@ var current_close_time: float = close_time
 
 func _ready() -> void:
 	# Subscribes to signals
-	get_node('/root/NewMain/WaterGun/DropletContainer').new_droplet_spawned.connect(_on_new_droplet_spawned)
-	get_node('/root/NewMain').game_speed_up.connect(_on_game_speed_up)
+	get_node('/root/Main/WaterGun/DropletContainer').new_droplet_spawned.connect(_on_new_droplet_spawned)
+	get_node('/root/Main').game_speed_up.connect(_on_game_speed_up)
 
 	# Setup
 	timer.one_shot = true

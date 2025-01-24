@@ -1,0 +1,178 @@
+[gd_scene load_steps=8 format=3 uid="uid://dgkvr0137aq7g"]
+
+[ext_resource type="Texture2D" uid="uid://bkclbktxdpyei" path="res://assets/bg_test_2.png" id="1_0yg5l"]
+[ext_resource type="Script" path="res://scripts/neighbour_container.gd" id="2_yrwbx"]
+[ext_resource type="Texture2D" uid="uid://bd6wq23g5ixdt" path="res://assets/angry_neighboor.png" id="3_blxlw"]
+[ext_resource type="Script" path="res://scripts/fade_to_black.gd" id="4_5flbb"]
+[ext_resource type="Script" path="res://scripts/replay_button.gd" id="5_mdohm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wwfhe"]
+font_size = 96
+
+[sub_resource type="LabelSettings" id="LabelSettings_n5dfy"]
+font_size = 35
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.000244141
+offset_top = -6.10352e-05
+offset_right = 2700.0
+offset_bottom = 1800.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.249804, 0.249804)
+texture = ExtResource("1_0yg5l")
+
+[node name="NeighbourContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_yrwbx")
+
+[node name="AngryNeighboor7" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(677, 398)
+scale = Vector2(0.422348, 0.422348)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor8" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(655, 406)
+scale = Vector2(0.422348, 0.422348)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor9" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(615, 401)
+scale = Vector2(0.422348, 0.422348)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor10" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(632, 419)
+scale = Vector2(0.422348, 0.422348)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor11" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(583, 410)
+scale = Vector2(0.545419, 0.545419)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor12" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(519, 417)
+scale = Vector2(0.545419, 0.545419)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor13" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(475, 440)
+scale = Vector2(0.694228, 0.694228)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor14" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(662, 459)
+scale = Vector2(0.694228, 0.694228)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor15" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(377, 447)
+scale = Vector2(0.694228, 0.694228)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor4" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(422, 492)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor5" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(611, 472)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor6" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(547, 451)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(502, 510)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor2" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(574, 519)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor16" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(343, 536)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="AngryNeighboor3" type="Sprite2D" parent="NeighbourContainer"]
+position = Vector2(455, 523)
+scale = Vector2(0.838803, 0.838803)
+texture = ExtResource("3_blxlw")
+
+[node name="FadeToBlack" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("4_5flbb")
+
+[node name="GameOver" type="Label" parent="FadeToBlack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -457.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_wwfhe")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="FlavorText" type="Label" parent="FadeToBlack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 119.0
+offset_bottom = -428.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You annoyed score neighbours"
+label_settings = SubResource("LabelSettings_n5dfy")
+horizontal_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="FadeToBlack"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = -24.0
+offset_right = 75.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Again"
+script = ExtResource("5_mdohm")
+
+[connection signal="pressed" from="FadeToBlack/ReplayButton" to="FadeToBlack/ReplayButton" method="_on_pressed"]
