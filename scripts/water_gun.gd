@@ -8,7 +8,7 @@ class_name WaterGun
 
 
 # Signals
-signal water_tank_empty() #towards main
+signal water_tank_empty() # towards main
 
 # References
 @onready var background: Background = get_node("../Background")
@@ -74,13 +74,13 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
 		target,
 		mouse_position,
 		additional_travel_time / 500
-	)	
+	)
 
 func _on_area_entered(area: Area2D) -> void:
 	if state != GunState.GATHER:
 		return
 	
-	if area.name != 'NeighboorDropletArea':
+	if area.name != 'NeighbourDropletArea':
 		return
 
 	area.get_parent().free()

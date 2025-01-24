@@ -43,82 +43,82 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_yrwbx")
 
-[node name="AngryNeighboor7" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour7" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(677, 398)
 scale = Vector2(0.422348, 0.422348)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor8" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour8" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(655, 406)
 scale = Vector2(0.422348, 0.422348)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor9" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour9" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(615, 401)
 scale = Vector2(0.422348, 0.422348)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor10" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour10" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(632, 419)
 scale = Vector2(0.422348, 0.422348)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor11" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour11" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(583, 410)
 scale = Vector2(0.545419, 0.545419)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor12" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour12" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(519, 417)
 scale = Vector2(0.545419, 0.545419)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor13" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour13" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(475, 440)
 scale = Vector2(0.694228, 0.694228)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor14" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour14" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(662, 459)
 scale = Vector2(0.694228, 0.694228)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor15" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour15" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(377, 447)
 scale = Vector2(0.694228, 0.694228)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor4" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour4" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(422, 492)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor5" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour5" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(611, 472)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor6" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour6" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(547, 451)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(502, 510)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor2" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour2" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(574, 519)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor16" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour16" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(343, 536)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")
 
-[node name="AngryNeighboor3" type="Sprite2D" parent="NeighbourContainer"]
+[node name="AngryNeighbour3" type="Sprite2D" parent="NeighbourContainer"]
 position = Vector2(455, 523)
 scale = Vector2(0.838803, 0.838803)
 texture = ExtResource("3_blxlw")

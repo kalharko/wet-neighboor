@@ -250,7 +250,7 @@ material = SubResource("ShaderMaterial_05irn")
 position = Vector2(797.579, 144.358)
 scale = Vector2(0.0907646, 0.102384)
 
-[node name="NeighboorDropletContainer" type="Node" parent="Background"]
+[node name="NeighbourDropletContainer" type="Node" parent="Background"]
 
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("7_j6yyw")
