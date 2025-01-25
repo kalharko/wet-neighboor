@@ -7,8 +7,7 @@
 radius = 46.9251
 
 [node name="NeighbourDroplet" type="Sprite2D"]
-position = Vector2(2.596, 9.5)
-scale = Vector2(0.0874375, 0.273438)
+scale = Vector2(0.245081, 0.245081)
 texture = ExtResource("1_owcq1")
 script = ExtResource("2_i21h1")
 

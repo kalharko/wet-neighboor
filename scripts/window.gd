@@ -19,6 +19,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Game design parameters
 @export var droplet_spawn_probability: float = 0.6
+@export var neighbour_droplet_target: Vector2 = Vector2(450, 610)
 
 # Operating variables
 var is_window_open: bool = false
@@ -65,7 +66,15 @@ func _on_timer_timeout() -> void:
 
 func _spawn_droplet() -> void:
 	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
-	new_droplet.set_course(position)
+	var middle_pos: Vector2 = Vector2(
+		position.x + (neighbour_droplet_target.x - position.x) / 2,
+		position.y - (neighbour_droplet_target.y - position.y) / 2
+	)
+	new_droplet.set_course(
+		position,
+		middle_pos,
+		neighbour_droplet_target
+		)
 	neighbour_droplet_container.add_child(new_droplet) # goutte dans la hierarchy enfant de fenetre
 
 
