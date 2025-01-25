@@ -1,21 +1,22 @@
 extends AnimatedSprite2D
 class_name WaterGunAnimation
-# Responsabilities
-# @respo: animate gun movement
 
 
 # References
 @onready var marker_front: Marker2D = get_node('MarkerFront')
 @onready var marker_back: Marker2D = get_node('MarkerBack')
-@onready var path: Path2D = get_node("../Path2D")
-@onready var path_follow: PathFollow2D = get_node("../Path2D/PathFollow2D")
-@onready var path_center: Vector2 = get_node("../Path2D/PathCenter").global_position
+@onready var shooting_path: Path2D = get_node("../ShootingPath")
+@onready var shooting_path_follow: PathFollow2D = get_node("../ShootingPath/PathFollow2D")
+@onready var path_center: Vector2 = get_node("../ShootingPath/PathCenter").global_position
 @onready var water_tank_anim: AnimatedSprite2D = get_node("WaterTankAnimation")
 
 # Game design parameters
-@export_range(0, 1, 0.01) var watergun_movement_speed: float = 0.1
+@export_range(0, 1, 0.01) var shooting_movement_speed: float = 0.1
 @export var water_tank_tops: Array[float] = []
 @export var water_tank_bottoms: Array[float] = []
+@export var gathering_position_y: float = 565
+@export var gathering_movement_speed: float = 0.09
+@export var gathering_rotation_speed: float = 0.08
 
 
 # Operating variables
@@ -27,13 +28,14 @@ func _ready() -> void:
 	pause()
 
 
-func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) -> Vector2:
+func set_shooting_position_rotation(depth_area: DepthArea) -> Vector2:
+	# @respo: animate gun movement
 	# get mouse position, gun direction and mouse direction
 	var mouse_position: Vector2 = get_global_mouse_position()
 	var gun_direction: Vector2 = marker_front.global_position - marker_back.global_position
 	var mouse_direction: Vector2 = mouse_position - marker_back.global_position
 
-	# set watergun position allong it's path
+	# set watergun position allong it's shooting_path
 	var mouse_path_center_direction: Vector2 = mouse_position - path_center
 	var angle: float = Vector2.UP.angle_to(mouse_path_center_direction)
 	var new_progress_ratio: float = 0
@@ -41,25 +43,19 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 		scale.x = -base_scale_x
 		angle = clamp(angle, 0, PI / 2)
 		new_progress_ratio = 0.5 - angle / PI
-		if gun_in_gathering_state:
-			new_progress_ratio += 2 * angle / PI
 	elif angle < 0:
 		scale.x = base_scale_x
 		angle = clamp(angle, -PI / 2, 0)
 		new_progress_ratio = 0.5 - angle / PI
-		if gun_in_gathering_state:
-			new_progress_ratio += 2 * angle / PI
-	path_follow.progress_ratio = lerp(path_follow.progress_ratio, new_progress_ratio, 0.2)
-	global_position = path_follow.global_position
+	shooting_path_follow.progress_ratio = lerp(shooting_path_follow.progress_ratio, new_progress_ratio, shooting_movement_speed)
+	global_position = shooting_path_follow.global_position
 	global_position -= (marker_back.global_position - global_position)
+		
 
 	# set watergun animation frame
-	frame = abs(int((path_follow.progress_ratio - 0.5) * 2 * 4))
+	frame = abs(int((shooting_path_follow.progress_ratio - 0.5) * 2 * 4))
 	animation = 'gun_shoot'
 	water_tank_anim.animation = 'gun_shoot'
-	if gun_in_gathering_state:
-		animation = 'gun_gather'
-		water_tank_anim.animation = 'gun_gather'
 	water_tank_anim.frame = frame
 
 	# update gun target depending on the containing area
@@ -82,6 +78,26 @@ func set_position_rotation(depth_area: DepthArea, gun_in_gathering_state: bool) 
 	return target
 
 
+func set_gathering_position_rotation() -> void:
+	# @respo: animate gun movement
+	var mouse_position: Vector2 = get_global_mouse_position()
+
+	# set position
+	global_position = Vector2(
+		lerp(global_position.x, mouse_position.x, gathering_movement_speed),
+		lerp(global_position.y, gathering_position_y, gathering_movement_speed)
+	)
+
+	# set rotation
+	rotation = lerp_angle(rotation, PI, gathering_rotation_speed)
+
+	# set animation
+	animation = 'gun_shoot'
+	frame = 0
+	water_tank_anim.animation = 'gun_shoot'
+	water_tank_anim.frame = 0
+
+
 func set_water_tank_display(tank_percentage: float):
 	assert(tank_percentage >= 0 and tank_percentage <= 1)
 	water_tank_anim.material.set_shader_parameter('percentage', 1 - tank_percentage)
@@ -91,4 +107,3 @@ func set_water_tank_display(tank_percentage: float):
 	else:
 		water_tank_anim.material.set_shader_parameter('top', 0.02)
 		water_tank_anim.material.set_shader_parameter('bottom', 0.36)
-		

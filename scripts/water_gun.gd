@@ -43,11 +43,15 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("gather"):
 		state = GunState.GATHER
 
-	# Set the watergun's position and rotation and get target
+	# Set the watergun's position and rotation
 	var target: Vector2 = Vector2.ZERO
-	var mouse_position: Vector2 = get_global_mouse_position()
-	var depth_area: DepthArea = background.get_background_depth_area(mouse_position)
-	target = animation.set_position_rotation(depth_area, state == GunState.GATHER)
+	var depth_area: DepthArea = DepthArea.new()
+	if state == GunState.GATHER:
+		animation.set_gathering_position_rotation()
+	else:
+		var mouse_position: Vector2 = get_global_mouse_position()
+		depth_area = background.get_background_depth_area(mouse_position)
+		target = animation.set_shooting_position_rotation(depth_area)
 	
 	# Set the watergun's tank level
 	animation.set_water_tank_display(float(tank_value) / tank_size)

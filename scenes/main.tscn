@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
-[ext_resource type="Material" path="res://assets/water_tank_shader.tres" id="11_c0nnu"]
-[ext_resource type="SpriteFrames" path="res://assets/Animations/water_gun_tank.tres" id="12_ncs6r"]
+[ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://assets/water_tank_shader.tres" id="11_c0nnu"]
+[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/Animations/water_gun_tank.tres" id="12_ncs6r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pds48"]
 shader = ExtResource("6_ujjq2")
@@ -278,9 +278,8 @@ script = ExtResource("8_kahnw")
 position = Vector2(779, 589)
 scale = Vector2(0.663, 0.663)
 sprite_frames = ExtResource("9_rtgbo")
-animation = &"gun_gather"
+animation = &"gun_shoot"
 script = ExtResource("10_4wn0a")
-watergun_movement_speed = 0.05
 water_tank_tops = Array[float]([0.21, 0.22, 0.28, 0.32, 0.34])
 water_tank_bottoms = Array[float]([0.61, 0.69, 0.82, 0.93, 0.0])
 
@@ -296,7 +295,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGun/WaterGunAnimation/Area2D"]
-position = Vector2(70.8899, -64.8567)
+position = Vector2(61.8401, 69.3816)
+rotation = 0.0759708
 shape = SubResource("CapsuleShape2D_u34kr")
 
 [node name="WaterTankAnimation" type="AnimatedSprite2D" parent="WaterGun/WaterGunAnimation"]
@@ -304,17 +304,17 @@ material = ExtResource("11_c0nnu")
 sprite_frames = ExtResource("12_ncs6r")
 animation = &"gun_gather"
 
-[node name="Path2D" type="Path2D" parent="WaterGun"]
+[node name="ShootingPath" type="Path2D" parent="WaterGun"]
 position = Vector2(16, -16)
 scale = Vector2(0.909404, 1.7002)
 curve = SubResource("Curve2D_sa7ub")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="WaterGun/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="WaterGun/ShootingPath"]
 position = Vector2(580.931, 364.218)
 rotation = -0.0323989
 progress = 663.631
 
-[node name="PathCenter" type="Marker2D" parent="WaterGun/Path2D"]
+[node name="PathCenter" type="Marker2D" parent="WaterGun/ShootingPath"]
 position = Vector2(449.745, 270.556)
 
 [node name="DebugLabelScore" type="Label" parent="."]

@@ -1,8 +1,5 @@
 extends Sprite2D
 class_name Droplet
-# Responsabilites
-# @respo: moving
-# @respo: land
 
 
 # Signals
@@ -14,6 +11,8 @@ signal droplet_landed(droplet: Droplet) #towards window
 # Game design parameters
 @export var travel_time: float = 1
 @export var bezier_length_computation_precision: float = 0.01
+## The droplet size is multiplied by a value going from 1 -> end_of_travel_size_reduction during it's travel time
+@export_range(0.0, 1, 0.01) var end_of_travel_size_reduction: float = 0.5
 
 # Operating variables
 var nb_step: int = 0
@@ -21,6 +20,7 @@ var current_step: int = 0
 var curve_start: Vector2
 var curve_middle: Vector2
 var curve_end: Vector2
+@onready var initial_size: Vector2 = scale
 
 
 func _ready() -> void:
@@ -28,6 +28,8 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	# @respo: moving
+	# @respo: land
 	if current_step >= nb_step:
 		return
 
@@ -55,6 +57,10 @@ func _physics_process(_delta: float) -> void:
 		t
 	)
 	self.rotation = normal.angle() + PI
+	
+	# set size
+	scale = initial_size * (end_of_travel_size_reduction + (1 - end_of_travel_size_reduction) * (1 - t))
+	
 
 
 func set_course(start: Vector2, middle: Vector2, end: Vector2, additional_travel_time: float) -> void:

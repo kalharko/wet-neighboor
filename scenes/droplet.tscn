@@ -7,7 +7,7 @@
 radius = 54.3772
 
 [node name="Droplet" type="Sprite2D"]
-scale = Vector2(0.128, 0.128)
+scale = Vector2(0.179179, 0.179179)
 texture = ExtResource("1_vn40v")
 script = ExtResource("2_qqmlg")
 travel_time = 0.05
