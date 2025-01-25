@@ -36,6 +36,7 @@ func _ready() -> void:
 	# Subscribe to signals
 	get_node("/root/Main").game_speed_up.connect(_on_game_speed_up)
 	get_node("/root/Main").start_game.connect(_on_game_start)
+	get_node("/root/Main").end_game.connect(_on_end_game)
 
 	# Initial state
 	rnd.randomize()
@@ -51,6 +52,7 @@ func _on_time_timeout() -> void:
 	for window in windows:
 		if not window.is_active:
 			inactive_windows.append(window)
+	print('nb inactive windows' + str(len(windows) - len(inactive_windows)))
 
 	# quit if enough windows are active
 	if len(windows) - len(inactive_windows) >= max_window_active:
@@ -66,6 +68,12 @@ func _on_time_timeout() -> void:
 
 func _on_game_start() -> void:
 	timer.start()
+
+
+func _on_end_game() -> void:
+	timer.stop()
+	for window in windows:
+		window.start_end_game_sequence()
 
 
 func _on_game_speed_up() -> void:

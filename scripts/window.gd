@@ -58,6 +58,13 @@ func activate(opening_delay: float, closing_delay: float) -> void:
 	timer.start()
 
 
+func start_end_game_sequence() -> void:
+	timer.stop()
+	if not is_window_open:
+		is_window_open = true
+		play('window opening')
+
+
 func _on_timer_timeout() -> void:
 	if is_window_open:
 		close_window()

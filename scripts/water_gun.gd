@@ -67,6 +67,7 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
 	debug_label_tank.text = 'Tank: ' + str(tank_value)
 	# check if tank is empty
 	if self.tank_value <= 0:
+		self.tank_value = 0
 		water_tank_empty.emit()
 		return
 

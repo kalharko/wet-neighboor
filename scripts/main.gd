@@ -5,8 +5,9 @@ class_name Main
 
 
 # Signals
-signal game_speed_up(game_speed_multiplier: float)  #towards window
-signal start_game()  #towards window
+signal game_speed_up(game_speed_multiplier: float) # towards window manager
+signal start_game() # towards window manager
+signal end_game() # towards window manager
 
 # References
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
@@ -18,6 +19,7 @@ signal start_game()  #towards window
 @export var initial_game_speed: float = 0.75
 @export var game_speed_multiplier: float = 1.1
 @export var game_speed_increase_interval: float = 15
+@export var water_tank_empty_end_game_delay: float = 3
 
 # Operating variables
 var score: int = 0
@@ -35,7 +37,7 @@ func _ready() -> void:
 	
 	# Setup
 	timer.one_shot = false
-	timer.connect("timeout",Callable(self, "_on_speed_up_timer"))
+	timer.connect("timeout", Callable(self, "_on_speed_up_timer"))
 	add_child(timer)
 
 	# Initial state
@@ -55,12 +57,23 @@ func _on_window_hit() -> void:
 		speech_bubble.visible = false
 
 
-func _on_speed_up_timer()->void: 
+func _on_speed_up_timer() -> void:
 	# @respo: game rythm
-	game_speed_up.emit(game_speed_multiplier)
+	game_speed_up.emit()
 
 
 func _on_water_tank_empty() -> void:
 	# @respo: end game
 	GameDataSingleton.score = score
+	end_game.emit()
+	
+	var timer: Timer = Timer.new()
+	timer.wait_time = water_tank_empty_end_game_delay
+	timer.one_shot = true
+	add_child(timer)
+	timer.connect("timeout", Callable(self, "_on_end_game"))
+	timer.start()
+	
+
+func _on_end_game() -> void:
 	get_tree().change_scene_to_packed(game_over_scene)
