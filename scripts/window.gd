@@ -47,6 +47,7 @@ func open_window() -> void:
 
 func close_window() -> void:
 	is_window_open = false
+	is_active = false
 	self.play("window closing")
 
 
