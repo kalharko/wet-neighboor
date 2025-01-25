@@ -18,43 +18,43 @@ var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_dropl
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Game design parameters
-@export var opening_animation_delay: float = 1.5
-@export var closing_animation_delay: float = 1.5
-@export var open_time: float = rng.randf_range(3.0, 20.0)
-@export var close_time: float = rng.randf_range(5.0, 20.0)
 @export var droplet_spawn_probability: float = 0.6
 
 # Operating variables
 var is_window_open: bool = false
 var timer: Timer = Timer.new()
-# variables utilisées pour adapter le temps d'ouverture/fermerture : de plus en plus rapide
-var current_open_time: float = open_time
-var current_close_time: float = close_time
+var is_active: bool = false
+var time_before_closing: float = 0
 
 
 func _ready() -> void:
 	# Subscribes to signals
 	get_node('/root/Main/WaterGun/DropletContainer').new_droplet_spawned.connect(_on_new_droplet_spawned)
-	get_node('/root/Main').game_speed_up.connect(_on_game_speed_up)
-	get_node('/root/Main').start_game.connect(_on_start_game)
 
 	# Setup
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_timer_timeout"))
-	add_child(timer)
+	add_child(timer, false, Node.INTERNAL_MODE_BACK)
 
 
 func open_window() -> void:
 	is_window_open = true
 	self.play("window opening")
-	timer.wait_time = current_close_time
+	timer.wait_time = time_before_closing
 	timer.start()
+
 
 func close_window() -> void:
 	is_window_open = false
 	self.play("window closing")
-	timer.wait_time = current_open_time
+
+
+func activate(opening_delay: float, closing_delay: float) -> void:
+	is_active = true
+	time_before_closing = closing_delay
+	timer.wait_time = opening_delay
 	timer.start()
+
 
 func _on_timer_timeout() -> void:
 	if is_window_open:
@@ -62,13 +62,16 @@ func _on_timer_timeout() -> void:
 	else:
 		open_window()
 
+
 func _spawn_droplet() -> void:
 	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
 	new_droplet.set_course(position)
 	neighbour_droplet_container.add_child(new_droplet) # goutte dans la hierarchy enfant de fenetre
 
+
 func _on_new_droplet_spawned(droplet: Droplet) -> void:
 	droplet.droplet_landed.connect(_on_droplet_landed)
+
 
 func _on_droplet_landed(droplet: Droplet) -> void:
 	if not is_window_open:
@@ -82,12 +85,3 @@ func _on_droplet_landed(droplet: Droplet) -> void:
 	
 	if rng.randf() <= droplet_spawn_probability:
 		_spawn_droplet()
-
-func _on_game_speed_up(multiplier: float) -> void:
-	current_open_time = max(1, current_open_time / multiplier)
-	current_close_time = max(1, current_close_time / multiplier)
-
-
-func _on_start_game() -> void:
-	timer.wait_time = current_open_time
-	timer.start()

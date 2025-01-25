@@ -12,7 +12,7 @@ signal start_game()  #towards window
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
 @onready var game_over_scene: PackedScene = load("res://scenes/game_over.tscn")
 @onready var speech_bubble: Sprite2D = get_node("SpeechBubble")
-@onready var start_window: NeighbourWindow = get_node("Background/WindowContainer/window11")
+@onready var start_window: NeighbourWindow = get_node("Background/WindowManager/window11")
 
 # Game design parameters
 @export var initial_game_speed: float = 0.75
@@ -27,7 +27,8 @@ var game_started: bool = false
 
 func _ready() -> void:
 	# Subscribes to signals
-	for window in get_node('Background/WindowContainer').get_children():
+	for window in get_node('Background/WindowManager').get_children():
+		assert(window is NeighbourWindow)
 		window.window_hit.connect(_on_window_hit)
 		
 	get_node('WaterGun').water_tank_empty.connect(_on_water_tank_empty)
