@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drhy20bh7jpef"
-path="res://.godot/imported/speech_bubble.png-11586dd372c093728daaea5b050d56c6.ctex"
+uid="uid://b32sjpeqhspnl"
+path="res://.godot/imported/water_bottle.png-c133d2d2344c202cb979192c26db1fc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/speech_bubble.png"
-dest_files=["res://.godot/imported/speech_bubble.png-11586dd372c093728daaea5b050d56c6.ctex"]
+source_file="res://assets/sprites/droplets/water_bottle.png"
+dest_files=["res://.godot/imported/water_bottle.png-c133d2d2344c202cb979192c26db1fc6.ctex"]
 
 [params]
 

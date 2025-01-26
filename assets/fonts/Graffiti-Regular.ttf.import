@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cu1yl8kymx1ir"
-path="res://.godot/imported/Graffiti-Regular.ttf-5eaba4d1cc8558543321fda12de49cda.fontdata"
+path="res://.godot/imported/Graffiti-Regular.ttf-0c909cdd8548fc74c29825abd3c5b9a7.fontdata"
 
 [deps]
 
-source_file="res://assets/Graffiti-Regular.ttf"
-dest_files=["res://.godot/imported/Graffiti-Regular.ttf-5eaba4d1cc8558543321fda12de49cda.fontdata"]
+source_file="res://assets/fonts/Graffiti-Regular.ttf"
+dest_files=["res://.godot/imported/Graffiti-Regular.ttf-0c909cdd8548fc74c29825abd3c5b9a7.fontdata"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4pleianjepfj"
-path="res://.godot/imported/water_tank_0.png-324b0dcc424bb1399549abc8b1d4454c.ctex"
+uid="uid://dt2cd4qqgfeox"
+path="res://.godot/imported/window_1.png-d6c7b983c8beb7ba7bf4b27f1b298c58.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_tank_0.png"
-dest_files=["res://.godot/imported/water_tank_0.png-324b0dcc424bb1399549abc8b1d4454c.ctex"]
+source_file="res://assets/sprites/windows/window_1.png"
+dest_files=["res://.godot/imported/window_1.png-d6c7b983c8beb7ba7bf4b27f1b298c58.ctex"]
 
 [params]
 

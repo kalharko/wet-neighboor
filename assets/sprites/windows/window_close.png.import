@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi2yhxrxj562u"
-path="res://.godot/imported/water_droplet.png-b5a1e28a99b1395528621c374c0ae686.ctex"
+uid="uid://cdvelerm0omxj"
+path="res://.godot/imported/window_close.png-ad7749989657c06800c85aba9c48602c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/water_droplet.png"
-dest_files=["res://.godot/imported/water_droplet.png-b5a1e28a99b1395528621c374c0ae686.ctex"]
+source_file="res://assets/sprites/windows/window_close.png"
+dest_files=["res://.godot/imported/window_close.png-ad7749989657c06800c85aba9c48602c.ctex"]
 
 [params]
 

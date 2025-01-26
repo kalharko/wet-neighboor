@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://dgkvr0137aq7g"]
 
-[ext_resource type="Texture2D" uid="uid://d0ma0m5vtxxa3" path="res://assets/Background.png" id="1_8my6j"]
+[ext_resource type="Texture2D" uid="uid://d0ma0m5vtxxa3" path="res://assets/sprites/Background.png" id="1_8my6j"]
 [ext_resource type="Script" path="res://scripts/neighbour_container.gd" id="2_yrwbx"]
-[ext_resource type="Texture2D" uid="uid://bd6wq23g5ixdt" path="res://assets/angry_neighboor.png" id="3_blxlw"]
+[ext_resource type="Texture2D" uid="uid://bd6wq23g5ixdt" path="res://assets/sprites/neighbour/angry_neighboor.png" id="3_blxlw"]
 [ext_resource type="Script" path="res://scripts/fade_to_black.gd" id="4_5flbb"]
-[ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/Graffiti-Regular.ttf" id="5_eoi5m"]
+[ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/fonts/Graffiti-Regular.ttf" id="5_eoi5m"]
 [ext_resource type="Script" path="res://scripts/replay_button.gd" id="5_mdohm"]
-[ext_resource type="Texture2D" uid="uid://cuxnoxdqkhiiu" path="res://assets/button.png" id="5_r3a0j"]
+[ext_resource type="Texture2D" uid="uid://cuxnoxdqkhiiu" path="res://assets/sprites/button.png" id="5_r3a0j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwfhe"]
 font_size = 96

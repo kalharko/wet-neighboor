@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://ptnnbqy8dvf6"]
 
-[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/window_open.png" id="1_bgtqf"]
+[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/sprites/windows/window_open.png" id="1_bgtqf"]
 [ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
-[ext_resource type="Texture2D" uid="uid://dy1gxqlrndh4p" path="res://assets/window-opening.png" id="2_eshn3"]
-[ext_resource type="Texture2D" uid="uid://dv2h06yqr74v6" path="res://assets/window-closing.png" id="2_vvbf4"]
-[ext_resource type="Texture2D" uid="uid://dt2cd4qqgfeox" path="res://assets/window_1.png" id="4_hj1qc"]
+[ext_resource type="Texture2D" uid="uid://dy1gxqlrndh4p" path="res://assets/sprites/windows/window-opening.png" id="2_eshn3"]
+[ext_resource type="Texture2D" uid="uid://dv2h06yqr74v6" path="res://assets/sprites/windows/window-closing.png" id="2_vvbf4"]
+[ext_resource type="Texture2D" uid="uid://dt2cd4qqgfeox" path="res://assets/sprites/windows/window_1.png" id="4_hj1qc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
 animations = [{

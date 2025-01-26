@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_arwgw"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="2_xa4w2"]
-[ext_resource type="Texture2D" uid="uid://d0ma0m5vtxxa3" path="res://assets/Background.png" id="3_y6vyb"]
+[ext_resource type="Texture2D" uid="uid://d0ma0m5vtxxa3" path="res://assets/sprites/Background.png" id="3_y6vyb"]
 [ext_resource type="Script" path="res://scripts/depth_area.gd" id="4_m08w1"]
 [ext_resource type="PackedScene" uid="uid://ptnnbqy8dvf6" path="res://scenes/window.tscn" id="5_4syrj"]
 [ext_resource type="Script" path="res://scripts/window_manager.gd" id="5_ysl1p"]
@@ -11,10 +11,10 @@
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
-[ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://assets/water_tank_shader.tres" id="11_c0nnu"]
+[ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://shaders/water_tank_shader.tres" id="11_c0nnu"]
 [ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/Animations/water_gun_tank.tres" id="12_ncs6r"]
-[ext_resource type="Texture2D" uid="uid://jbbt8qu04crv" path="res://assets/textbox.png" id="13_auuha"]
-[ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/Graffiti-Regular.ttf" id="14_4k66k"]
+[ext_resource type="Texture2D" uid="uid://jbbt8qu04crv" path="res://assets/sprites/textbox.png" id="13_auuha"]
+[ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/fonts/Graffiti-Regular.ttf" id="14_4k66k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pds48"]
 shader = ExtResource("6_ujjq2")

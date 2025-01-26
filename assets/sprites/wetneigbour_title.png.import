@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxdj0ulslfoou"
-path="res://.godot/imported/bluebackground.png-f724372f42aa85eab31e4c7b59bc3aec.ctex"
+uid="uid://d37yoc2t666ud"
+path="res://.godot/imported/wetneigbour_title.png-7e2f9ff20089352fd9db8e08515ca071.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bluebackground.png"
-dest_files=["res://.godot/imported/bluebackground.png-f724372f42aa85eab31e4c7b59bc3aec.ctex"]
+source_file="res://assets/sprites/wetneigbour_title.png"
+dest_files=["res://.godot/imported/wetneigbour_title.png-7e2f9ff20089352fd9db8e08515ca071.ctex"]
 
 [params]
 
