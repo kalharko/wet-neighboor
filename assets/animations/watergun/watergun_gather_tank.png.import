@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnfetgjidbm15"
-path="res://.godot/imported/watergun_shoot_tank_5.png-986fa1d07cae24173bf848249bc174c9.ctex"
+uid="uid://be6n8jqb2jp88"
+path="res://.godot/imported/watergun_gather_tank.png-6e34a71b49d7a9b12c0307287f31f65d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Animations/watergun_shoot_tank_5.png"
-dest_files=["res://.godot/imported/watergun_shoot_tank_5.png-986fa1d07cae24173bf848249bc174c9.ctex"]
+source_file="res://assets/animations/watergun/watergun_gather_tank.png"
+dest_files=["res://.godot/imported/watergun_gather_tank.png-6e34a71b49d7a9b12c0307287f31f65d.ctex"]
 
 [params]
 

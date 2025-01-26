@@ -9,10 +9,10 @@
 [ext_resource type="Shader" path="res://shaders/perspective.gdshader" id="6_ujjq2"]
 [ext_resource type="Script" path="res://scripts/water_gun.gd" id="7_j6yyw"]
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
-[ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/Animations/water_gun.tres" id="9_rtgbo"]
+[ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/animations/watergun/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
 [ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://shaders/water_tank_shader.tres" id="11_c0nnu"]
-[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/Animations/water_gun_tank.tres" id="12_ncs6r"]
+[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/animations/watergun/water_gun_tank.tres" id="12_ncs6r"]
 [ext_resource type="Texture2D" uid="uid://jbbt8qu04crv" path="res://assets/sprites/textbox.png" id="13_auuha"]
 [ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/fonts/Graffiti-Regular.ttf" id="14_4k66k"]
 

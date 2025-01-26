@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bd0hy1l5j3760"]
+
+[ext_resource type="Texture2D" uid="uid://cnis3opmwcqg4" path="res://assets/animations/watergun/watergun_gather.png" id="1_k2gv8"]
+[ext_resource type="Texture2D" uid="uid://bg18l2jhtj37v" path="res://assets/animations/watergun/watergun_shoot_0.png" id="2_ped1g"]
+[ext_resource type="Texture2D" uid="uid://bobfgxiexv73b" path="res://assets/animations/watergun/watergun_shoot_1.png" id="3_tekqi"]
+[ext_resource type="Texture2D" uid="uid://bigx17tno7yyr" path="res://assets/animations/watergun/watergun_shoot_2.png" id="4_ow021"]
+[ext_resource type="Texture2D" uid="uid://cperktkmbbrni" path="res://assets/animations/watergun/watergun_shoot_3.png" id="5_34tu4"]
+[ext_resource type="Texture2D" uid="uid://buonktej7rlp" path="res://assets/animations/watergun/watergun_shoot_4.png" id="6_2ck5c"]
+[ext_resource type="Texture2D" uid="uid://dkhdb0xdvlj6f" path="res://assets/animations/watergun/watergun_shoot_5.png" id="7_01yha"]
+[ext_resource type="Texture2D" uid="uid://chthhis3er7bu" path="res://assets/animations/watergun/watergun_shoot_6.png" id="8_pifn4"]
+[ext_resource type="Texture2D" uid="uid://babfwh0c0tmxk" path="res://assets/animations/watergun/watergun_shoot_7.png" id="9_ykf2v"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_k2gv8")
+}],
+"loop": false,
+"name": &"gun_gather",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ped1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tekqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ow021")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_34tu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2ck5c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_01yha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_pifn4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ykf2v")
+}],
+"loop": false,
+"name": &"gun_shoot",
+"speed": 9.0
+}]
