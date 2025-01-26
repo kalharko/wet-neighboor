@@ -113,46 +113,126 @@ position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("4_m08w1")
-additional_height_at_stream_apex = 2.885
+additional_height_at_stream_apex = 1.65
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea"]
-polygon = PackedVector2Array(-4.49941, 414, 210, 404.375, 212, 484.04, 346.5, 452, 363.5, 457, 362.5, 300, 333.5, 285, 331.5, 227, 364.5, 131, 362.5, 72, 450.5, -2, 550.5, -4, 548.5, 347, 548.5, 454, 687.499, 476, 695.5, 158, 743.499, 157, 744, 31.2609, 777.499, 12, 778.499, -2, 903.499, -5, 904.499, 157, 903.499, 605, -3.49941, 605)
+polygon = PackedVector2Array(262.5, 637, 272.5, 464, 271.5, 449, 231.5, 372, 266.5, 333, 510.5, 329, 516.5, 513, 714.499, 500, 638.499, 661)
+
+[node name="DepthArea12" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 3.145
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea12"]
+polygon = PackedVector2Array(266.5, 333, 266.5, 231, 296.5, 122, 299.5, -65, 444.5, -75, 534.5, -53, 517.5, 331)
+
+[node name="DepthArea11" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 2.705
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea11"]
+polygon = PackedVector2Array(640.499, 652, 715.499, 508, 724.499, 264, 728.499, 201, 953.499, 199, 952.499, 629)
+
+[node name="DepthArea10" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 3.985
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea10"]
+polygon = PackedVector2Array(713.499, 206, 813.499, 87, 861.499, 49, 934.499, -49, 952.499, 206)
 
 [node name="DepthArea2" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 3.325
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea2"]
-polygon = PackedVector2Array(254, -4.03367, 201.5, 28, 206.5, 276, 334.5, 287, 332.5, 227, 365.5, 131, 364, 73.6144, 452.5, -2)
+polygon = PackedVector2Array(518.5, -55, 517.5, 0, 512.5, 309, 595.499, 286, 592.499, -35)
+
+[node name="DepthArea9" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-1800, -1200)
+scale = Vector2(4.01338, 4)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 2.65
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea9"]
+polygon = PackedVector2Array(505.5, 277, 497.5, 385, 503.5, 496, 510.5, 518, 577.5, 517, 721.499, 505, 728.499, 198, 685.499, 217, 671.499, 457, 604.499, 454, 596.499, 340, 596.499, 260)
 
 [node name="DepthArea3" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 0.78
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea3"]
-polygon = PackedVector2Array(206.5, 275, 334, 284.373, 364.5, 299, 366.5, 460, 346, 452.779, 211, 485.048)
+polygon = PackedVector2Array(-54.4993, 407, 106.5, 365, 183.5, 361, 235.5, 371, 278.5, 447, 269.5, 568, 263.5, 650, 153.5, 646, -47.4993, 666, -68.4993, 466)
+
+[node name="DepthArea8" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-9024.08, -6000)
+scale = Vector2(16.1072, 16)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 1.725
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea8"]
+position = Vector2(444.638, 300.25)
+scale = Vector2(0.192092, 0.109701)
+polygon = PackedVector2Array(-54.4993, 407, 106.5, 365, 278.5, 447, 286.663, 845.482, -59.6672, 934.36, -47.4993, 666, -68.4993, 466)
+
+[node name="DepthArea6" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-9024.08, -6000)
+scale = Vector2(16.1072, 16)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 2.07
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea6"]
+position = Vector2(490.235, 364)
+scale = Vector2(0.112477, 0.0989959)
+polygon = PackedVector2Array(230.388, -111.116, 217.096, 214.655, 132.916, 333.347, 64.2428, 252.536, 70.8886, -121.217)
 
 [node name="DepthArea4" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 4.09
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea4"]
-polygon = PackedVector2Array(254.5, -3, 205.5, 28, 211.5, 405, -4.49941, 416, -4.49941, -3)
+polygon = PackedVector2Array(312.5, -37, 378.5, -10, 308.5, 128, 275.5, 214, 200.5, 212, 79.5004, 176, -68.4993, 177, -63.4993, -29)
+
+[node name="DepthArea7" type="Area2D" parent="Background/DepthAreaContainer"]
+position = Vector2(-9024.08, -6000)
+scale = Vector2(16.1072, 16)
+monitorable = false
+script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 3.65
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea7"]
+position = Vector2(444.638, 314.75)
+scale = Vector2(0.258643, 0.216101)
+polygon = PackedVector2Array(584.759, 196.668, 578.978, -167.746, 796.697, -180.471, 969.139, -161.962, 788.027, 55.5297, 742.749, 118.001, 700.362, 170.06, 701.325, 190.883, 673.388, 214.021)
 
 [node name="DepthArea5" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)
 scale = Vector2(4.01338, 4)
 monitorable = false
 script = ExtResource("4_m08w1")
+additional_height_at_stream_apex = 2.085
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background/DepthAreaContainer/DepthArea5"]
-polygon = PackedVector2Array(547, 454.796, 550.5, -4, 782.499, -2, 779, 13.1094, 745, 31.2609, 745, 159.33, 696, 158.321, 689, 476.981)
+polygon = PackedVector2Array(588.5, 469, 588.5, 211, 685.499, 223, 678.499, 467)
 
 [node name="WindowManager" type="Node2D" parent="Background"]
 position = Vector2(-1806.02, -1200)
