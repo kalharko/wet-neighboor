@@ -1,0 +1,51 @@
+[gd_resource type="SpriteFrames" load_steps=10 format=3 uid="uid://bki20f0upkjum"]
+
+[ext_resource type="Texture2D" uid="uid://be6n8jqb2jp88" path="res://assets/animations/watergun/watergun_gather_tank.png" id="1_cwpbk"]
+[ext_resource type="Texture2D" uid="uid://bs46hglk70wnr" path="res://assets/animations/watergun/watergun_shoot_tank_0.png" id="2_uql4k"]
+[ext_resource type="Texture2D" uid="uid://cyvhccsbngpo2" path="res://assets/animations/watergun/watergun_shoot_tank_1.png" id="3_62qmn"]
+[ext_resource type="Texture2D" uid="uid://bmseyltrqtgr0" path="res://assets/animations/watergun/watergun_shoot_tank_2.png" id="4_mxiia"]
+[ext_resource type="Texture2D" uid="uid://uepcj3kuuuh1" path="res://assets/animations/watergun/watergun_shoot_tank_3.png" id="5_epfru"]
+[ext_resource type="Texture2D" uid="uid://cykvm76bpbe16" path="res://assets/animations/watergun/watergun_shoot_tank_4.png" id="6_j7s0w"]
+[ext_resource type="Texture2D" uid="uid://dnfetgjidbm15" path="res://assets/animations/watergun/watergun_shoot_tank_5.png" id="7_38g68"]
+[ext_resource type="Texture2D" uid="uid://3q1mify5fx1q" path="res://assets/animations/watergun/watergun_shoot_tank_6.png" id="8_2eukk"]
+[ext_resource type="Texture2D" uid="uid://d2cdhxgd72r6y" path="res://assets/animations/watergun/watergun_shoot_tank_8.png" id="9_hu1g5"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cwpbk")
+}],
+"loop": false,
+"name": &"gun_gather",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_uql4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_62qmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mxiia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_epfru")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_j7s0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_38g68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2eukk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hu1g5")
+}],
+"loop": false,
+"name": &"gun_shoot",
+"speed": 1.0
+}]

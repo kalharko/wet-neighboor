@@ -52,7 +52,6 @@ func _on_time_timeout() -> void:
 	for window in windows:
 		if not window.is_active:
 			inactive_windows.append(window)
-	print('nb inactive windows' + str(len(windows) - len(inactive_windows)))
 
 	# quit if enough windows are active
 	if len(windows) - len(inactive_windows) >= max_window_active:

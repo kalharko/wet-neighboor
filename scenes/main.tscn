@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=28 format=3 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_arwgw"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="2_xa4w2"]
@@ -9,10 +9,10 @@
 [ext_resource type="Shader" path="res://shaders/perspective.gdshader" id="6_ujjq2"]
 [ext_resource type="Script" path="res://scripts/water_gun.gd" id="7_j6yyw"]
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
-[ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/sprites/water gun/water gun/water_gun.tres" id="9_rtgbo"]
+[ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/animations/watergun/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
 [ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://shaders/water_tank_shader.tres" id="11_c0nnu"]
-[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/sprites/water gun/tank/water_gun_tank.tres" id="12_ncs6r"]
+[ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/animations/watergun/water_gun_tank.tres" id="12_ncs6r"]
 [ext_resource type="Texture2D" uid="uid://jbbt8qu04crv" path="res://assets/sprites/ui/textbox.png" id="13_auuha"]
 [ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/fonts/Graffiti-Regular.ttf" id="14_4k66k"]
 
@@ -79,9 +79,13 @@ shader_parameter/x_rot = 0.0
 shader_parameter/z_rot = 0.0
 shader_parameter/inset = 0.0
 
+[sub_resource type="Curve" id="Curve_y8jj5"]
+_data = [Vector2(0, 0), 0.0, 1.47608, 0, 0, Vector2(1, 1), 0.0194616, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u34kr"]
-radius = 34.6908
-height = 196.078
+radius = 70.954
+height = 235.346
 
 [sub_resource type="Curve2D" id="Curve2D_sa7ub"]
 _data = {
@@ -365,18 +369,20 @@ script = ExtResource("8_kahnw")
 
 [node name="WaterGunAnimation" type="AnimatedSprite2D" parent="WaterGun"]
 position = Vector2(779, 589)
-scale = Vector2(0.663, 0.663)
+scale = Vector2(0.506038, 0.500201)
 sprite_frames = ExtResource("9_rtgbo")
-animation = &"gun_shoot"
+animation = &"gun_gather"
 script = ExtResource("10_4wn0a")
-water_tank_tops = Array[float]([0.21, 0.22, 0.28, 0.32, 0.34])
-water_tank_bottoms = Array[float]([0.61, 0.69, 0.82, 0.93, 0.0])
+water_tank_tops = Array[float]([0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.06])
+water_tank_bottoms = Array[float]([0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.56])
+position_animation_frame_curve = SubResource("Curve_y8jj5")
 
 [node name="MarkerFront" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
-position = Vector2(70.2156, -159.581)
+position = Vector2(46.7572, -208.145)
 
 [node name="MarkerBack" type="Marker2D" parent="WaterGun/WaterGunAnimation"]
-position = Vector2(70.2155, 31.9162)
+position = Vector2(49.4034, 139.944)
+scale = Vector2(1.04313, 0.478536)
 
 [node name="Area2D" type="Area2D" parent="WaterGun/WaterGunAnimation"]
 collision_layer = 2
@@ -384,8 +390,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterGun/WaterGunAnimation/Area2D"]
-position = Vector2(61.8401, 69.3816)
-rotation = 0.0759708
+position = Vector2(43.7406, -87.4812)
+rotation = -0.0404088
 shape = SubResource("CapsuleShape2D_u34kr")
 
 [node name="WaterTankAnimation" type="AnimatedSprite2D" parent="WaterGun/WaterGunAnimation"]

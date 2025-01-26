@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://ptnnbqy8dvf6"]
 
-[ext_resource type="Texture2D" uid="uid://cvwpik2oqo28n" path="res://assets/sprites/windows/round window/round_window_open.png" id="1_wn38o"]
-[ext_resource type="Texture2D" uid="uid://bmo4gf747pwag" path="res://assets/sprites/windows/round window/round_window_closing.png" id="2_5futn"]
+[ext_resource type="Texture2D" uid="uid://cvwpik2oqo28n" path="res://assets/animations/windows/round window/round_window_open.png" id="1_wn38o"]
+[ext_resource type="Texture2D" uid="uid://bmo4gf747pwag" path="res://assets/animations/windows/round window/round_window_closing.png" id="2_5futn"]
 [ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
-[ext_resource type="Texture2D" uid="uid://c7jdw6w5ngaub" path="res://assets/sprites/windows/round window/round_window_closed.png" id="4_wvd2q"]
-[ext_resource type="Texture2D" uid="uid://rb16xfqday8m" path="res://assets/sprites/windows/round window/round_window_opening.png" id="5_lprkx"]
+[ext_resource type="Texture2D" uid="uid://c7jdw6w5ngaub" path="res://assets/animations/windows/round window/round_window_closed.png" id="4_wvd2q"]
+[ext_resource type="Texture2D" uid="uid://rb16xfqday8m" path="res://assets/animations/windows/round window/round_window_opening.png" id="5_lprkx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
 animations = [{
