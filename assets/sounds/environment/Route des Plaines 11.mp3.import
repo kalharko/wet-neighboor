@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dygcykqex0xht"
+path="res://.godot/imported/Route des Plaines 11.mp3-40fc3d625aa2b6ba2e32c6c2dc542b8a.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/environment/Route des Plaines 11.mp3"
+dest_files=["res://.godot/imported/Route des Plaines 11.mp3-40fc3d625aa2b6ba2e32c6c2dc542b8a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
