@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgkvr0137aq7g"]
+[gd_scene load_steps=10 format=3 uid="uid://dgkvr0137aq7g"]
 
-[ext_resource type="Texture2D" uid="uid://bx6oo6o75gf5k" path="res://assets/background_drawing.png" id="1_r722f"]
+[ext_resource type="Texture2D" uid="uid://d0ma0m5vtxxa3" path="res://assets/Background.png" id="1_8my6j"]
 [ext_resource type="Script" path="res://scripts/neighbour_container.gd" id="2_yrwbx"]
 [ext_resource type="Texture2D" uid="uid://bd6wq23g5ixdt" path="res://assets/angry_neighboor.png" id="3_blxlw"]
 [ext_resource type="Script" path="res://scripts/fade_to_black.gd" id="4_5flbb"]
+[ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/Graffiti-Regular.ttf" id="5_eoi5m"]
 [ext_resource type="Script" path="res://scripts/replay_button.gd" id="5_mdohm"]
+[ext_resource type="Texture2D" uid="uid://cuxnoxdqkhiiu" path="res://assets/button.png" id="5_r3a0j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wwfhe"]
 font_size = 96
@@ -32,7 +34,7 @@ offset_bottom = 1800.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.249804, 0.249804)
-texture = ExtResource("1_r722f")
+texture = ExtResource("1_8my6j")
 
 [node name="NeighbourContainer" type="Control" parent="."]
 layout_mode = 1
@@ -141,7 +143,8 @@ anchor_bottom = 1.0
 offset_bottom = -457.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Over"
+theme_override_fonts/font = ExtResource("5_eoi5m")
+text = "GAME OVER"
 label_settings = SubResource("LabelSettings_wwfhe")
 horizontal_alignment = 1
 vertical_alignment = 2
@@ -151,8 +154,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 119.0
-offset_bottom = -428.0
+offset_left = 1.0
+offset_top = 142.0
+offset_right = 1.0
+offset_bottom = -405.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "You annoyed score neighbours"
@@ -166,13 +171,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -75.0
-offset_top = -24.0
-offset_right = 75.0
-offset_bottom = 24.0
+offset_left = -103.5
+offset_top = -65.0
+offset_right = 103.5
+offset_bottom = 65.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Again"
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_eoi5m")
+text = "PLAY AGAIN"
+icon = ExtResource("5_r3a0j")
+flat = true
+icon_alignment = 1
+vertical_icon_alignment = 0
 script = ExtResource("5_mdohm")
 
 [connection signal="pressed" from="FadeToBlack/ReplayButton" to="FadeToBlack/ReplayButton" method="_on_pressed"]

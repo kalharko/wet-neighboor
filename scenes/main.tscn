@@ -107,7 +107,6 @@ scale = Vector2(1.88884, 2.21481)
 texture = ExtResource("3_y6vyb")
 
 [node name="DepthAreaContainer" type="Node2D" parent="Background"]
-visible = false
 
 [node name="DepthArea" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)

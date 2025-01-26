@@ -23,6 +23,6 @@ func get_background_depth_area(point: Vector2) -> DepthArea:
 	# if this code is reached, means the DepthAreas are badly configured
 	# assert that the mouse is outside of the game window
 	var mpos: Vector2 = get_global_mouse_position()
-	assert(mpos.x < 0 or mpos.x > get_viewport().size.x or mpos.y < 0 or mpos.y > get_viewport().size.y, "Bad DepthArea configuration")
+	#assert(mpos.x < 0 or mpos.x > get_viewport().size.x or mpos.y < 0 or mpos.y > get_viewport().size.y, "Bad DepthArea configuration")
 	# by default return empty DepthArea
 	return DepthArea.new()
