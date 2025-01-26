@@ -10,11 +10,11 @@ class_name NeighbourDroplet
 # References
 
 # Game design parameters
-@export var speed: float = 140.0
+@export var speed: float = 170.0
 @export var travel_time: float = 0.25
 @export var bezier_length_computation_precision: float = 0.01
 ## The droplet size is multiplied by a value going from 1 -> end_of_travel_size_multiplication during it's travel time
-@export_range(0.0, 1, 0.01) var end_of_travel_size_multiplication: float = 1.5
+@export_range(0.0, 1, 0.01) var end_of_travel_size_multiplication: float = 2.3
 
 
 # Operating variables
@@ -41,6 +41,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# set position along bezier curve
 	var t: float = float(self.current_step) / float(self.nb_step)
+	t = t * t
 	var new_pos: Vector2 = _quadratic_bezier(
 		self.curve_start,
 		self.curve_middle,
@@ -56,7 +57,8 @@ func _physics_process(_delta: float) -> void:
 		self.curve_end,
 		t
 	)
-	self.rotation = normal.angle() + PI
+	self.rotation += deg_to_rad(360.0 * _delta)
+	
 	
 	# set size
 	scale = initial_size * (end_of_travel_size_multiplication + (1 - end_of_travel_size_multiplication) * (1 - t))
