@@ -17,6 +17,7 @@ class_name WaterGunAnimation
 @export var gathering_position_y: float = 565
 @export var gathering_movement_speed: float = 0.09
 @export var gathering_rotation_speed: float = 0.08
+@export var position_animation_frame_curve: Curve = Curve.new()
 
 
 # Operating variables
@@ -53,7 +54,7 @@ func set_shooting_position_rotation(depth_area: DepthArea) -> Vector2:
 		
 
 	# set watergun animation frame
-	frame = abs(int((shooting_path_follow.progress_ratio - 0.5) * 2 * 4))
+	frame = position_animation_frame_curve.sample(abs(shooting_path_follow.progress_ratio - 0.5) * 2) * 8
 	animation = 'gun_shoot'
 	water_tank_anim.animation = 'gun_shoot'
 	water_tank_anim.frame = frame
@@ -89,12 +90,12 @@ func set_gathering_position_rotation() -> void:
 	)
 
 	# set rotation
-	rotation = lerp_angle(rotation, PI, gathering_rotation_speed)
+	rotation = lerp_angle(rotation, 0, gathering_rotation_speed)
 
 	# set animation
-	animation = 'gun_shoot'
+	animation = 'gun_gather'
 	frame = 0
-	water_tank_anim.animation = 'gun_shoot'
+	water_tank_anim.animation = 'gun_gather'
 	water_tank_anim.frame = 0
 
 
@@ -105,5 +106,5 @@ func set_water_tank_display(tank_percentage: float):
 		water_tank_anim.material.set_shader_parameter('top', water_tank_tops[water_tank_anim.frame])
 		water_tank_anim.material.set_shader_parameter('bottom', water_tank_bottoms[water_tank_anim.frame])
 	else:
-		water_tank_anim.material.set_shader_parameter('top', 0.02)
-		water_tank_anim.material.set_shader_parameter('bottom', 0.36)
+		water_tank_anim.material.set_shader_parameter('top', water_tank_tops[len(water_tank_tops) -1])
+		water_tank_anim.material.set_shader_parameter('bottom', water_tank_bottoms[len(water_tank_bottoms) -1])
