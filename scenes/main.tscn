@@ -346,6 +346,9 @@ scale = Vector2(0.0742021, 0.119458)
 [node name="window21" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(176.001, 155)
 scale = Vector2(0.0731834, 0.115)
+animation = &"window opening"
+frame = 0
+frame_progress = 0.0
 
 [node name="window13" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(190.001, 71)

@@ -1,22 +1,22 @@
 [gd_scene load_steps=8 format=3 uid="uid://ptnnbqy8dvf6"]
 
-[ext_resource type="Texture2D" uid="uid://dc8e0gymmsvgn" path="res://assets/animations/windows/window_open.png" id="1_bgtqf"]
+[ext_resource type="Texture2D" uid="uid://cvwpik2oqo28n" path="res://assets/sprites/windows/round window/round_window_open.png" id="1_wn38o"]
+[ext_resource type="Texture2D" uid="uid://bmo4gf747pwag" path="res://assets/sprites/windows/round window/round_window_closing.png" id="2_5futn"]
 [ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
-[ext_resource type="Texture2D" uid="uid://dy1gxqlrndh4p" path="res://assets/animations/windows/window-opening.png" id="2_eshn3"]
-[ext_resource type="Texture2D" uid="uid://dv2h06yqr74v6" path="res://assets/animations/windows/window-closing.png" id="2_vvbf4"]
-[ext_resource type="Texture2D" uid="uid://dt2cd4qqgfeox" path="res://assets/animations/windows/window_1.png" id="4_hj1qc"]
+[ext_resource type="Texture2D" uid="uid://c7jdw6w5ngaub" path="res://assets/sprites/windows/round window/round_window_closed.png" id="4_wvd2q"]
+[ext_resource type="Texture2D" uid="uid://rb16xfqday8m" path="res://assets/sprites/windows/round window/round_window_opening.png" id="5_lprkx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_bgtqf")
+"texture": ExtResource("1_wn38o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_vvbf4")
+"texture": ExtResource("2_5futn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_hj1qc")
+"texture": ExtResource("4_wvd2q")
 }],
 "loop": false,
 "name": &"window closing",
@@ -24,13 +24,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_hj1qc")
+"texture": ExtResource("4_wvd2q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_eshn3")
+"texture": ExtResource("5_lprkx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_bgtqf")
+"texture": ExtResource("1_wn38o")
 }],
 "loop": false,
 "name": &"window opening",
@@ -38,16 +38,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mjwbk"]
-size = Vector2(385, 303)
+size = Vector2(467, 614)
 
 [node name="AnimatedWindow" type="AnimatedSprite2D"]
+position = Vector2(53, -23)
 sprite_frames = SubResource("SpriteFrames_dbyxr")
-animation = &"window opening"
+animation = &"window closing"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("2_btsdg")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-2.5, 0.5)
+position = Vector2(17.5, 16)
 shape = SubResource("RectangleShape2D_mjwbk")
 debug_color = Color(0.174049, 0.587366, 0.720336, 0.42)
