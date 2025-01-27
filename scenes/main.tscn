@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=32 format=3 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_arwgw"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="2_xa4w2"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://scripts/neighbour_droplet_container.gd" id="8_c7f3y"]
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
 [ext_resource type="PackedScene" uid="uid://756cywo4t736" path="res://scenes/rounded_windows.tscn" id="8_ujru5"]
+[ext_resource type="PackedScene" uid="uid://hj8rihkaaaye" path="res://scenes/velux_window.tscn" id="9_qdnu3"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/animations/watergun/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
 [ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://shaders/water_tank_shader.tres" id="11_c0nnu"]
@@ -79,6 +80,15 @@ shader_parameter/cull_back = true
 shader_parameter/y_rot = 34.576
 shader_parameter/x_rot = 0.0
 shader_parameter/z_rot = 0.0
+shader_parameter/inset = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hl7up"]
+shader = ExtResource("6_ujjq2")
+shader_parameter/fov = 87.989
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 17.495
+shader_parameter/z_rot = 6.23201
 shader_parameter/inset = 0.0
 
 [sub_resource type="Curve" id="Curve_y8jj5"]
@@ -347,8 +357,8 @@ rotation = 0.0204728
 scale = Vector2(0.0737506, 0.0764062)
 
 [node name="AnimatedWindow19" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
-position = Vector2(374.001, 131)
-scale = Vector2(0.087827, 0.0909896)
+position = Vector2(401.001, 131)
+scale = Vector2(0.0760882, 0.0788281)
 
 [node name="window12" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
@@ -400,6 +410,11 @@ scale = Vector2(0.0675, 0.0675)
 [node name="AnimatedWindow28" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(718.001, 121)
 scale = Vector2(0.0675, 0.0675)
+
+[node name="AnimatedWindow29" parent="Background/WindowManager" instance=ExtResource("9_qdnu3")]
+material = SubResource("ShaderMaterial_hl7up")
+position = Vector2(355.001, 190)
+scale = Vector2(0.0947917, 0.0947917)
 
 [node name="NeighbourDropletContainer" type="Node" parent="Background"]
 script = ExtResource("8_c7f3y")

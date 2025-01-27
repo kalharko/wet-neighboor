@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://hj8rihkaaaye"]
+
+[ext_resource type="Texture2D" uid="uid://chbhci5nw3i5c" path="res://assets/animations/windows/velux/veluw_window_open.png" id="1_cy6lg"]
+[ext_resource type="Texture2D" uid="uid://b56xg0p3q2ki8" path="res://assets/animations/windows/velux/velux_window_closing.png" id="2_77lhs"]
+[ext_resource type="Texture2D" uid="uid://dt6ys3b37knwm" path="res://assets/animations/windows/velux/velux_window_closed.png" id="3_g8cj4"]
+[ext_resource type="Texture2D" uid="uid://dspw3ciwndlam" path="res://assets/animations/windows/velux/velux_window_opening.png" id="4_3c3qb"]
+[ext_resource type="Script" path="res://scripts/window.gd" id="5_13chj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_cy6lg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_77lhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g8cj4")
+}],
+"loop": false,
+"name": &"window closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_g8cj4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3c3qb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_cy6lg")
+}],
+"loop": false,
+"name": &"window opening",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjwbk"]
+size = Vector2(467, 614)
+
+[node name="AnimatedWindow" type="AnimatedSprite2D"]
+position = Vector2(53, -23)
+sprite_frames = SubResource("SpriteFrames_dbyxr")
+animation = &"window closing"
+frame = 2
+frame_progress = 1.0
+script = ExtResource("5_13chj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(17.5, 16)
+shape = SubResource("RectangleShape2D_mjwbk")
+debug_color = Color(0.174049, 0.587366, 0.720336, 0.42)
