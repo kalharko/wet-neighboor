@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=29 format=3 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_arwgw"]
 [ext_resource type="Script" path="res://scripts/background.gd" id="2_xa4w2"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/window_manager.gd" id="5_ysl1p"]
 [ext_resource type="Shader" path="res://shaders/perspective.gdshader" id="6_ujjq2"]
 [ext_resource type="Script" path="res://scripts/water_gun.gd" id="7_j6yyw"]
+[ext_resource type="Script" path="res://scripts/neighbour_droplet_container.gd" id="8_c7f3y"]
 [ext_resource type="Script" path="res://scripts/droplet_container.gd" id="8_kahnw"]
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/animations/watergun/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
@@ -360,6 +361,7 @@ position = Vector2(816.001, 141)
 scale = Vector2(0.0475, 0.0608334)
 
 [node name="NeighbourDropletContainer" type="Node" parent="Background"]
+script = ExtResource("8_c7f3y")
 
 [node name="WaterGun" type="Node2D" parent="."]
 script = ExtResource("7_j6yyw")

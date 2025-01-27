@@ -72,7 +72,9 @@ func _on_game_start() -> void:
 func _on_end_game() -> void:
 	timer.stop()
 	for window in windows:
-		window.start_end_game_sequence()
+		window.start_end_game_sequence(
+			rnd.randf_range(0, max_window_opening_delay)
+		)
 
 
 func _on_game_speed_up() -> void:

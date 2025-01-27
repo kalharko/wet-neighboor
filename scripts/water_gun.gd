@@ -7,9 +7,6 @@ class_name WaterGun
 # @respo: record tank
 
 
-# Signals
-signal water_tank_empty() # towards main
-
 # References
 @onready var background: Background = get_node("../Background")
 @onready var animation: AnimatedSprite2D = get_node("WaterGunAnimation")
@@ -64,12 +61,12 @@ func _physics_process(_delta: float) -> void:
 func shoot(target: Vector2, additional_travel_time: float) -> void:
 	# update water tank
 	self.tank_value -= shot_cost
-	debug_label_tank.text = 'Tank: ' + str(tank_value)
 	# check if tank is empty
 	if self.tank_value <= 0:
 		self.tank_value = 0
-		water_tank_empty.emit()
+		debug_label_tank.text = 'Tank: ' + str(tank_value)
 		return
+	debug_label_tank.text = 'Tank: ' + str(tank_value)
 
 	# find a free droplet
 	var droplet: Droplet = droplet_container.get_droplet()
@@ -85,10 +82,10 @@ func _on_area_entered(area: Area2D) -> void:
 	if state != GunState.GATHER:
 		return
 	
-	if area.name != 'NeighbourDropletArea':
+	if not area.get_parent() is NeighbourDroplet:
 		return
 
-	area.get_parent().free()
+	area.get_parent().land()
 	tank_value += droplet_fill_tank
 	tank_value = clamp(tank_value, 0, tank_size)
 

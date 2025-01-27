@@ -12,9 +12,7 @@ signal window_hit() # towards main
 
 # References
 @onready var window_area: Area2D = get_node("Area2D")
-@onready var neighbour_droplet_container = get_node('../../NeighbourDropletContainer')
-
-var neighbour_droplet_scene: PackedScene = preload("res://scenes/neighbour_droplet.tscn")
+@onready var neighbour_droplet_container: NeighbourDropletContainer = get_node('/root/Main/Background/NeighbourDropletContainer')
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Game design parameters
@@ -26,6 +24,7 @@ var is_window_open: bool = false
 var timer: Timer = Timer.new()
 var is_active: bool = false
 var time_before_closing: float = 0
+var in_end_game_sequence: bool = false
 
 
 func _ready() -> void:
@@ -58,12 +57,20 @@ func activate(opening_delay: float, closing_delay: float) -> void:
 	timer.start()
 
 
-func start_end_game_sequence() -> void:
+func start_end_game_sequence(opening_delay: float) -> void:
 	timer.stop()
+	in_end_game_sequence = true
 	if not is_window_open:
-		is_window_open = true
-		play('window opening')
+		timer.wait_time = opening_delay
+		timer.start()
+		timer.disconnect('timeout', Callable(self, '_on_timer_timeout'))
+		timer.connect("timeout", Callable(self, "_on_end_game_sequence"))
 
+
+func _on_end_game_sequence() -> void:
+	is_window_open = true
+	play('window opening')
+	
 
 func _on_timer_timeout() -> void:
 	if is_window_open:
@@ -73,7 +80,7 @@ func _on_timer_timeout() -> void:
 
 
 func _spawn_droplet() -> void:
-	var new_droplet: NeighbourDroplet = neighbour_droplet_scene.instantiate()
+	var new_droplet: NeighbourDroplet = neighbour_droplet_container.get_droplet()
 	var middle_pos: Vector2 = Vector2(
 		position.x + (neighbour_droplet_target.x - position.x) / 2,
 		position.y - (neighbour_droplet_target.y - position.y) / 2
@@ -83,7 +90,6 @@ func _spawn_droplet() -> void:
 		middle_pos,
 		neighbour_droplet_target
 		)
-	neighbour_droplet_container.add_child(new_droplet) # goutte dans la hierarchy enfant de fenetre
 
 
 func _on_new_droplet_spawned(droplet: Droplet) -> void:
@@ -91,11 +97,15 @@ func _on_new_droplet_spawned(droplet: Droplet) -> void:
 
 
 func _on_droplet_landed(droplet: Droplet) -> void:
+	if in_end_game_sequence:
+		return
+
 	if not is_window_open:
 		return
 	
 	if not window_area.overlaps_area(droplet.droplet_area):
 		return
+	is_window_open = false
 
 	close_window()
 	window_hit.emit()

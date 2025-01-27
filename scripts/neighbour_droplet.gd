@@ -6,6 +6,7 @@ class_name NeighbourDroplet
 
 
 # Signals
+signal neighbour_droplet_landed(droplet: NeighbourDroplet)
 
 # References
 
@@ -36,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 
 	current_step += 1
 	if current_step >= nb_step:
-		self.free()
+		land()
 		return
 	
 	# set position along bezier curve
@@ -50,16 +51,9 @@ func _physics_process(_delta: float) -> void:
 	)
 	self.position = new_pos
 
-	# set rotation to normal to bezier curve
-	var normal: Vector2 = _quadratic_bezier_normal(
-		self.curve_start,
-		self.curve_middle,
-		self.curve_end,
-		t
-	)
+	# set rotation
 	self.rotation += deg_to_rad(360.0 * _delta)
-	
-	
+
 	# set size
 	scale = initial_size * (end_of_travel_size_multiplication + (1 - end_of_travel_size_multiplication) * (1 - t))
 
@@ -67,11 +61,19 @@ func _physics_process(_delta: float) -> void:
 func set_course(start: Vector2, middle: Vector2, end: Vector2) -> void:
 	position = start
 	current_step = 0
+	visible = true
 	nb_step = int(self._quadratic_bezier_length(start, middle, end) * travel_time)
 
 	curve_start = start
 	curve_middle = middle
 	curve_end = end
+
+
+func land() -> void:
+	visible = false
+	neighbour_droplet_landed.emit(self)
+	global_position = Vector2(-10, -10)
+	current_step = nb_step
 	
 
 func _quadratic_bezier(p0: Vector2, p1: Vector2, p2: Vector2, t: float):
