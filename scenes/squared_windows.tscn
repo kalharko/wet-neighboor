@@ -1,22 +1,22 @@
 [gd_scene load_steps=8 format=3 uid="uid://ptnnbqy8dvf6"]
 
-[ext_resource type="Texture2D" uid="uid://cvwpik2oqo28n" path="res://assets/animations/windows/round window/round_window_open.png" id="1_wn38o"]
-[ext_resource type="Texture2D" uid="uid://bmo4gf747pwag" path="res://assets/animations/windows/round window/round_window_closing.png" id="2_5futn"]
+[ext_resource type="Texture2D" uid="uid://dv04p8qguywlx" path="res://assets/animations/windows/square window/square_window_open.png" id="1_o5w6q"]
+[ext_resource type="Texture2D" uid="uid://dbl0jo41532y" path="res://assets/animations/windows/square window/square_window_closing.png" id="2_bh043"]
 [ext_resource type="Script" path="res://scripts/window.gd" id="2_btsdg"]
-[ext_resource type="Texture2D" uid="uid://c7jdw6w5ngaub" path="res://assets/animations/windows/round window/round_window_closed.png" id="4_wvd2q"]
-[ext_resource type="Texture2D" uid="uid://rb16xfqday8m" path="res://assets/animations/windows/round window/round_window_opening.png" id="5_lprkx"]
+[ext_resource type="Texture2D" uid="uid://bi0hmw6hirohv" path="res://assets/animations/windows/square window/square_window_closed.png" id="3_kyvg3"]
+[ext_resource type="Texture2D" uid="uid://da3ci2wyb0kg5" path="res://assets/animations/windows/square window/square_window_opening.png" id="4_5dpl7"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dbyxr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_wn38o")
+"texture": ExtResource("1_o5w6q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_5futn")
+"texture": ExtResource("2_bh043")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_wvd2q")
+"texture": ExtResource("3_kyvg3")
 }],
 "loop": false,
 "name": &"window closing",
@@ -24,13 +24,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_wvd2q")
+"texture": ExtResource("3_kyvg3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_lprkx")
+"texture": ExtResource("4_5dpl7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_wn38o")
+"texture": ExtResource("1_o5w6q")
 }],
 "loop": false,
 "name": &"window opening",
