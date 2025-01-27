@@ -18,7 +18,6 @@ func get_droplet()-> NeighbourDroplet:
 		available_neighbour_droplets.append(new_droplet)
 		total_nb_droplet += 1
 	
-	print('neighbour droplet container: get_droplet() ' + str(available_neighbour_droplets[0].get_instance_id()))
 	return available_neighbour_droplets.pop_front()
 
 
@@ -27,5 +26,4 @@ func get_nb_in_use() -> int:
 	
 func _on_neighbour_droplet_landed(droplet:NeighbourDroplet)->void:
 	assert(droplet is NeighbourDroplet)
-	print('neighbour droplet container: _on_neighbour_droplet_landed() ' + str(droplet.get_instance_id()))
 	available_neighbour_droplets.append(droplet)
