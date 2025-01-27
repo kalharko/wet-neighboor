@@ -247,124 +247,102 @@ script = ExtResource("5_ysl1p")
 [node name="window 2" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(632.001, 288)
 scale = Vector2(0.0790437, 0.086004)
-droplet_spawn_probability = 0.6
 
 [node name="window 3" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(632.001, 369.443)
 scale = Vector2(0.0626876, 0.0718556)
-droplet_spawn_probability = 0.6
 
 [node name="window2" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(630.001, 156)
 scale = Vector2(0.0630719, 0.0788352)
-droplet_spawn_probability = 0.6
 
 [node name="window23" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(709.001, 137)
 scale = Vector2(0.0359078, 0.0754519)
-droplet_spawn_probability = 0.6
 
 [node name="window24" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(759.001, 76)
 scale = Vector2(0.0461168, 0.0816667)
-droplet_spawn_probability = 0.6
 
 [node name="window3" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(705.924, 74.0075)
 scale = Vector2(0.0506069, 0.0833585)
-droplet_spawn_probability = 0.6
 
 [node name="window16" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
 position = Vector2(205.001, 523)
 scale = Vector2(0.157965, 0.142483)
-droplet_spawn_probability = 0.6
 
 [node name="window17" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
 position = Vector2(444.001, 475)
 scale = Vector2(0.0982392, 0.101063)
-droplet_spawn_probability = 0.6
 
 [node name="window18" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
 position = Vector2(66.0006, 52)
 scale = Vector2(0.0948287, 0.0952659)
-droplet_spawn_probability = 0.6
 
 [node name="window4" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_pds48")
 position = Vector2(87.0006, 116)
 scale = Vector2(0.102746, 0.0967368)
-droplet_spawn_probability = 0.6
 
 [node name="window5" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_atgeo")
 position = Vector2(149.001, 276)
 scale = Vector2(0.11874, 0.159013)
-droplet_spawn_probability = 0.6
 
 [node name="window6" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(840.001, 250)
 scale = Vector2(0.106761, 0.159951)
-droplet_spawn_probability = 0.6
 
 [node name="window7" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_ob38q")
 position = Vector2(298.001, 474)
 scale = Vector2(0.0890746, 0.119612)
-droplet_spawn_probability = 0.6
 
 [node name="window8" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_w4avu")
 position = Vector2(85.0006, 277)
 scale = Vector2(0.123614, 0.176525)
-droplet_spawn_probability = 0.6
 
 [node name="window9" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(768.001, 252)
 scale = Vector2(0.108196, 0.153174)
-droplet_spawn_probability = 0.6
 
 [node name="window10" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(830.001, 440)
 scale = Vector2(0.158433, 0.133582)
-droplet_spawn_probability = 0.6
 
 [node name="window19" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
 position = Vector2(491.001, 119)
 scale = Vector2(0.0938667, 0.11682)
-droplet_spawn_probability = 0.6
 
 [node name="window20" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
 position = Vector2(583.001, 422)
 scale = Vector2(0.0407446, 0.07887)
-droplet_spawn_probability = 0.6
 
 [node name="window11" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_85ate")
 position = Vector2(492.001, 271)
 scale = Vector2(0.116075, 0.127936)
-droplet_spawn_probability = 0.6
 
 [node name="window12" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(340.001, 278)
 scale = Vector2(0.138643, 0.116876)
-droplet_spawn_probability = 0.6
 
 [node name="window15" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_lal78")
 position = Vector2(332.001, 360)
 rotation = -0.179769
 scale = Vector2(0.099223, 0.0784609)
-droplet_spawn_probability = 0.6
 
 [node name="window22" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(233.001, 155)
 scale = Vector2(0.0742021, 0.119458)
-droplet_spawn_probability = 0.6
 
 [node name="window21" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(176.001, 155)
@@ -372,18 +350,15 @@ scale = Vector2(0.0731834, 0.115)
 animation = &"window opening"
 frame = 0
 frame_progress = 0.0
-droplet_spawn_probability = 0.6
 
 [node name="window13" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 position = Vector2(190.001, 71)
 scale = Vector2(0.0797732, 0.1)
-droplet_spawn_probability = 0.6
 
 [node name="window14" parent="Background/WindowManager" instance=ExtResource("5_4syrj")]
 material = SubResource("ShaderMaterial_05irn")
 position = Vector2(816.001, 141)
 scale = Vector2(0.0475, 0.0608334)
-droplet_spawn_probability = 0.6
 
 [node name="NeighbourDropletContainer" type="Node" parent="Background"]
 script = ExtResource("8_c7f3y")

@@ -18,13 +18,15 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 # Game design parameters
 @export var droplet_spawn_probability: float = 0.6
 @export var neighbour_droplet_target: Vector2 = Vector2(450, 610)
+@export var time_out_after_being_active: float = 5
 
 # Operating variables
 var is_window_open: bool = false
 var timer: Timer = Timer.new()
 var is_active: bool = false
-var time_before_closing: float = 0
+var time_before_closing: float = 1
 var in_end_game_sequence: bool = false
+var recently_closed: bool = false
 
 
 func _ready() -> void:
@@ -46,11 +48,14 @@ func open_window() -> void:
 
 func close_window() -> void:
 	is_window_open = false
-	is_active = false
+	recently_closed = true
 	self.play("window closing")
+	timer.wait_time = time_out_after_being_active
+	timer.start()
 
 
 func activate(opening_delay: float, closing_delay: float) -> void:
+	print('opening_delay :' + str(opening_delay) + ' closing_delay: ' + str(closing_delay))
 	is_active = true
 	time_before_closing = closing_delay
 	timer.wait_time = opening_delay
@@ -75,6 +80,9 @@ func _on_end_game_sequence() -> void:
 func _on_timer_timeout() -> void:
 	if is_window_open:
 		close_window()
+	elif recently_closed:
+		is_active = false
+		recently_closed = false
 	else:
 		open_window()
 

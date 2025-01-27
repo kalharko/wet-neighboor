@@ -32,6 +32,7 @@ func _ready() -> void:
 	for child in get_children():
 		assert(child is NeighbourWindow)
 		windows.append(child)
+	print(len(windows))
 	
 	# Subscribe to signals
 	get_node("/root/Main").game_speed_up.connect(_on_game_speed_up)
@@ -56,6 +57,7 @@ func _on_time_timeout() -> void:
 	# quit if enough windows are active
 	if len(windows) - len(inactive_windows) >= max_window_active:
 		return
+	print(str(len(inactive_windows)) + ' inactive windows')
 	
 	# activate a random inactive window
 	var window_to_activate: NeighbourWindow = inactive_windows[rnd.randi_range(0, len(inactive_windows) - 1)]
