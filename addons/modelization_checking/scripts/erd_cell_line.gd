@@ -29,6 +29,10 @@ func set_content(new_content: ErdResource) -> void:
 	mouse_default_cursor_shape = 2
 
 
+func set_as_folded_marker() -> void:
+	label.text = '...'
+
+
 func _on_gui_input(event: InputEvent) -> void:
 	if not (event is InputEventMouseButton && event.pressed && event.button_index == 1):
 		return
@@ -46,6 +50,8 @@ func _on_gui_input(event: InputEvent) -> void:
 
 
 func _make_custom_tooltip(for_text: String) -> Object:
+	if erd_data == null:
+		return Container.new()
 	var tool_tip: ErdToolTip = tool_tip_scene.instantiate()
 	tool_tip.set_text(erd_data.hover_text)
 	return tool_tip

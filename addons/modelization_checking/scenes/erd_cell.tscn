@@ -20,3 +20,11 @@ layout_mode = 2
 
 [node name="ErdCellLine" parent="VBoxContainer" instance=ExtResource("2_ttuis")]
 layout_mode = 2
+
+[node name="FoldButton" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "^"
+
+[connection signal="pressed" from="FoldButton" to="." method="_on_fold_button_pressed"]

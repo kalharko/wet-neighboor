@@ -8,7 +8,7 @@ class_name ModelizationChecker
 
 
 # References
-@onready var erd_table: ErdTable = get_node("ErdTable")
+@onready var erd_table: ErdTable = get_node("ScrollContainer/ErdTable")
 @onready var scene_path_line_edit: LineEdit = get_node("ScenePathLineEdit")
 
 # Operating variables
@@ -77,5 +77,9 @@ func _get_script_paths_from_scene(scene_path: String) -> Array[String]:
 	
 
 func _on_scene_changed(new_root: Node):
+	if new_root == null:
+		erd_table.clear()
+		return
+
 	scene_path_line_edit.text = new_root.scene_file_path
 	update_modelization()

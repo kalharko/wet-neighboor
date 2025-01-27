@@ -18,6 +18,7 @@ func _ready() -> void:
 		un_explored.append_array(node.get_children())
 		if node is ErdColumn:
 			columns.append(node)
+			node.new_cell_spawned.connect(_on_new_cell_spawned)
 
 
 func clear() -> void:
@@ -39,3 +40,20 @@ func add_line(erd_entity: ErdEntityResource) -> void:
 				columns[i].add_cell(erd_entity.get_gd_parameters(), erd_entity.nb_line_height)
 			4:
 				columns[i].add_cell(erd_entity.get_public_functions(), erd_entity.nb_line_height)
+
+
+func _on_new_cell_spawned(cell: ErdCell) -> void:
+	cell.fold_line.connect(_on_fold_line)
+	cell.unfold_line.connect(_on_unfold_line)
+
+
+func _on_fold_line(line_id: int) -> void:
+	print('fold line: ' + str(line_id))
+	for column in columns:
+		column.fold_line(line_id)
+
+
+func _on_unfold_line(line_id: int) -> void:
+	print('unfold line: ' + str(line_id))
+	for column in columns:
+		column.unfold_line(line_id)

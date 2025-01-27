@@ -71,106 +71,118 @@ text = " - "
 script = ExtResource("2_rrota")
 text_label_settings_size_delta = -1
 
-[node name="ErdTable" type="HSplitContainer" parent="."]
-clip_contents = true
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.0883333
+anchor_top = 0.105
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scroll_horizontal_custom_step = 0.0
+horizontal_scroll_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="ErdTable" type="HSplitContainer" parent="ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("3_1cgga")
 metadata/_edit_use_anchors_ = true
 
-[node name="Column1" type="VBoxContainer" parent="ErdTable"]
+[node name="Column1" type="VBoxContainer" parent="ScrollContainer/ErdTable"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_30swh")
+is_header_column = true
 
-[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/Column1"]
+[node name="HeaderContainer" type="CenterContainer" parent="ScrollContainer/ErdTable/Column1"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ErdTable/Column1/HeaderContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/ErdTable/Column1/HeaderContainer"]
 layout_mode = 2
 text = "Entity"
 label_settings = ExtResource("4_kcxof")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable"]
+[node name="HSplitContainer" type="HSplitContainer" parent="ScrollContainer/ErdTable"]
 clip_contents = true
 layout_mode = 2
 
-[node name="Column2" type="VBoxContainer" parent="ErdTable/HSplitContainer"]
+[node name="Column2" type="VBoxContainer" parent="ScrollContainer/ErdTable/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_30swh")
+is_header_column = null
 
-[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/Column2"]
+[node name="HeaderContainer" type="CenterContainer" parent="ScrollContainer/ErdTable/HSplitContainer/Column2"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ErdTable/HSplitContainer/Column2/HeaderContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/ErdTable/HSplitContainer/Column2/HeaderContainer"]
 layout_mode = 2
 text = "Responsability"
 label_settings = ExtResource("4_kcxof")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable/HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="ScrollContainer/ErdTable/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 
-[node name="Column3" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer"]
+[node name="Column3" type="VBoxContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_30swh")
+is_header_column = null
 
-[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/Column3"]
+[node name="HeaderContainer" type="CenterContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/Column3"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/Column3/HeaderContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/Column3/HeaderContainer"]
 layout_mode = 2
 text = "Relation"
 label_settings = ExtResource("4_kcxof")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="ErdTable/HSplitContainer/HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 
-[node name="Column4" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
+[node name="Column4" type="VBoxContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_30swh")
+is_header_column = null
 
-[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4"]
+[node name="HeaderContainer" type="CenterContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4/HeaderContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column4/HeaderContainer"]
 layout_mode = 2
 text = "GD Parameters"
 label_settings = ExtResource("4_kcxof")
 
-[node name="Column5" type="VBoxContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
+[node name="Column5" type="VBoxContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("5_30swh")
+is_header_column = null
 
-[node name="HeaderContainer" type="CenterContainer" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5"]
+[node name="HeaderContainer" type="CenterContainer" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label" type="Label" parent="ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5/HeaderContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/ErdTable/HSplitContainer/HSplitContainer/HSplitContainer/Column5/HeaderContainer"]
 layout_mode = 2
 text = "Public Functions"
 label_settings = ExtResource("4_kcxof")
