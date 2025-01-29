@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cl3e4wmm5ywxn"]
 
 [ext_resource type="Script" path="res://addons/modelization_checking/scripts/erd_tool_tip.gd" id="1_32lv1"]
-[ext_resource type="LabelSettings" uid="uid://rtucncpb3gc0" path="res://addons/modelization_checking/ressources/p_label_settings.tres" id="1_sr70r"]
+[ext_resource type="LabelSettings" uid="uid://do8pebxag7n30" path="res://addons/modelization_checking/ressources/tool_tip_label_settings.tres" id="2_5rfyk"]
 
 [node name="ErdToolTip" type="PanelContainer"]
 anchors_preset = 15
@@ -23,6 +23,8 @@ theme_override_constants/margin_bottom = 5
 
 [node name="Label" type="Label" parent="MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
 text = "tool tip"
-label_settings = ExtResource("1_sr70r")
+label_settings = ExtResource("2_5rfyk")

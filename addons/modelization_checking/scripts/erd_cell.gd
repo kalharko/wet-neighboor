@@ -22,60 +22,60 @@ var nb_line_height: int = 0
 
 
 func _ready() -> void:
-	fold_button.visible = false
+    fold_button.visible = false
 
 
 func clear() -> void:
-	for child in vbox.get_children():
-		child.free()
+    for child in vbox.get_children():
+        child.free()
 
 
 func set_content(new_content: Array[ErdResource], new_nb_line_height: int) -> void:
-	clear()
-	content = new_content
-	nb_line_height = new_nb_line_height
+    clear()
+    content = new_content
+    nb_line_height = new_nb_line_height
 
-	for i in range(nb_line_height):
-		var cell_line = erd_cell_line.instantiate()
-		vbox.add_child(cell_line)
-		if i < len(content):
-			cell_line.set_content(content[i])
+    for i in range(nb_line_height):
+        var cell_line = erd_cell_line.instantiate()
+        vbox.add_child(cell_line)
+        if i < len(content):
+            cell_line.set_content(content[i])
 
 
 func set_as_line_header_cell() -> void:
-	is_line_header = true
-	fold_button.visible = true
-	
+    is_line_header = true
+    fold_button.visible = true
+    
 
 func _on_fold_button_pressed() -> void:
-	if not is_line_header:
-		return
-	
-	if is_folded:
-		unfold_line.emit(get_index())
-	else:
-		fold_line.emit(get_index())
+    if not is_line_header:
+        return
+    
+    if is_folded:
+        unfold_line.emit(get_index())
+    else:
+        fold_line.emit(get_index())
 
 
 func fold() -> void:
-	is_folded = true
-	fold_button.text = 'v'
-	if vbox.get_child_count() <= 1:
-		return
+    is_folded = true
+    fold_button.text = 'v'
+    if vbox.get_child_count() <= 1:
+        return
 
-	var children_to_free: Array[ErdCellLine] = []
-	for i in range(1, vbox.get_child_count()):
-		children_to_free.append(vbox.get_child(i))
-	for child in children_to_free:
-		child.free()
+    var children_to_free: Array[ErdCellLine] = []
+    for i in range(1, vbox.get_child_count()):
+        children_to_free.append(vbox.get_child(i))
+    for child in children_to_free:
+        child.free()
 
-	# spawn ... cell line
-	var cell_line = erd_cell_line.instantiate()
-	vbox.add_child(cell_line)
-	cell_line.set_as_folded_marker()
-	
+    # spawn ... cell line
+    var cell_line = erd_cell_line.instantiate()
+    vbox.add_child(cell_line)
+    cell_line.set_as_folded_marker()
+    
 
 func unfold() -> void:
-	is_folded = false
-	fold_button.text = '^'
-	set_content(content, nb_line_height)
+    is_folded = false
+    fold_button.text = '^'
+    set_content(content, nb_line_height)

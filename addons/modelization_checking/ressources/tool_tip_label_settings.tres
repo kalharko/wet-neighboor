@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://do8pebxag7n30"]
+
+[ext_resource type="FontFile" uid="uid://d2e7b2nj1ovlu" path="res://addons/modelization_checking/fonts/RobotoMono-VariableFont_wght.ttf" id="1_80eag"]
+
+[resource]
+font = ExtResource("1_80eag")
+font_size = 14
+font_color = Color(0.615686, 0.627451, 0.643137, 1)

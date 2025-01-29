@@ -10,7 +10,7 @@ class_name ErdToolTip
 
 
 func set_text(text: String) -> void:
-	if not label:
-		await self.ready
+    if not label:
+        await self.ready
 
-	label.text = text
+    label.text = text
