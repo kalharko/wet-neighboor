@@ -14,4 +14,4 @@ class_name DepthArea
 
 
 func contains(point: Vector2) -> bool:
-	return Geometry2D.is_point_in_polygon(point, polygon.polygon)
+    return Geometry2D.is_point_in_polygon(point, polygon.polygon)

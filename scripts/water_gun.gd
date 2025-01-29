@@ -14,6 +14,8 @@ class_name WaterGun
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 @onready var marker_front: Marker2D = get_node('WaterGunAnimation/MarkerFront')
 @onready var debug_label_tank: Label = get_node('/root/Main/DebugLabelTank')
+@onready var droplet_collected: AudioStreamPlayer2D = $"../AudioContainer/sfx/droplet_collected"
+@onready var water_splash: AudioStreamPlayer2D = $"../AudioContainer/sfx/water splash"
 
 # Game design parameters
 @export_group("Water Tank")
@@ -59,6 +61,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func shoot(target: Vector2, additional_travel_time: float) -> void:
+    water_splash.play()
     # update water tank
     self.tank_value -= shot_cost
     # check if tank is empty
@@ -79,6 +82,7 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
     )
 
 func _on_area_entered(area: Area2D) -> void:
+    droplet_collected.play()
     if state != GunState.GATHER:
         return
     
@@ -90,7 +94,7 @@ func _on_area_entered(area: Area2D) -> void:
         area.get_parent().free()
         get_node('/root/Main/AnimationPlayer').play('tuto_sequence_2')
         return
-
+        
     area.get_parent().land()
     tank_value += droplet_fill_tank
     tank_value = clamp(tank_value, 0, tank_size)

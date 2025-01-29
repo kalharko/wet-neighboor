@@ -14,6 +14,9 @@ signal window_hit() # towards main
 @onready var window_area: Area2D = get_node("Area2D")
 @onready var neighbour_droplet_container: NeighbourDropletContainer = get_node('/root/Main/Background/NeighbourDropletContainer')
 var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../../AudioContainer/voices/AudioStreamPlayer2D"
+@onready var open_window_sound: AudioStreamPlayer2D = $"../../../AudioContainer/sfx/open window sound"
+@onready var close_window_sound: AudioStreamPlayer2D = $"../../../AudioContainer/sfx/close window sound"
 
 # Game design parameters
 @export var is_start_window: bool = false
@@ -41,6 +44,7 @@ func _ready() -> void:
 
 
 func open_window() -> void:
+    open_window_sound.play()
     is_window_open = true
     self.play("window opening")
     timer.wait_time = time_before_closing
@@ -48,6 +52,7 @@ func open_window() -> void:
 
 
 func close_window() -> void:
+    close_window_sound.play()
     is_window_open = false
     recently_closed = true
     self.play("window closing")
@@ -115,7 +120,7 @@ func _on_droplet_landed(droplet: Droplet) -> void:
     if not window_area.overlaps_area(droplet.droplet_area):
         return
     is_window_open = false
-
+    audio_stream_player_2d.play()
     close_window()
     window_hit.emit()
     
