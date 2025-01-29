@@ -7,6 +7,6 @@ class_name ReplayButton
 
 
 func _on_pressed() -> void:
-	GameDataSingleton.score = 0
-	print(game_scene)
-	get_tree().change_scene_to_packed(game_scene)
+    GameDataSingleton.score = 0
+    print(game_scene)
+    get_tree().change_scene_to_packed(game_scene)

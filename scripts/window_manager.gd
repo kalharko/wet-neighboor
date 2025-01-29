@@ -28,57 +28,56 @@ var timer: Timer = Timer.new()
 
 
 func _ready() -> void:
-	# References
-	for child in get_children():
-		assert(child is NeighbourWindow)
-		windows.append(child)
-	print(len(windows))
-	
-	# Subscribe to signals
-	get_node("/root/Main").game_speed_up.connect(_on_game_speed_up)
-	get_node("/root/Main").start_game.connect(_on_game_start)
-	get_node("/root/Main").end_game.connect(_on_end_game)
+    # References
+    for child in get_children():
+        assert(child is NeighbourWindow)
+        windows.append(child)
+    
+    # Subscribe to signals
+    get_node("/root/Main").game_speed_up.connect(_on_game_speed_up)
+    get_node("/root/Main").start_game.connect(_on_game_start)
+    get_node("/root/Main").end_game.connect(_on_end_game)
 
-	# Initial state
-	rnd.randomize()
-	timer.one_shot = false
-	timer.connect("timeout", Callable(self, "_on_time_timeout"))
-	add_child(timer, false, Node.INTERNAL_MODE_BACK)
-	timer.wait_time = update_time
+    # Initial state
+    rnd.randomize()
+    timer.one_shot = false
+    timer.connect("timeout", Callable(self, "_on_time_timeout"))
+    add_child(timer, false, Node.INTERNAL_MODE_BACK)
+    timer.wait_time = update_time
 
 
 func _on_time_timeout() -> void:
-	# @respo: activate/deactivate windows
-	var inactive_windows: Array[NeighbourWindow] = []
-	for window in windows:
-		if not window.is_active:
-			inactive_windows.append(window)
+    # @respo: activate/deactivate windows
+    var inactive_windows: Array[NeighbourWindow] = []
+    for window in windows:
+        if not window.is_active:
+            inactive_windows.append(window)
 
-	# quit if enough windows are active
-	if len(windows) - len(inactive_windows) >= max_window_active:
-		return
-	print(str(len(inactive_windows)) + ' inactive windows')
-	
-	# activate a random inactive window
-	var window_to_activate: NeighbourWindow = inactive_windows[rnd.randi_range(0, len(inactive_windows) - 1)]
-	window_to_activate.activate(
-		rnd.randf_range(min_window_opening_delay, max_window_opening_delay),
-		rnd.randf_range(min_window_closing_delay, max_window_closing_delay)
-	)
+    # quit if enough windows are active
+    if len(windows) - len(inactive_windows) >= max_window_active:
+        return
+    print(str(len(inactive_windows)) + ' inactive windows')
+    
+    # activate a random inactive window
+    var window_to_activate: NeighbourWindow = inactive_windows[rnd.randi_range(0, len(inactive_windows) - 1)]
+    window_to_activate.activate(
+        rnd.randf_range(min_window_opening_delay, max_window_opening_delay),
+        rnd.randf_range(min_window_closing_delay, max_window_closing_delay)
+    )
 
 
 func _on_game_start() -> void:
-	timer.start()
+    timer.start()
 
 
 func _on_end_game() -> void:
-	timer.stop()
-	for window in windows:
-		window.start_end_game_sequence(
-			rnd.randf_range(0, max_window_opening_delay)
-		)
+    timer.stop()
+    for window in windows:
+        window.start_end_game_sequence(
+            rnd.randf_range(0, max_window_opening_delay)
+        )
 
 
 func _on_game_speed_up() -> void:
-	timer.wait_time = max(min_update_time, timer.wait_time * update_time_reduction_rate)
-	print('on game speed up: ' + str(timer.wait_time))
+    timer.wait_time = max(min_update_time, timer.wait_time * update_time_reduction_rate)
+    print('on game speed up: ' + str(timer.wait_time))

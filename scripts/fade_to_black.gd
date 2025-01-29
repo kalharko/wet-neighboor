@@ -20,34 +20,34 @@ var transition_complete: bool = false
 
 
 func _ready() -> void:
-	color.a = initial_alpha
-	game_over_label.visible = false
-	flavor_text_label.visible = false
-	replay_button.visible = false
-	transition_ended.connect(_on_transition_ended)
+    color.a = initial_alpha
+    game_over_label.visible = false
+    flavor_text_label.visible = false
+    replay_button.visible = false
+    transition_ended.connect(_on_transition_ended)
 
 
 func _process(delta: float) -> void:
-	# @respo: transition to black
-	if transition_complete:
-		return
+    # @respo: transition to black
+    if transition_complete:
+        return
 
-	if initial_alpha > final_alpha:
-		if color.a > final_alpha:
-			color.a -= delta * transition_speed
-		else:
-			transition_complete = true
-			transition_ended.emit()
-	else:
-		if color.a < final_alpha:
-			color.a += delta * transition_speed
-		else:
-			transition_complete = true
-			transition_ended.emit()
-			
+    if initial_alpha > final_alpha:
+        if color.a > final_alpha:
+            color.a -= delta * transition_speed
+        else:
+            transition_complete = true
+            transition_ended.emit()
+    else:
+        if color.a < final_alpha:
+            color.a += delta * transition_speed
+        else:
+            transition_complete = true
+            transition_ended.emit()
+            
 func _on_transition_ended() -> void:
-	game_over_label.visible = true
-	flavor_text_label.visible = true
-	replay_button.visible = true
-	flavor_text_label.text = "You Annoyed " + str(GameDataSingleton.score) + " neighbours !"
-	
+    game_over_label.visible = true
+    flavor_text_label.visible = true
+    replay_button.visible = true
+    flavor_text_label.text = "You Annoyed " + str(GameDataSingleton.score) + " neighbours !"
+    
