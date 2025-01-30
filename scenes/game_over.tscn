@@ -14,7 +14,7 @@ font_size = 96
 [sub_resource type="LabelSettings" id="LabelSettings_n5dfy"]
 font_size = 35
 
-[node name="Control" type="Control"]
+[node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

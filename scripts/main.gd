@@ -101,4 +101,4 @@ func _on_speed_up_timer() -> void:
 
 
 func _on_end_game() -> void:
-    get_tree().change_scene_to_packed(game_over_scene)
+    animation_player.play('game_over')

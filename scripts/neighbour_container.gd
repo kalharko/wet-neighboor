@@ -15,11 +15,11 @@ func _ready() -> void:
         child.visible = false
         children.append(child)
 
-    display_neighbours(GameDataSingleton.score)
 
-
-func display_neighbours(score: int) -> void:
+func display_neighbours() -> void:
     # @respo: display nb of angry neighbours function of score
+    visible = true
+    var score: int = GameDataSingleton.score
     assert(score >= 0)
     var nb_visible_neighbour_needed: int = float(score) * float(children.size()) / float(all_neighbours_score)
     if nb_visible_neighbour_needed > children.size():

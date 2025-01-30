@@ -74,7 +74,7 @@ func _on_end_game() -> void:
     timer.stop()
     for window in windows:
         window.start_end_game_sequence(
-            rnd.randf_range(0, max_window_opening_delay)
+            rnd.randf_range(0, max_window_closing_delay)
         )
 
 
