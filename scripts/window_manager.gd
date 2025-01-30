@@ -56,7 +56,6 @@ func _on_time_timeout() -> void:
     # quit if enough windows are active
     if len(windows) - len(inactive_windows) >= max_window_active:
         return
-    print(str(len(inactive_windows)) + ' inactive windows')
     
     # activate a random inactive window
     var window_to_activate: NeighbourWindow = inactive_windows[rnd.randi_range(0, len(inactive_windows) - 1)]
@@ -74,7 +73,7 @@ func _on_end_game() -> void:
     timer.stop()
     for window in windows:
         window.start_end_game_sequence(
-            rnd.randf_range(0, max_window_closing_delay)
+            rnd.randf_range(0, max_window_closing_delay) / 2
         )
 
 

@@ -61,7 +61,6 @@ func close_window() -> void:
 
 
 func activate(opening_delay: float, closing_delay: float) -> void:
-    print('opening_delay :' + str(opening_delay) + ' closing_delay: ' + str(closing_delay))
     is_active = true
     time_before_closing = closing_delay
     timer.wait_time = opening_delay

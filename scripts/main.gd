@@ -11,7 +11,6 @@ signal end_game() # towards window manager
 
 # References
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
-@onready var game_over_scene: PackedScene = load("res://scenes/game_over.tscn")
 @onready var start_window: NeighbourWindow = get_node("Background/WindowManager/StartWindow")
 @onready var watergun: WaterGun = get_node('WaterGun')
 @onready var neighbour_droplet_container: NeighbourDropletContainer = get_node('Background/NeighbourDropletContainer')
