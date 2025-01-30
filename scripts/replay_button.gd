@@ -8,5 +8,5 @@ class_name ReplayButton
 
 func _on_pressed() -> void:
     GameDataSingleton.score = 0
-    print(game_scene)
+    print('Game scene reload by ReplayButton')
     get_tree().change_scene_to_packed(game_scene)
