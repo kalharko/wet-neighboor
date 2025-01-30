@@ -29,6 +29,7 @@ var timer: Timer = Timer.new()
 var game_started: bool = false
 var end_game_started: bool = false
 var is_first_game: bool = true
+var still_on_title_screen: bool = true
 
 
 func _ready() -> void:
@@ -70,6 +71,13 @@ func _physics_process(_delta: float) -> void:
     print('start end game')
 
 
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed('fire'):
+        if still_on_title_screen:
+            still_on_title_screen = false
+            animation_player.play('animate_title_screen')
+
+
 func _on_window_hit() -> void:
     # @respo: keep score
     score += 1
@@ -79,7 +87,7 @@ func _on_window_hit() -> void:
 func start_tuto() -> void:
     if is_first_game:
         is_first_game = false
-        print('tutor launch')
+        print('Start Tuto')
         animation_player.play('hide_title_screen')
         animation_player.queue('tuto_sequence_1')
     else:

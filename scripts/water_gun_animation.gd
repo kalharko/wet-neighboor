@@ -19,7 +19,6 @@ class_name WaterGunAnimation
 @export var gathering_rotation_speed: float = 0.08
 @export var position_animation_frame_curve: Curve = Curve.new()
 
-
 # Operating variables
 @onready var base_scale_x = scale.x
 
@@ -72,7 +71,7 @@ func set_shooting_position_rotation(depth_area: DepthArea) -> Vector2:
             target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 5
         var target_direction: Vector2 = target - marker_back.global_position
         gun_target_angle = gun_direction.angle_to(target_direction)
-    
+
     # update gun rotation
     rotation += gun_target_angle
 

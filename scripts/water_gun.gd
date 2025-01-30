@@ -29,11 +29,16 @@ var free_droplets: Array[Droplet] = []
 @onready var tank_value: int = tank_size
 enum GunState {SHOOT, GATHER}
 var state: GunState = GunState.SHOOT
+var game_started: bool = false
 
 
 func _ready() -> void:
     # Subscribes to signals
     get_node('WaterGunAnimation/Area2D').area_entered.connect(_on_area_entered)
+    get_node('/root/Main').start_game.connect(_on_start_game)
+    
+    # Initial state
+    tank_value = tank_size / 3 * 2
 
 
 func _physics_process(_delta: float) -> void:
@@ -63,7 +68,8 @@ func _physics_process(_delta: float) -> void:
 func shoot(target: Vector2, additional_travel_time: float) -> void:
     water_splash.play()
     # update water tank
-    self.tank_value -= shot_cost
+    if game_started:
+        self.tank_value -= shot_cost
     # check if tank is empty
     if self.tank_value <= 0:
         self.tank_value = 0
@@ -93,6 +99,7 @@ func _on_area_entered(area: Area2D) -> void:
     if area.get_parent().is_tuto_bottle:
         area.get_parent().free()
         get_node('/root/Main/AnimationPlayer').play('tuto_sequence_2')
+        tank_value = tank_size
         return
         
     area.get_parent().land()
@@ -100,3 +107,7 @@ func _on_area_entered(area: Area2D) -> void:
     tank_value = clamp(tank_value, 0, tank_size)
 
     debug_label_tank.text = 'Tank: ' + str(tank_value)
+
+
+func _on_start_game() -> void:
+    game_started = true
