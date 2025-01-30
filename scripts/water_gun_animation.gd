@@ -97,7 +97,12 @@ func set_gathering_position_rotation() -> void:
     frame = 0
     water_tank_anim.animation = 'gun_gather'
     water_tank_anim.frame = 0
-
+    
+    # Still need to set the shooting_follow_path progress ration for smooth transition to shooting mode
+    var mouse_path_center_direction: Vector2 = mouse_position - path_center
+    var angle: float = Vector2.UP.angle_to(mouse_path_center_direction)
+    var new_progress_ratio: float = 0.5 + angle / PI
+    shooting_path_follow.progress_ratio = lerp(shooting_path_follow.progress_ratio, new_progress_ratio, shooting_movement_speed)
 
 func set_water_tank_display(tank_percentage: float):
     # @respo: animate water tank

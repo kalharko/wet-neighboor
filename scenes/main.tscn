@@ -1234,6 +1234,7 @@ scale = Vector2(0.506038, 0.500201)
 sprite_frames = ExtResource("9_rtgbo")
 animation = &"gun_gather"
 script = ExtResource("10_4wn0a")
+shooting_movement_speed = 0.06
 water_tank_tops = Array[float]([0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.36, 0.06])
 water_tank_bottoms = Array[float]([0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.97, 0.56])
 position_animation_frame_curve = SubResource("Curve_y8jj5")
@@ -1271,7 +1272,7 @@ rotation = -0.0323989
 progress = 663.631
 
 [node name="PathCenter" type="Marker2D" parent="WaterGun/ShootingPath"]
-position = Vector2(449.745, 270.556)
+position = Vector2(449.745, 357.017)
 
 [node name="DebugLabelScore" type="Label" parent="."]
 visible = false
