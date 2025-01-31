@@ -50,21 +50,25 @@ Godot, Github
     - [x]  👾 Goutte d’eau rétrécissent le long de leur trajet
     - [x]  👾 Changer le mouvement du pistolet en mode récolte
 
-- [ ]  Milestone 8
-    - [ ]  🎨 Asset du pistolet
-    - [ ]  🎨 Asset bouteille d’eau
-    - [ ]  👾 Set les depth area au nouveau background
-    - [ ]  👾 Transition fin du jeu → écran de fin (toutes les fenetres s’ouvrent ?)
+- [x]  Milestone 8
+    - [x]  🎨 Asset du pistolet
+    - [x]  🎨 Asset bouteille d’eau
+    - [x]  👾 Set les depth area au nouveau background
+    - [x]  👾 Transition fin du jeu → écran de fin (toutes les fenetres s’ouvrent ?)
     - [x]  👾 trajectoire des bouteilles d’eau des voisins
 
-- [ ]  Milestone 9
-    - [ ]  🎨 Asset des fenêtres
-    - [ ]  🛤️ Séquence de tuto
-    - [ ]  🛤️ Séquence de start menu
+- [x]  Milestone 9
+    - [x]  🎨 Asset des fenêtres
+    - [x]  🛤️ Séquence de tuto
+    - [x]  🛤️ Séquence de start menu
+    - [x]  👾 window timeout
 
 - [ ]  **Milestone 10: Logiciel complet**
     - [ ]  🎨 Tous les assets du jeu sont finaux
-    - [ ]  🎨 Effets audio
+    - [ ]  🎨 Assets des voisins énervés
+    - [x]  🛤️ Rythmer les séquences
+    - [ ]  🛤️ Customiser title screen
+    - [x]  🎨 Effets audio
     - [x]  🪟 Menus avec des assets grossiers
         - [x]  Menu principal
         - [x]  Menu game over
@@ -83,3 +87,4 @@ Godot, Github
 
 ## Acknowledgement
 [DebugDraw2D](https://github.com/idbrii/godot-debugdraw2d)
+Background music from rezoner [happy Arcade Tune](https://opengameart.org/content/happy-arcade-tune)
