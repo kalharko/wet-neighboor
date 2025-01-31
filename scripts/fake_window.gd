@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 
 # Operating variables
-var is_first_time_click: bool = true
+@onready var is_first_time_click: bool = GameDataSingleton.is_first_game
 
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
