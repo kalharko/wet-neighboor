@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bnqhvbb5wh3jd"
+path="res://.godot/imported/oh les minots.mp3-a8ff7f79df57e4626bc6a352307f6528.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/voices/oh les minots.mp3"
+dest_files=["res://.godot/imported/oh les minots.mp3-a8ff7f79df57e4626bc6a352307f6528.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

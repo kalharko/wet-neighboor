@@ -88,7 +88,6 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
     )
 
 func _on_area_entered(area: Area2D) -> void:
-    droplet_collected.play()
     if state != GunState.GATHER:
         return
     
@@ -97,11 +96,12 @@ func _on_area_entered(area: Area2D) -> void:
 
     # if is a tuto bottle, free and stop tuto
     if area.get_parent().is_tuto_bottle:
+        droplet_collected.play()
         area.get_parent().free()
         get_node('/root/Main/AnimationPlayer').play('tuto_sequence_2')
         tank_value = tank_size
         return
-        
+    droplet_collected.play()
     area.get_parent().land()
     tank_value += droplet_fill_tank
     tank_value = clamp(tank_value, 0, tank_size)

@@ -17,6 +17,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $"../../../AudioContainer/voices/AudioStreamPlayer2D"
 @onready var open_window_sound: AudioStreamPlayer2D = $"../../../AudioContainer/sfx/open window sound"
 @onready var close_window_sound: AudioStreamPlayer2D = $"../../../AudioContainer/sfx/close window sound"
+@onready var droplet_landed: AudioStreamPlayer2D = $"../../../AudioContainer/sfx/droplet_landed"
 
 # Game design parameters
 @export var is_start_window: bool = false
@@ -119,7 +120,9 @@ func _on_droplet_landed(droplet: Droplet) -> void:
     if not window_area.overlaps_area(droplet.droplet_area):
         return
     is_window_open = false
-    audio_stream_player_2d.play()
+    if audio_stream_player_2d.playing == false :
+        audio_stream_player_2d.play()
+    droplet_landed.play()
     close_window()
     window_hit.emit()
     

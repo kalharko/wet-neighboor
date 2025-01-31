@@ -16,6 +16,7 @@ signal end_game() # towards window manager
 @onready var neighbour_droplet_container: NeighbourDropletContainer = get_node('Background/NeighbourDropletContainer')
 @onready var droplet_container: DropletContainer = get_node('WaterGun/DropletContainer')
 @onready var animation_player: AnimationPlayer = get_node("AnimationPlayer")
+@onready var crowd_shouting: AudioStreamPlayer = $"AudioContainer/env sounds/crowd_shouting"
 
 # Game design parameters
 @export var initial_game_speed: float = 0.75
@@ -108,4 +109,5 @@ func _on_speed_up_timer() -> void:
 
 
 func _on_end_game() -> void:
+    crowd_shouting.play()
     animation_player.play('game_over')
