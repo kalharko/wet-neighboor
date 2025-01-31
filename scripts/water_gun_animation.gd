@@ -66,9 +66,9 @@ func set_shooting_position_rotation(depth_area: DepthArea) -> Vector2:
         target += mouse_direction.normalized() * gun_direction.length()
         target += (mouse_position - target) * depth_area.stream_apex_position_ration
         if angle > 0:
-            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * -5
+            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * -10
         else:
-            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 5
+            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 10
         var target_direction: Vector2 = target - marker_back.global_position
         gun_target_angle = gun_direction.angle_to(target_direction)
 
