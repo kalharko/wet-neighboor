@@ -6,6 +6,7 @@ class_name Main
 
 # Signals
 signal game_speed_up(game_speed_multiplier: float) # towards window manager
+signal title_screen_exited()
 signal start_game() # towards window manager
 signal end_game() # towards window manager
 
@@ -93,6 +94,7 @@ func start_tuto() -> void:
     else:
         set_start_game()
 
+
 func set_start_game() -> void:
     start_window.close_window()
     animation_player.play('start_game')
@@ -100,7 +102,11 @@ func set_start_game() -> void:
     timer.wait_time = game_speed_increase_interval
     timer.start()
     start_game.emit()
-    
+
+
+func notify_title_screen_exited() -> void:
+    title_screen_exited.emit()
+
 
 func _on_speed_up_timer() -> void:
     # @respo: game rythm
