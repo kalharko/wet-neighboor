@@ -43,7 +43,7 @@ func _ready() -> void:
     add_child(timer, false, Node.INTERNAL_MODE_BACK)
 
 
-func open_window() -> void:
+func _open_window() -> void:
     open_window_sound.play()
     is_window_open = true
     self.play("window opening")
@@ -51,7 +51,7 @@ func open_window() -> void:
     timer.start()
 
 
-func close_window() -> void:
+func _close_window() -> void:
     close_window_sound.play()
     is_window_open = false
     recently_closed = true
@@ -84,12 +84,12 @@ func _on_end_game_sequence() -> void:
 
 func _on_timer_timeout() -> void:
     if is_window_open:
-        close_window()
+        _close_window()
     elif recently_closed:
         is_active = false
         recently_closed = false
     else:
-        open_window()
+        _open_window()
 
 
 func _spawn_droplet() -> void:
@@ -120,7 +120,7 @@ func _on_droplet_landed(droplet: Droplet) -> void:
         return
     is_window_open = false
     audio_stream_player_2d.play()
-    close_window()
+    _close_window()
     window_hit.emit()
     
     if rng.randf() <= droplet_spawn_probability:

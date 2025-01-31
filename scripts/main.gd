@@ -1,14 +1,12 @@
 extends Node
 class_name Main
-# Responsabilities
-# @respo: start game
 
 
 # Signals
-signal game_speed_up(game_speed_multiplier: float) # towards window manager
+signal game_speed_up(game_speed_multiplier: float)
 signal title_screen_exited()
-signal start_game() # towards window manager
-signal end_game() # towards window manager
+signal start_game()
+signal end_game()
 
 # References
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
@@ -73,6 +71,7 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
+    # @respo: exit title screen
     if event.is_action_pressed('fire') and GameDataSingleton.is_first_game:
         if still_on_title_screen:
             still_on_title_screen = false
@@ -86,6 +85,7 @@ func _on_window_hit() -> void:
 
 
 func start_tuto() -> void:
+    # @respo: start tuto
     if GameDataSingleton.is_first_game:
         print('Start Tuto')
         animation_player.play('hide_title_screen')
@@ -95,6 +95,7 @@ func start_tuto() -> void:
 
 
 func set_start_game() -> void:
+    # @respo: start game
     if GameDataSingleton.is_first_game:
         animation_player.play('start_game')
         GameDataSingleton.is_first_game = false

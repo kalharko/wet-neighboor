@@ -1,8 +1,5 @@
 extends Sprite2D
 class_name NeighbourDroplet
-# Responsabilities
-# @respo: moving
-# @respo: disappear
 
 
 # Signals

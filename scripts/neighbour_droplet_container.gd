@@ -10,20 +10,20 @@ class_name NeighbourDropletContainer
 var total_nb_droplet: int = 0
 
 
-func get_droplet()-> NeighbourDroplet:
-	if available_neighbour_droplets.is_empty():
-		var new_droplet = neighbour_droplet_scene.instantiate()
-		new_droplet.neighbour_droplet_landed.connect(_on_neighbour_droplet_landed)
-		self.add_child(new_droplet)
-		available_neighbour_droplets.append(new_droplet)
-		total_nb_droplet += 1
-	
-	return available_neighbour_droplets.pop_front()
+func get_droplet() -> NeighbourDroplet:
+    if available_neighbour_droplets.is_empty():
+        var new_droplet = neighbour_droplet_scene.instantiate()
+        new_droplet.neighbour_droplet_landed.connect(_on_neighbour_droplet_landed)
+        self.add_child(new_droplet)
+        available_neighbour_droplets.append(new_droplet)
+        total_nb_droplet += 1
+    
+    return available_neighbour_droplets.pop_front()
 
 
 func get_nb_in_use() -> int:
-	return total_nb_droplet - len(available_neighbour_droplets)
-	
+    return total_nb_droplet - len(available_neighbour_droplets)
+    
 func _on_neighbour_droplet_landed(droplet:NeighbourDroplet)->void:
-	assert(droplet is NeighbourDroplet)
-	available_neighbour_droplets.append(droplet)
+    assert(droplet is NeighbourDroplet)
+    available_neighbour_droplets.append(droplet)

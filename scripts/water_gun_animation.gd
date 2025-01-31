@@ -103,7 +103,7 @@ func set_gathering_position_rotation() -> void:
     var new_progress_ratio: float = 0.5 + angle / PI
     shooting_path_follow.progress_ratio = lerp(shooting_path_follow.progress_ratio, new_progress_ratio, shooting_movement_speed)
 
-func set_water_tank_display(tank_percentage: float):
+func set_water_tank_display(tank_percentage: float) -> void:
     # @respo: animate water tank
     assert(tank_percentage >= 0 and tank_percentage <= 1)
     water_tank_anim.material.set_shader_parameter('percentage', 1 - tank_percentage)
