@@ -2,7 +2,6 @@ extends Sprite2D
 class_name Background
 # Responsabilities
 # @respo: display background image
-# @respo: expose background depth
 
 
 # References
@@ -16,6 +15,7 @@ func _ready() -> void:
 
 
 func get_background_depth_area(point: Vector2) -> DepthArea:
+    # @respo: expose background depth
     for depth_area in depth_areas:
         if depth_area.contains(point):
             return depth_area

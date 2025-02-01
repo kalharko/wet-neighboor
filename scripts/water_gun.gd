@@ -1,10 +1,5 @@
 extends Node2D
 class_name WaterGun
-# Responsabilities
-# @respo: shoot
-# @respo: switch mode
-# @respo: gather
-# @respo: record tank
 
 
 # References
@@ -13,6 +8,7 @@ class_name WaterGun
 @onready var droplet_container: DropletContainer = get_node("DropletContainer")
 @onready var droplet_scene: PackedScene = preload('res://scenes/droplet.tscn')
 @onready var marker_front: Marker2D = get_node('WaterGunAnimation/MarkerFront')
+@onready var marker_back: Marker2D = get_node('WaterGunAnimation/MarkerBack')
 @onready var debug_label_tank: Label = get_node('/root/Main/DebugLabelTank')
 @onready var droplet_collected: AudioStreamPlayer2D = $"../AudioContainer/sfx/droplet_collected"
 @onready var water_splash: AudioStreamPlayer2D = $"../AudioContainer/sfx/water splash"
@@ -30,18 +26,21 @@ var free_droplets: Array[Droplet] = []
 enum GunState {SHOOT, GATHER}
 var state: GunState = GunState.SHOOT
 var game_started: bool = false
+var on_title_screen: bool = true
 
 
 func _ready() -> void:
     # Subscribes to signals
     get_node('WaterGunAnimation/Area2D').area_entered.connect(_on_area_entered)
     get_node('/root/Main').start_game.connect(_on_start_game)
+    get_node('/root/Main').title_screen_exited.connect(_on_title_screen_exited)
     
     # Initial state
     tank_value = tank_size / 3 * 2
 
 
 func _physics_process(_delta: float) -> void:
+    # @respo: switch mode
     # check state
     state = GunState.SHOOT
     if Input.is_action_pressed("gather"):
@@ -62,10 +61,21 @@ func _physics_process(_delta: float) -> void:
 
     # Shoot
     if state == GunState.SHOOT and Input.is_action_pressed('fire'):
-        shoot(target, depth_area.additional_height_at_stream_apex)
+        _shoot(target, depth_area.additional_height_at_stream_apex)
 
 
-func shoot(target: Vector2, additional_travel_time: float) -> void:
+func _shoot(target: Vector2, additional_travel_time: float) -> void:
+    # @respo: shoot
+    if on_title_screen:
+        return
+
+    var mouse_position: Vector2 = get_global_mouse_position()
+    if mouse_position.distance_to(marker_front.global_position) < 20:
+        return
+    if mouse_position.distance_to(marker_back.global_position) < 160:
+        return
+    
+
     water_splash.play()
     # update water tank
     if game_started:
@@ -79,7 +89,6 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
 
     # find a free droplet
     var droplet: Droplet = droplet_container.get_droplet()
-    var mouse_position: Vector2 = get_global_mouse_position()
     droplet.set_course(
         marker_front.global_position,
         target,
@@ -88,12 +97,14 @@ func shoot(target: Vector2, additional_travel_time: float) -> void:
     )
 
 func _on_area_entered(area: Area2D) -> void:
+    # @respo: gather
     if state != GunState.GATHER:
         return
     
     if not area.get_parent() is NeighbourDroplet:
         return
 
+    droplet_collected.play()
     # if is a tuto bottle, free and stop tuto
     if area.get_parent().is_tuto_bottle:
         droplet_collected.play()
@@ -111,3 +122,7 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_start_game() -> void:
     game_started = true
+
+
+func _on_title_screen_exited() -> void:
+    on_title_screen = false

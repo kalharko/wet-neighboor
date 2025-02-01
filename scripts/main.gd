@@ -1,17 +1,15 @@
 extends Node
 class_name Main
-# Responsabilities
-# @respo: start game
 
 
 # Signals
-signal game_speed_up(game_speed_multiplier: float) # towards window manager
-signal start_game() # towards window manager
-signal end_game() # towards window manager
+signal game_speed_up(game_speed_multiplier: float)
+signal title_screen_exited()
+signal start_game()
+signal end_game()
 
 # References
 @onready var debug_score_label: Label = get_node('DebugLabelScore')
-@onready var start_window: NeighbourWindow = get_node("Background/WindowManager/StartWindow")
 @onready var watergun: WaterGun = get_node('WaterGun')
 @onready var neighbour_droplet_container: NeighbourDropletContainer = get_node('Background/NeighbourDropletContainer')
 @onready var droplet_container: DropletContainer = get_node('WaterGun/DropletContainer')
@@ -29,7 +27,6 @@ var score: int = 0
 var timer: Timer = Timer.new()
 var game_started: bool = false
 var end_game_started: bool = false
-var is_first_game: bool = true
 var still_on_title_screen: bool = true
 
 
@@ -43,6 +40,8 @@ func _ready() -> void:
     timer.one_shot = false
     timer.connect("timeout", Callable(self, "_on_speed_up_timer"))
     add_child(timer)
+    if not GameDataSingleton.is_first_game:
+        animation_player.play('setup_replay')
 
 
 func _physics_process(_delta: float) -> void:
@@ -73,7 +72,8 @@ func _physics_process(_delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-    if event.is_action_pressed('fire'):
+    # @respo: exit title screen
+    if event.is_action_pressed('fire') and GameDataSingleton.is_first_game:
         if still_on_title_screen:
             still_on_title_screen = false
             animation_player.play('animate_title_screen')
@@ -86,22 +86,29 @@ func _on_window_hit() -> void:
 
 
 func start_tuto() -> void:
-    if is_first_game:
-        is_first_game = false
+    # @respo: start tuto
+    if GameDataSingleton.is_first_game:
         print('Start Tuto')
         animation_player.play('hide_title_screen')
         animation_player.queue('tuto_sequence_1')
     else:
         set_start_game()
 
+
 func set_start_game() -> void:
-    start_window.close_window()
-    animation_player.play('start_game')
+    # @respo: start game
+    if GameDataSingleton.is_first_game:
+        animation_player.play('start_game')
+        GameDataSingleton.is_first_game = false
     game_started = true
     timer.wait_time = game_speed_increase_interval
     timer.start()
     start_game.emit()
-    
+
+
+func notify_title_screen_exited() -> void:
+    title_screen_exited.emit()
+
 
 func _on_speed_up_timer() -> void:
     # @respo: game rythm

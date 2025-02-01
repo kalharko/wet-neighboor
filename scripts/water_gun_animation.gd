@@ -66,9 +66,9 @@ func set_shooting_position_rotation(depth_area: DepthArea) -> Vector2:
         target += mouse_direction.normalized() * gun_direction.length()
         target += (mouse_position - target) * depth_area.stream_apex_position_ration
         if angle > 0:
-            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * -5
+            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * -10
         else:
-            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 5
+            target += mouse_direction.rotated(PI / 2).normalized() * depth_area.additional_height_at_stream_apex * 10
         var target_direction: Vector2 = target - marker_back.global_position
         gun_target_angle = gun_direction.angle_to(target_direction)
 
@@ -103,7 +103,7 @@ func set_gathering_position_rotation() -> void:
     var new_progress_ratio: float = 0.5 + angle / PI
     shooting_path_follow.progress_ratio = lerp(shooting_path_follow.progress_ratio, new_progress_ratio, shooting_movement_speed)
 
-func set_water_tank_display(tank_percentage: float):
+func set_water_tank_display(tank_percentage: float) -> void:
     # @respo: animate water tank
     assert(tank_percentage >= 0 and tank_percentage <= 1)
     water_tank_anim.material.set_shader_parameter('percentage', 1 - tank_percentage)
