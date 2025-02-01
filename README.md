@@ -63,9 +63,8 @@ Godot, Github
     - [x]  🛤️ Séquence de start menu
     - [x]  👾 window timeout
 
-- [ ]  **Milestone 10: Logiciel complet**
-    - [ ]  🎨 Tous les assets du jeu sont finaux
-    - [ ]  🎨 Assets des voisins énervés
+- [x]  **Milestone 10: Logiciel complet**
+    - [x]  🎨 Tous les assets du jeu sont finaux
     - [x]  🛤️ Rythmer les séquences
     - [ ]  🛤️ Customiser title screen
     - [x]  🎨 Effets audio
