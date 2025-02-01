@@ -36,7 +36,8 @@ func _ready() -> void:
     get_node('/root/Main').title_screen_exited.connect(_on_title_screen_exited)
     
     # Initial state
-    tank_value = tank_size / 3 * 2
+    if GameDataSingleton.is_first_game:
+        tank_value = tank_size / 3 * 2
 
 
 func _physics_process(_delta: float) -> void:
