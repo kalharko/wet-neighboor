@@ -79,6 +79,8 @@ func _shoot(target: Vector2, additional_travel_time: float) -> void:
     # update water tank
     if game_started:
         self.tank_value -= shot_cost
+    elif tank_value > 20:
+        tank_value -= shot_cost
     # check if tank is empty
     if self.tank_value <= 0:
         self.tank_value = 0
