@@ -76,7 +76,6 @@ func _shoot(target: Vector2, additional_travel_time: float) -> void:
         return
     
 
-    water_splash.play()
     # update water tank
     if game_started:
         self.tank_value -= shot_cost
@@ -86,6 +85,9 @@ func _shoot(target: Vector2, additional_travel_time: float) -> void:
         debug_label_tank.text = 'Tank: ' + str(tank_value)
         return
     debug_label_tank.text = 'Tank: ' + str(tank_value)
+
+    # play sound
+    water_splash.play()
 
     # find a free droplet
     var droplet: Droplet = droplet_container.get_droplet()

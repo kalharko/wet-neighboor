@@ -20,7 +20,7 @@ signal end_game()
 @export var initial_game_speed: float = 0.75
 @export var game_speed_multiplier: float = 1.1
 @export var game_speed_increase_interval: float = 15
-@export var water_tank_empty_end_game_delay: float = 5
+@export var water_tank_empty_end_game_delay: float = 0.5
 
 # Operating variables
 var score: int = 0
@@ -68,6 +68,8 @@ func _physics_process(_delta: float) -> void:
     timer.disconnect('timeout', Callable(self, "_on_speed_up_timer"))
     timer.connect("timeout", Callable(self, "_on_end_game"))
     timer.start()
+    end_game.emit()
+    crowd_shouting.play()
     print('start end game')
 
 
@@ -116,5 +118,4 @@ func _on_speed_up_timer() -> void:
 
 
 func _on_end_game() -> void:
-    crowd_shouting.play()
     animation_player.play('game_over')

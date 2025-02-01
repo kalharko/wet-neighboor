@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=4 uid="uid://dr54xyscfrfet"]
+[gd_scene load_steps=99 format=4 uid="uid://dr54xyscfrfet"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_arwgw"]
 [ext_resource type="Animation" uid="uid://xc8w306660nx" path="res://assets/animations/animation_player.tres" id="2_if6dq"]
@@ -13,11 +13,9 @@
 [ext_resource type="SpriteFrames" uid="uid://bd0hy1l5j3760" path="res://assets/animations/watergun/water_gun.tres" id="9_rtgbo"]
 [ext_resource type="Script" path="res://scripts/water_gun_animation.gd" id="10_4wn0a"]
 [ext_resource type="Material" uid="uid://jkpmgmfejwlg" path="res://shaders/water_tank_shader.tres" id="11_c0nnu"]
-[ext_resource type="Script" path="res://scripts/neighbour_container.gd" id="12_l6pyh"]
 [ext_resource type="SpriteFrames" uid="uid://bki20f0upkjum" path="res://assets/animations/watergun/water_gun_tank.tres" id="12_ncs6r"]
 [ext_resource type="Texture2D" uid="uid://dl33f41ebx48f" path="res://assets/sprites/ui/textbox_big.png" id="12_xjvdq"]
 [ext_resource type="Texture2D" uid="uid://jbbt8qu04crv" path="res://assets/sprites/ui/textbox.png" id="13_auuha"]
-[ext_resource type="Texture2D" uid="uid://bd6wq23g5ixdt" path="res://assets/sprites/neighbour/angry_neighboor.png" id="13_vegg2"]
 [ext_resource type="FontFile" uid="uid://cu1yl8kymx1ir" path="res://assets/fonts/Graffiti-Regular.ttf" id="14_4k66k"]
 [ext_resource type="Script" path="res://scripts/flavor_text.gd" id="14_i4p66"]
 [ext_resource type="Texture2D" uid="uid://cuxnoxdqkhiiu" path="res://assets/sprites/ui/button.png" id="14_po2je"]
@@ -65,7 +63,7 @@
 
 [sub_resource type="Animation" id="Animation_ch2si"]
 resource_name = "animate_title_screen"
-length = 2.324
+length = 1.164
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,7 +71,7 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.366667, 0.966667),
+"times": PackedFloat32Array(0.0666667, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.345098, 0.564706, 0.796078, 1), Color(0.764706, 0.764706, 0.764706, 0)]
@@ -85,7 +83,7 @@ tracks/1/path = NodePath("AnimationPlayer/WetneigbourTitle:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.433333, 0.933333),
+"times": PackedFloat32Array(0.0333333, 0.533333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.485, 0.485)]
@@ -109,7 +107,7 @@ tracks/3/path = NodePath("AnimationPlayer/SpeechBubble1:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.16667),
+"times": PackedFloat32Array(0, 1.13334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -169,7 +167,7 @@ tracks/8/path = NodePath("AnimationPlayer/FakeWindow")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.83333),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"window opening", 1.0, false],
@@ -195,7 +193,7 @@ tracks/10/path = NodePath("WaterGun:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 0.866667, 1.9),
+"times": PackedFloat32Array(0, 0.5, 1.13333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 300), Vector2(0, 300), Vector2(0, 0)]
@@ -207,7 +205,7 @@ tracks/11/path = NodePath("AnimationPlayer/ColorRect:visible")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 0.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -219,7 +217,7 @@ tracks/12/path = NodePath("AnimationPlayer/WetneigbourTitle:position")
 tracks/12/interp = 2
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0.433333, 0.933333),
+"times": PackedFloat32Array(0.0333333, 0.533333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(453, 360), Vector2(453, 165)]
@@ -231,7 +229,7 @@ tracks/13/path = NodePath(".")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(1.9),
+"times": PackedFloat32Array(1.13333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -241,41 +239,39 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_dkmxx"]
 resource_name = "game_over"
-length = 2.323
-tracks/0/type = "method"
+length = 1.343
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Background/WindowManager")
+tracks/0/path = NodePath("AnimationPlayer/GameOver/FadeToBlack:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_on_end_game"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/GameOver/FadeToBlack:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.933333),
+"times": PackedFloat32Array(0, 0.833333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.643137)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/GameOver/GameOver:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/GameOver/GameOver:visible")
+tracks/2/path = NodePath("AnimationPlayer/GameOver/FlavorText:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.933333),
+"times": PackedFloat32Array(0, 1.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -283,11 +279,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimationPlayer/GameOver/FlavorText:visible")
+tracks/3/path = NodePath("AnimationPlayer/GameOver/ReplayButton:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
+"times": PackedFloat32Array(0, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -295,48 +291,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimationPlayer/GameOver/ReplayButton:visible")
+tracks/4/path = NodePath("AnimationPlayer/GameOver:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.53333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer/GameOver:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AnimationPlayer/GameOver/NeighbourContainer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"display_neighbours"
-}]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer/GameOver/FlavorText")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/GameOver/FlavorText")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -347,6 +317,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_tb4gv"]
 resource_name = "hide_title_screen"
+length = 0.0235
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -354,7 +325,7 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.764706, 0.764706, 0.764706, 0)]
@@ -686,7 +657,7 @@ tracks/2/path = NodePath("AnimationPlayer/TutoBottleSpawner")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.2),
+"times": PackedFloat32Array(0.366667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1097,7 +1068,7 @@ scale = Vector2(0.525, 0.525)
 texture = ExtResource("19_fjjis")
 
 [node name="SpeechBubble1" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(522, 301)
+position = Vector2(537, 248)
 scale = Vector2(0.489286, 0.489286)
 texture = ExtResource("13_auuha")
 
@@ -1119,8 +1090,8 @@ text = "GAMIN ! VIENS VOIR."
 metadata/_edit_use_anchors_ = true
 
 [node name="SpeechBubble2" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(494, 221)
-scale = Vector2(0.489286, 0.489286)
+position = Vector2(539, 248)
+scale = Vector2(0.592464, 0.592464)
 texture = ExtResource("12_xjvdq")
 
 [node name="Label" type="Label" parent="AnimationPlayer/SpeechBubble2"]
@@ -1129,21 +1100,24 @@ anchor_left = 8.6441e-05
 anchor_top = -0.0308192
 anchor_right = 0.181198
 anchor_bottom = 0.124181
-offset_left = -71.6106
-offset_top = -77.5668
-offset_right = 126.389
-offset_bottom = -23.5668
+offset_left = -140.171
+offset_top = -84.4683
+offset_right = 57.829
+offset_bottom = -30.4683
+scale = Vector2(0.892253, 0.892253)
 theme = SubResource("Theme_gqepk")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_4k66k")
 theme_override_font_sizes/font_size = 18
 text = "TIRE PAS, ATTRAPE 
-LA BOUTEILLE AVEC 
-CLIC GAUCHE."
+LA BOUTEILLE EN
+MAINTENANT CLICK
+DROIT."
+horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="SpeechBubble3" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(550, 238)
+position = Vector2(539, 247)
 scale = Vector2(0.489286, 0.489286)
 texture = ExtResource("13_auuha")
 
@@ -1175,95 +1149,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NeighbourContainer" type="Control" parent="AnimationPlayer/GameOver"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("12_l6pyh")
-
-[node name="AngryNeighbour7" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(677, 398)
-scale = Vector2(0.422348, 0.422348)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour8" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(655, 406)
-scale = Vector2(0.422348, 0.422348)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour9" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(615, 401)
-scale = Vector2(0.422348, 0.422348)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour10" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(632, 419)
-scale = Vector2(0.422348, 0.422348)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour11" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(583, 410)
-scale = Vector2(0.545419, 0.545419)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour12" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(519, 417)
-scale = Vector2(0.545419, 0.545419)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour13" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(475, 440)
-scale = Vector2(0.694228, 0.694228)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour14" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(662, 459)
-scale = Vector2(0.694228, 0.694228)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour15" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(377, 447)
-scale = Vector2(0.694228, 0.694228)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour4" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(422, 492)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour5" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(611, 472)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour6" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(547, 451)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(502, 510)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour2" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(574, 519)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour16" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(343, 536)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
-
-[node name="AngryNeighbour3" type="Sprite2D" parent="AnimationPlayer/GameOver/NeighbourContainer"]
-position = Vector2(455, 523)
-scale = Vector2(0.838803, 0.838803)
-texture = ExtResource("13_vegg2")
 
 [node name="FadeToBlack" type="ColorRect" parent="AnimationPlayer/GameOver"]
 layout_mode = 1
@@ -1336,6 +1221,7 @@ scale = Vector2(1.88884, 2.21481)
 texture = ExtResource("3_y6vyb")
 
 [node name="DepthAreaContainer" type="Node2D" parent="Background"]
+visible = false
 
 [node name="DepthArea" type="Area2D" parent="Background/DepthAreaContainer"]
 position = Vector2(-1800, -1200)

@@ -71,8 +71,15 @@ func _on_game_start() -> void:
 
 func _on_end_game() -> void:
     timer.stop()
-    for window in windows:
-        window.start_end_game_sequence(
+
+    var score: int = GameDataSingleton.score
+    assert(score >= 0)
+    var nb_visible_neighbour_needed: int = float(score) * float(get_child_count()) / float(100)
+    if nb_visible_neighbour_needed > get_child_count():
+        nb_visible_neighbour_needed = get_child_count()
+
+    for i in range(nb_visible_neighbour_needed):
+        get_child(i).start_end_game_sequence(
             rnd.randf_range(0, max_window_closing_delay) / 2
         )
 
