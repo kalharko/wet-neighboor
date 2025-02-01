@@ -38,8 +38,8 @@ func _ready() -> void:
 
     # Setup
     timer.one_shot = false
-    timer.connect("timeout", Callable(self, "_on_speed_up_timer"))
     add_child(timer)
+    timer.connect("timeout", Callable(self, "_on_speed_up_timer"))
     if not GameDataSingleton.is_first_game:
         animation_player.play('setup_replay')
 
@@ -114,6 +114,7 @@ func notify_title_screen_exited() -> void:
 
 func _on_speed_up_timer() -> void:
     # @respo: game rythm
+    print("game speed up emitted")
     game_speed_up.emit()
 
 

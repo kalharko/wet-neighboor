@@ -48,13 +48,17 @@ func _ready() -> void:
 
 func _on_time_timeout() -> void:
     # @respo: activate/deactivate windows
+    var nb_active: int = 0
     var inactive_windows: Array[NeighbourWindow] = []
     for window in windows:
+        if window.is_active and not window.recently_closed:
+            nb_active += 1
         if not window.is_active:
             inactive_windows.append(window)
+        
 
     # quit if enough windows are active
-    if len(windows) - len(inactive_windows) >= max_window_active:
+    if nb_active >= max_window_active:
         return
     
     # activate a random inactive window
@@ -86,4 +90,5 @@ func _on_end_game() -> void:
 
 func _on_game_speed_up() -> void:
     timer.wait_time = max(min_update_time, timer.wait_time * update_time_reduction_rate)
+    max_window_active = min(max_window_active+1, 15)
     print('on game speed up: ' + str(timer.wait_time))

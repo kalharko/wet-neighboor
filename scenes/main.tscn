@@ -1015,6 +1015,7 @@ stream_1/stream = ExtResource("39_6cvi5")
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_arwgw")
+game_speed_increase_interval = 10.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1090,8 +1091,8 @@ text = "GAMIN ! VIENS VOIR."
 metadata/_edit_use_anchors_ = true
 
 [node name="SpeechBubble2" type="Sprite2D" parent="AnimationPlayer"]
-position = Vector2(539, 248)
-scale = Vector2(0.592464, 0.592464)
+position = Vector2(544, 249)
+scale = Vector2(0.711449, 0.706449)
 texture = ExtResource("12_xjvdq")
 
 [node name="Label" type="Label" parent="AnimationPlayer/SpeechBubble2"]
@@ -1108,10 +1109,10 @@ scale = Vector2(0.892253, 0.892253)
 theme = SubResource("Theme_gqepk")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_4k66k")
-theme_override_font_sizes/font_size = 18
-text = "TIRE PAS, ATTRAPE 
-LA BOUTEILLE EN
-MAINTENANT CLICK
+theme_override_font_sizes/font_size = 15
+text = "ATTENDS AVANT DE TIRER,
+ ATTRAPE LA BOUTEILLE 
+EN MAINTENANT CLIC
 DROIT."
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -1204,7 +1205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_4k66k")
-text = "PLAY AGAIN"
+text = "REJOUER"
 icon = ExtResource("14_po2je")
 flat = true
 icon_alignment = 1
@@ -1353,6 +1354,8 @@ polygon = PackedVector2Array(588.5, 469, 588.5, 211, 685.499, 223, 678.499, 467)
 position = Vector2(-1806.02, -1200)
 scale = Vector2(4.01337, 4)
 script = ExtResource("5_ysl1p")
+update_time = 1.0
+max_window_closing_delay = 4.0
 
 [node name="StartWindow" type="AnimatedSprite2D" parent="Background/WindowManager"]
 material = SubResource("ShaderMaterial_85ate")
@@ -1953,6 +1956,7 @@ parameters/looping = true
 
 [node name="crowd_shouting" type="AudioStreamPlayer" parent="AudioContainer/env sounds"]
 stream = ExtResource("34_8g5xg")
+volume_db = -9.699
 
 [node name="voices" type="Node" parent="AudioContainer"]
 

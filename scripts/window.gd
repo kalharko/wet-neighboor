@@ -28,7 +28,7 @@ var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 # Operating variables
 var is_window_open: bool = false
 var timer: Timer = Timer.new()
-var is_active: bool = false
+var is_active: bool = false 
 var time_before_closing: float = 1
 var in_end_game_sequence: bool = false
 var recently_closed: bool = false
